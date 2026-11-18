@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="cp1" target="D" id="cp1-D"/>
+        <arc source="C" target="cp2" id="C-cp2"/>
+        <arc source="A" target="cp1" id="A-cp1"/>
+        <arc source="cp2" target="E" id="cp2-E"/>
+        <arc source="D" target="cp2" id="D-cp2"/>
+        <arc source="E" target="cp3" id="E-cp3"/>
+        <arc source="cp1" target="C" id="cp1-C"/>
+        <arc source="cp0" target="A" id="cp0-A"/>
+        <arc source="B" target="cp2" id="B-cp2"/>
+        <arc source="cp1" target="B" id="cp1-B"/>
+        <place id="cp0">
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="cp2"/>
+        <place id="cp3"/>
+        <place id="cp1"/>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="A">
+            <name>
+                <text>A</text>
+            </name>
+        </transition>
+        <transition id="C">
+            <name>
+                <text>C</text>
+            </name>
+        </transition>
+        <transition id="E">
+            <name>
+                <text>E</text>
+            </name>
+        </transition>
+        <transition id="D">
+            <name>
+                <text>D</text>
+            </name>
+        </transition>
+        <transition id="B">
+            <name>
+                <text>B</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

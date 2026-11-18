@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="REDUCE_LOAN_AMOUNT_clear_quotes" target="p3" id="REDUCE_LOAN_AMOUNT_clear_quotes-p3"/>
+        <arc source="ANZ_QUOTE_calculate_base_repayment" target="ANZ_QUOTE_base_calculated" id="ANZ_QUOTE_calculate_base_repayment-ANZ_QUOTE_base_calculated"/>
+        <arc source="CBA_QUOTE_risk_calculated" target="CBA_QUOTE_fixed_rate_product" id="CBA_QUOTE_risk_calculated-CBA_QUOTE_fixed_rate_product"/>
+        <arc source="CBA_QUOTE_standard_variable_product" target="CBA_QUOTE_product_selected" id="CBA_QUOTE_standard_variable_product-CBA_QUOTE_product_selected"/>
+        <arc source="DOCUMENT_SIGNING_selected_bank_representative_signs" target="DOCUMENT_SIGNING_bank_signed" id="DOCUMENT_SIGNING_selected_bank_representative_signs-DOCUMENT_SIGNING_bank_signed"/>
+        <arc source="UNDERAGE_EXIT_silent" target="end" id="UNDERAGE_EXIT_silent-end"/>
+        <arc source="ANZ_QUOTE_risk_calculated" target="ANZ_QUOTE_select_variable_rate_offer" id="ANZ_QUOTE_risk_calculated-ANZ_QUOTE_select_variable_rate_offer"/>
+        <arc source="MAKE_RECOMMENDATION_options_consolidated" target="MAKE_RECOMMENDATION_recommend_best_quote" id="MAKE_RECOMMENDATION_options_consolidated-MAKE_RECOMMENDATION_recommend_best_quote"/>
+        <arc source="p3" target="PARALLEL_SPLIT_silent" id="p3-PARALLEL_SPLIT_silent"/>
+        <arc source="ID_VERIFICATION_clear_data" target="p1" id="ID_VERIFICATION_clear_data-p1"/>
+        <arc source="REJECT_silent" target="end" id="REJECT_silent-end"/>
+        <arc source="ID_VERIFICATION_collect_more_documents" target="ID_VERIFICATION_startReal" id="ID_VERIFICATION_collect_more_documents-ID_VERIFICATION_startReal"/>
+        <arc source="MAKE_RECOMMENDATION_recommendation_made" target="MAKE_RECOMMENDATION_borrower_response" id="MAKE_RECOMMENDATION_recommendation_made-MAKE_RECOMMENDATION_borrower_response"/>
+        <arc source="MAKE_RECOMMENDATION_merge_eligible_end" target="recommendation_made" id="MAKE_RECOMMENDATION_merge_eligible_end-recommendation_made"/>
+        <arc source="ID_VERIFICATION_secondary_document" target="ID_VERIFICATION_documents_checked" id="ID_VERIFICATION_secondary_document-ID_VERIFICATION_documents_checked"/>
+        <arc source="CBA_QUOTE_calculate_risk_margin" target="CBA_QUOTE_risk_calculated" id="CBA_QUOTE_calculate_risk_margin-CBA_QUOTE_risk_calculated"/>
+        <arc source="ID_VERIFICATION_startReal" target="ID_VERIFICATION_quit" id="ID_VERIFICATION_startReal-ID_VERIFICATION_quit"/>
+        <arc source="recommendation_made" target="DOCUMENT_SIGNING_prepare_document" id="recommendation_made-DOCUMENT_SIGNING_prepare_document"/>
+        <arc source="ANZ_QUOTE_keep_base_repayment" target="anz_done" id="ANZ_QUOTE_keep_base_repayment-anz_done"/>
+        <arc source="PARALLEL_SPLIT_silent" target="cba_branch" id="PARALLEL_SPLIT_silent-cba_branch"/>
+        <arc source="REDUCE_LOAN_AMOUNT_reduced" target="REDUCE_LOAN_AMOUNT_clear_quotes" id="REDUCE_LOAN_AMOUNT_reduced-REDUCE_LOAN_AMOUNT_clear_quotes"/>
+        <arc source="ANZ_QUOTE_add_offset_account_fee" target="anz_done" id="ANZ_QUOTE_add_offset_account_fee-anz_done"/>
+        <arc source="DOCUMENT_SIGNING_archived" target="DOCUMENT_SIGNING_loan_complete" id="DOCUMENT_SIGNING_archived-DOCUMENT_SIGNING_loan_complete"/>
+        <arc source="DOCUMENT_SIGNING_loan_complete" target="end" id="DOCUMENT_SIGNING_loan_complete-end"/>
+        <arc source="DOCUMENT_SIGNING_bank_signed" target="DOCUMENT_SIGNING_parallel_join" id="DOCUMENT_SIGNING_bank_signed-DOCUMENT_SIGNING_parallel_join"/>
+        <arc source="p1" target="CREDIT_CHECK_collect_credit_factors" id="p1-CREDIT_CHECK_collect_credit_factors"/>
+        <arc source="ID_VERIFICATION_calculate_age" target="ID_VERIFICATION_finished" id="ID_VERIFICATION_calculate_age-ID_VERIFICATION_finished"/>
+        <arc source="ANZ_QUOTE_calculate_risk_margin" target="ANZ_QUOTE_risk_calculated" id="ANZ_QUOTE_calculate_risk_margin-ANZ_QUOTE_risk_calculated"/>
+        <arc source="ID_VERIFICATION_startReal" target="ID_VERIFICATION_secondary_document" id="ID_VERIFICATION_startReal-ID_VERIFICATION_secondary_document"/>
+        <arc source="NAB_QUOTE_nab_variable_product" target="NAB_QUOTE_product_selected" id="NAB_QUOTE_nab_variable_product-NAB_QUOTE_product_selected"/>
+        <arc source="MAKE_RECOMMENDATION_ineligible_end" target="MAKE_RECOMMENDATION_merge_ineligible_end" id="MAKE_RECOMMENDATION_ineligible_end-MAKE_RECOMMENDATION_merge_ineligible_end"/>
+        <arc source="anz_done" target="PARALLEL_JOIN_silent" id="anz_done-PARALLEL_JOIN_silent"/>
+        <arc source="REDUCE_LOAN_AMOUNT_reduce_loan_amount" target="REDUCE_LOAN_AMOUNT_reduced" id="REDUCE_LOAN_AMOUNT_reduce_loan_amount-REDUCE_LOAN_AMOUNT_reduced"/>
+        <arc source="NAB_QUOTE_calculate_monthly_repayment" target="quote_p2" id="NAB_QUOTE_calculate_monthly_repayment-quote_p2"/>
+        <arc source="ID_VERIFICATION_documents_checked" target="ID_VERIFICATION_collect_more_documents" id="ID_VERIFICATION_documents_checked-ID_VERIFICATION_collect_more_documents"/>
+        <arc source="ID_VERIFICATION_primary_document" target="ID_VERIFICATION_documents_checked" id="ID_VERIFICATION_primary_document-ID_VERIFICATION_documents_checked"/>
+        <arc source="ANZ_QUOTE_select_fixed_rate_offer" target="ANZ_QUOTE_rate_selected" id="ANZ_QUOTE_select_fixed_rate_offer-ANZ_QUOTE_rate_selected"/>
+        <arc source="quote_p1" target="NAB_QUOTE_declined" id="quote_p1-NAB_QUOTE_declined"/>
+        <arc source="DOCUMENT_SIGNING_borrower_signs_agreement" target="DOCUMENT_SIGNING_borrower_signed" id="DOCUMENT_SIGNING_borrower_signs_agreement-DOCUMENT_SIGNING_borrower_signed"/>
+        <arc source="CREDIT_CHECK_factors_collected" target="CREDIT_CHECK_calculate_credit_score" id="CREDIT_CHECK_factors_collected-CREDIT_CHECK_calculate_credit_score"/>
+        <arc source="DOCUMENT_SIGNING_parallel_split" target="DOCUMENT_SIGNING_bank_branch" id="DOCUMENT_SIGNING_parallel_split-DOCUMENT_SIGNING_bank_branch"/>
+        <arc source="ANZ_QUOTE_base_calculated" target="ANZ_QUOTE_add_offset_account_fee" id="ANZ_QUOTE_base_calculated-ANZ_QUOTE_add_offset_account_fee"/>
+        <arc source="NAB_QUOTE_declined_end" target="NAB_QUOTE_merge_declined_end" id="NAB_QUOTE_declined_end-NAB_QUOTE_merge_declined_end"/>
+        <arc source="NAB_QUOTE_products_retrieved" target="NAB_QUOTE_nab_variable_product" id="NAB_QUOTE_products_retrieved-NAB_QUOTE_nab_variable_product"/>
+        <arc source="ID_VERIFICATION_finished" target="ID_VERIFICATION_clear_data" id="ID_VERIFICATION_finished-ID_VERIFICATION_clear_data"/>
+        <arc source="ID_VERIFICATION_documents_checked" target="ID_VERIFICATION_calculate_age" id="ID_VERIFICATION_documents_checked-ID_VERIFICATION_calculate_age"/>
+        <arc source="DOCUMENT_SIGNING_bank_verified" target="DOCUMENT_SIGNING_selected_bank_representative_signs" id="DOCUMENT_SIGNING_bank_verified-DOCUMENT_SIGNING_selected_bank_representative_signs"/>
+        <arc source="ANZ_QUOTE_risk_calculated" target="ANZ_QUOTE_select_fixed_rate_offer" id="ANZ_QUOTE_risk_calculated-ANZ_QUOTE_select_fixed_rate_offer"/>
+        <arc source="MAKE_RECOMMENDATION_eligible_end" target="MAKE_RECOMMENDATION_merge_eligible_end" id="MAKE_RECOMMENDATION_eligible_end-MAKE_RECOMMENDATION_merge_eligible_end"/>
+        <arc source="CREDIT_CHECK_calculate_credit_score" target="CREDIT_CHECK_score_calculated" id="CREDIT_CHECK_calculate_credit_score-CREDIT_CHECK_score_calculated"/>
+        <arc source="quote_p1" target="NAB_QUOTE_retrieve_eligible_nab_products" id="quote_p1-NAB_QUOTE_retrieve_eligible_nab_products"/>
+        <arc source="NAB_QUOTE_declined" target="NAB_QUOTE_declined_end" id="NAB_QUOTE_declined-NAB_QUOTE_declined_end"/>
+        <arc source="DOCUMENT_SIGNING_verify_borrower_identity" target="DOCUMENT_SIGNING_borrower_verified" id="DOCUMENT_SIGNING_verify_borrower_identity-DOCUMENT_SIGNING_borrower_verified"/>
+        <arc source="DOCUMENT_SIGNING_hash_source_and_create_envelope" target="DOCUMENT_SIGNING_envelope_created" id="DOCUMENT_SIGNING_hash_source_and_create_envelope-DOCUMENT_SIGNING_envelope_created"/>
+        <arc source="CBA_QUOTE_risk_calculated" target="CBA_QUOTE_standard_variable_product" id="CBA_QUOTE_risk_calculated-CBA_QUOTE_standard_variable_product"/>
+        <arc source="CBA_QUOTE_product_selected" target="CBA_QUOTE_calculate_monthly_repayment" id="CBA_QUOTE_product_selected-CBA_QUOTE_calculate_monthly_repayment"/>
+        <arc source="MAKE_RECOMMENDATION_ineligible" target="MAKE_RECOMMENDATION_ineligible_end" id="MAKE_RECOMMENDATION_ineligible-MAKE_RECOMMENDATION_ineligible_end"/>
+        <arc source="CREDIT_CHECK_score_calculated" target="CREDIT_CHECK_clear_factor_data" id="CREDIT_CHECK_score_calculated-CREDIT_CHECK_clear_factor_data"/>
+        <arc source="MAKE_LOAN_REQUEST_loan_amount" target="MAKE_LOAN_REQUEST_amount_chosen" id="MAKE_LOAN_REQUEST_loan_amount-MAKE_LOAN_REQUEST_amount_chosen"/>
+        <arc source="MAKE_RECOMMENDATION_options_consolidated" target="MAKE_RECOMMENDATION_ineligible" id="MAKE_RECOMMENDATION_options_consolidated-MAKE_RECOMMENDATION_ineligible"/>
+        <arc source="NAB_QUOTE_retrieve_eligible_nab_products" target="NAB_QUOTE_products_retrieved" id="NAB_QUOTE_retrieve_eligible_nab_products-NAB_QUOTE_products_retrieved"/>
+        <arc source="MAKE_RECOMMENDATION_merge_ineligible_end" target="recommendation_made" id="MAKE_RECOMMENDATION_merge_ineligible_end-recommendation_made"/>
+        <arc source="p1" target="UNDERAGE_EXIT_silent" id="p1-UNDERAGE_EXIT_silent"/>
+        <arc source="NAB_QUOTE_nab_fixed_rate_product" target="NAB_QUOTE_product_selected" id="NAB_QUOTE_nab_fixed_rate_product-NAB_QUOTE_product_selected"/>
+        <arc source="quote_p2" target="ANZ_QUOTE_calculate_risk_margin" id="quote_p2-ANZ_QUOTE_calculate_risk_margin"/>
+        <arc source="p0" target="ID_VERIFICATION_silent" id="p0-ID_VERIFICATION_silent"/>
+        <arc source="ANZ_QUOTE_select_variable_rate_offer" target="ANZ_QUOTE_rate_selected" id="ANZ_QUOTE_select_variable_rate_offer-ANZ_QUOTE_rate_selected"/>
+        <arc source="DOCUMENT_SIGNING_bank_branch" target="DOCUMENT_SIGNING_verify_bank_representative_identity" id="DOCUMENT_SIGNING_bank_branch-DOCUMENT_SIGNING_verify_bank_representative_identity"/>
+        <arc source="ANZ_QUOTE_rate_selected" target="ANZ_QUOTE_calculate_base_repayment" id="ANZ_QUOTE_rate_selected-ANZ_QUOTE_calculate_base_repayment"/>
+        <arc source="DOCUMENT_SIGNING_verify_and_archive" target="DOCUMENT_SIGNING_archived" id="DOCUMENT_SIGNING_verify_and_archive-DOCUMENT_SIGNING_archived"/>
+        <arc source="ID_VERIFICATION_startReal" target="ID_VERIFICATION_primary_document" id="ID_VERIFICATION_startReal-ID_VERIFICATION_primary_document"/>
+        <arc source="DOCUMENT_SIGNING_envelope_created" target="DOCUMENT_SIGNING_parallel_split" id="DOCUMENT_SIGNING_envelope_created-DOCUMENT_SIGNING_parallel_split"/>
+        <arc source="recommendation_made" target="REDUCE_LOAN_AMOUNT_reduce_loan_amount" id="recommendation_made-REDUCE_LOAN_AMOUNT_reduce_loan_amount"/>
+        <arc source="DOCUMENT_SIGNING_borrower_branch" target="DOCUMENT_SIGNING_verify_borrower_identity" id="DOCUMENT_SIGNING_borrower_branch-DOCUMENT_SIGNING_verify_borrower_identity"/>
+        <arc source="MAKE_RECOMMENDATION_borrower_response" target="MAKE_RECOMMENDATION_eligible_end" id="MAKE_RECOMMENDATION_borrower_response-MAKE_RECOMMENDATION_eligible_end"/>
+        <arc source="NAB_QUOTE_products_retrieved" target="NAB_QUOTE_nab_fixed_rate_product" id="NAB_QUOTE_products_retrieved-NAB_QUOTE_nab_fixed_rate_product"/>
+        <arc source="DOCUMENT_SIGNING_document_prepared" target="DOCUMENT_SIGNING_hash_source_and_create_envelope" id="DOCUMENT_SIGNING_document_prepared-DOCUMENT_SIGNING_hash_source_and_create_envelope"/>
+        <arc source="CBA_QUOTE_fixed_rate_product" target="CBA_QUOTE_product_selected" id="CBA_QUOTE_fixed_rate_product-CBA_QUOTE_product_selected"/>
+        <arc source="DOCUMENT_SIGNING_prepare_document" target="DOCUMENT_SIGNING_document_prepared" id="DOCUMENT_SIGNING_prepare_document-DOCUMENT_SIGNING_document_prepared"/>
+        <arc source="DOCUMENT_SIGNING_verify_bank_representative_identity" target="DOCUMENT_SIGNING_bank_verified" id="DOCUMENT_SIGNING_verify_bank_representative_identity-DOCUMENT_SIGNING_bank_verified"/>
+        <arc source="p2" target="MAKE_LOAN_REQUEST_loan_amount" id="p2-MAKE_LOAN_REQUEST_loan_amount"/>
+        <arc source="CBA_QUOTE_calculate_monthly_repayment" target="quote_p1" id="CBA_QUOTE_calculate_monthly_repayment-quote_p1"/>
+        <arc source="MAKE_RECOMMENDATION_recommend_best_quote" target="MAKE_RECOMMENDATION_recommendation_made" id="MAKE_RECOMMENDATION_recommend_best_quote-MAKE_RECOMMENDATION_recommendation_made"/>
+        <arc source="DOCUMENT_SIGNING_parallel_join" target="DOCUMENT_SIGNING_both_signed" id="DOCUMENT_SIGNING_parallel_join-DOCUMENT_SIGNING_both_signed"/>
+        <arc source="MAKE_LOAN_REQUEST_amount_chosen" target="MAKE_LOAN_REQUEST_payment_term" id="MAKE_LOAN_REQUEST_amount_chosen-MAKE_LOAN_REQUEST_payment_term"/>
+        <arc source="PARALLEL_JOIN_silent" target="p4" id="PARALLEL_JOIN_silent-p4"/>
+        <arc source="CREDIT_CHECK_collect_credit_factors" target="CREDIT_CHECK_factors_collected" id="CREDIT_CHECK_collect_credit_factors-CREDIT_CHECK_factors_collected"/>
+        <arc source="ID_VERIFICATION_quit" target="ID_VERIFICATION_finished" id="ID_VERIFICATION_quit-ID_VERIFICATION_finished"/>
+        <arc source="recommendation_made" target="REJECT_silent" id="recommendation_made-REJECT_silent"/>
+        <arc source="p4" target="MAKE_RECOMMENDATION_consolidate_options" id="p4-MAKE_RECOMMENDATION_consolidate_options"/>
+        <arc source="NAB_QUOTE_merge_declined_end" target="quote_p2" id="NAB_QUOTE_merge_declined_end-quote_p2"/>
+        <arc source="ID_VERIFICATION_silent" target="ID_VERIFICATION_startReal" id="ID_VERIFICATION_silent-ID_VERIFICATION_startReal"/>
+        <arc source="DOCUMENT_SIGNING_borrower_signed" target="DOCUMENT_SIGNING_parallel_join" id="DOCUMENT_SIGNING_borrower_signed-DOCUMENT_SIGNING_parallel_join"/>
+        <arc source="MAKE_RECOMMENDATION_consolidate_options" target="MAKE_RECOMMENDATION_options_consolidated" id="MAKE_RECOMMENDATION_consolidate_options-MAKE_RECOMMENDATION_options_consolidated"/>
+        <arc source="DOCUMENT_SIGNING_parallel_split" target="DOCUMENT_SIGNING_borrower_branch" id="DOCUMENT_SIGNING_parallel_split-DOCUMENT_SIGNING_borrower_branch"/>
+        <arc source="ANZ_QUOTE_base_calculated" target="ANZ_QUOTE_keep_base_repayment" id="ANZ_QUOTE_base_calculated-ANZ_QUOTE_keep_base_repayment"/>
+        <arc source="DOCUMENT_SIGNING_borrower_verified" target="DOCUMENT_SIGNING_borrower_signs_agreement" id="DOCUMENT_SIGNING_borrower_verified-DOCUMENT_SIGNING_borrower_signs_agreement"/>
+        <arc source="MAKE_LOAN_REQUEST_payment_term" target="p3" id="MAKE_LOAN_REQUEST_payment_term-p3"/>
+        <arc source="cba_branch" target="CBA_QUOTE_calculate_risk_margin" id="cba_branch-CBA_QUOTE_calculate_risk_margin"/>
+        <arc source="CREDIT_CHECK_clear_factor_data" target="p2" id="CREDIT_CHECK_clear_factor_data-p2"/>
+        <arc source="DOCUMENT_SIGNING_both_signed" target="DOCUMENT_SIGNING_verify_and_archive" id="DOCUMENT_SIGNING_both_signed-DOCUMENT_SIGNING_verify_and_archive"/>
+        <arc source="NAB_QUOTE_product_selected" target="NAB_QUOTE_calculate_monthly_repayment" id="NAB_QUOTE_product_selected-NAB_QUOTE_calculate_monthly_repayment"/>
+        <place id="CBA_QUOTE_product_selected"/>
+        <place id="DOCUMENT_SIGNING_borrower_signed"/>
+        <place id="p1"/>
+        <place id="p4"/>
+        <place id="quote_p2"/>
+        <place id="DOCUMENT_SIGNING_borrower_branch"/>
+        <place id="quote_p1"/>
+        <place id="NAB_QUOTE_product_selected"/>
+        <place id="p2"/>
+        <place id="DOCUMENT_SIGNING_envelope_created"/>
+        <place id="end"/>
+        <place id="DOCUMENT_SIGNING_document_prepared"/>
+        <place id="NAB_QUOTE_declined_end"/>
+        <place id="MAKE_RECOMMENDATION_recommendation_made"/>
+        <place id="DOCUMENT_SIGNING_bank_branch"/>
+        <place id="REDUCE_LOAN_AMOUNT_reduced"/>
+        <place id="MAKE_RECOMMENDATION_ineligible_end"/>
+        <place id="DOCUMENT_SIGNING_borrower_verified"/>
+        <place id="NAB_QUOTE_products_retrieved"/>
+        <place id="ID_VERIFICATION_documents_checked"/>
+        <place id="ANZ_QUOTE_base_calculated"/>
+        <place id="MAKE_RECOMMENDATION_options_consolidated"/>
+        <place id="CBA_QUOTE_risk_calculated"/>
+        <place id="p3"/>
+        <place id="CREDIT_CHECK_score_calculated"/>
+        <place id="recommendation_made"/>
+        <place id="ANZ_QUOTE_risk_calculated"/>
+        <place id="DOCUMENT_SIGNING_bank_verified"/>
+        <place id="anz_done"/>
+        <place id="ID_VERIFICATION_startReal"/>
+        <place id="DOCUMENT_SIGNING_bank_signed"/>
+        <place id="ID_VERIFICATION_finished"/>
+        <place id="CREDIT_CHECK_factors_collected"/>
+        <place id="DOCUMENT_SIGNING_archived"/>
+        <place id="MAKE_LOAN_REQUEST_amount_chosen"/>
+        <place id="ANZ_QUOTE_rate_selected"/>
+        <place id="cba_branch"/>
+        <place id="MAKE_RECOMMENDATION_eligible_end"/>
+        <place id="p0">
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="DOCUMENT_SIGNING_both_signed"/>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="NAB_QUOTE_nab_fixed_rate_product">
+            <name>
+                <text>NAB fixed-rate product</text>
+            </name>
+        </transition>
+        <transition id="ID_VERIFICATION_quit">
+            <name>
+                <text>Quit</text>
+            </name>
+        </transition>
+        <transition id="ANZ_QUOTE_keep_base_repayment">
+            <name>
+                <text>Keep base repayment</text>
+            </name>
+        </transition>
+        <transition id="NAB_QUOTE_nab_variable_product">
+            <name>
+                <text>NAB variable product</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING_prepare_document">
+            <name>
+                <text>Prepare document</text>
+            </name>
+        </transition>
+        <transition id="REDUCE_LOAN_AMOUNT_reduce_loan_amount">
+            <name>
+                <text>Reduce loan amount</text>
+            </name>
+        </transition>
+        <transition id="PARALLEL_SPLIT_silent">
+            <name>
+                <text>silent</text>
+            </name>
+        </transition>
+        <transition id="MAKE_RECOMMENDATION_borrower_response">
+            <name>
+                <text>Borrower accepts/rejects recommendation</text>
+            </name>
+        </transition>
+        <transition id="ID_VERIFICATION_primary_document">
+            <name>
+                <text>Primary document</text>
+            </name>
+        </transition>
+        <transition id="ANZ_QUOTE_select_variable_rate_offer">
+            <name>
+                <text>Select variable-rate offer</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING_loan_complete">
+            <name>
+                <text>Loan complete</text>
+            </name>
+        </transition>
+        <transition id="UNDERAGE_EXIT_silent">
+            <name>
+                <text>silent</text>
+            </name>
+        </transition>
+        <transition id="CREDIT_CHECK_collect_credit_factors">
+            <name>
+                <text>Collect credit factors</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING_parallel_join">
+            <name>
+                <text>Parallel join</text>
+            </name>
+        </transition>
+        <transition id="MAKE_LOAN_REQUEST_loan_amount">
+            <name>
+                <text>Loan amount</text>
+            </name>
+        </transition>
+        <transition id="CBA_QUOTE_fixed_rate_product">
+            <name>
+                <text>Fixed-rate product</text>
+            </name>
+        </transition>
+        <transition id="CBA_QUOTE_calculate_monthly_repayment">
+            <name>
+                <text>Calculate monthly repayment</text>
+            </name>
+        </transition>
+        <transition id="NAB_QUOTE_calculate_monthly_repayment">
+            <name>
+                <text>Calculate monthly repayment</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING_selected_bank_representative_signs">
+            <name>
+                <text>Selected bank representative signs</text>
+            </name>
+        </transition>
+        <transition id="MAKE_RECOMMENDATION_merge_ineligible_end">
+            <name>
+                <text></text>
+            </name>
+        </transition>
+        <transition id="NAB_QUOTE_declined">
+            <name>
+                <text>Declined</text>
+            </name>
+        </transition>
+        <transition id="ANZ_QUOTE_add_offset_account_fee">
+            <name>
+                <text>Add offset account fee</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING_verify_borrower_identity">
+            <name>
+                <text>Verify borrower identity</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING_hash_source_and_create_envelope">
+            <name>
+                <text>Hash source and create envelope</text>
+            </name>
+        </transition>
+        <transition id="ID_VERIFICATION_collect_more_documents">
+            <name>
+                <text>Collect more documents</text>
+            </name>
+        </transition>
+        <transition id="NAB_QUOTE_merge_declined_end">
+            <name>
+                <text></text>
+            </name>
+        </transition>
+        <transition id="MAKE_RECOMMENDATION_merge_eligible_end">
+            <name>
+                <text></text>
+            </name>
+        </transition>
+        <transition id="MAKE_LOAN_REQUEST_payment_term">
+            <name>
+                <text>Payment term</text>
+            </name>
+        </transition>
+        <transition id="REDUCE_LOAN_AMOUNT_clear_quotes">
+            <name>
+                <text>Clear quotes</text>
+            </name>
+        </transition>
+        <transition id="ANZ_QUOTE_calculate_risk_margin">
+            <name>
+                <text>Calculate risk margin</text>
+            </name>
+        </transition>
+        <transition id="MAKE_RECOMMENDATION_recommend_best_quote">
+            <name>
+                <text>Recommend best quote</text>
+            </name>
+        </transition>
+        <transition id="PARALLEL_JOIN_silent">
+            <name>
+                <text>silent</text>
+            </name>
+        </transition>
+        <transition id="ID_VERIFICATION_secondary_document">
+            <name>
+                <text>Secondary document</text>
+            </name>
+        </transition>
+        <transition id="MAKE_RECOMMENDATION_consolidate_options">
+            <name>
+                <text>Consolidate options</text>
+            </name>
+        </transition>
+        <transition id="ANZ_QUOTE_calculate_base_repayment">
+            <name>
+                <text>Calculate base repayment</text>
+            </name>
+        </transition>
+        <transition id="CREDIT_CHECK_clear_factor_data">
+            <name>
+                <text>Clear factor data</text>
+            </name>
+        </transition>
+        <transition id="NAB_QUOTE_retrieve_eligible_nab_products">
+            <name>
+                <text>Retrieve eligible NAB products</text>
+            </name>
+        </transition>
+        <transition id="ID_VERIFICATION_silent">
+            <name>
+                <text>silent</text>
+            </name>
+        </transition>
+        <transition id="CBA_QUOTE_standard_variable_product">
+            <name>
+                <text>Standard variable product</text>
+            </name>
+        </transition>
+        <transition id="CBA_QUOTE_calculate_risk_margin">
+            <name>
+                <text>Calculate risk margin</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING_borrower_signs_agreement">
+            <name>
+                <text>Borrower signs agreement</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING_parallel_split">
+            <name>
+                <text>Parallel split</text>
+            </name>
+        </transition>
+        <transition id="ID_VERIFICATION_clear_data">
+            <name>
+                <text>Clear data</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING_verify_bank_representative_identity">
+            <name>
+                <text>Verify bank representative identity</text>
+            </name>
+        </transition>
+        <transition id="ANZ_QUOTE_select_fixed_rate_offer">
+            <name>
+                <text>Select fixed-rate offer</text>
+            </name>
+        </transition>
+        <transition id="CREDIT_CHECK_calculate_credit_score">
+            <name>
+                <text>Calculate credit score</text>
+            </name>
+        </transition>
+        <transition id="ID_VERIFICATION_calculate_age">
+            <name>
+                <text>Calculate age</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING_verify_and_archive">
+            <name>
+                <text>Verify and securely archive completed envelope</text>
+            </name>
+        </transition>
+        <transition id="MAKE_RECOMMENDATION_ineligible">
+            <name>
+                <text>Ineligible</text>
+            </name>
+        </transition>
+        <transition id="REJECT_silent">
+            <name>
+                <text>silent</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

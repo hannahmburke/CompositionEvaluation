@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="add_offset_account_fee" target="end" id="add_offset_account_fee-end"/>
+        <arc source="keep_base_repayment" target="end" id="keep_base_repayment-end"/>
+        <arc source="base_calculated" target="add_offset_account_fee" id="base_calculated-add_offset_account_fee"/>
+        <arc source="risk_calculated" target="select_variable_rate_offer" id="risk_calculated-select_variable_rate_offer"/>
+        <arc source="rate_selected" target="calculate_base_repayment" id="rate_selected-calculate_base_repayment"/>
+        <arc source="base_calculated" target="keep_base_repayment" id="base_calculated-keep_base_repayment"/>
+        <arc source="select_fixed_rate_offer" target="rate_selected" id="select_fixed_rate_offer-rate_selected"/>
+        <arc source="select_variable_rate_offer" target="rate_selected" id="select_variable_rate_offer-rate_selected"/>
+        <arc source="calculate_base_repayment" target="base_calculated" id="calculate_base_repayment-base_calculated"/>
+        <arc source="start" target="calculate_risk_margin" id="start-calculate_risk_margin"/>
+        <arc source="risk_calculated" target="select_fixed_rate_offer" id="risk_calculated-select_fixed_rate_offer"/>
+        <arc source="calculate_risk_margin" target="risk_calculated" id="calculate_risk_margin-risk_calculated"/>
+        <place id="start">
+            <name>
+                <text>initial</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="base_calculated">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="end">
+            <name>
+                <text>sink</text>
+            </name>
+        </place>
+        <place id="risk_calculated">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="rate_selected">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="calculate_risk_margin">
+            <name>
+                <text>Calculate risk margin</text>
+            </name>
+        </transition>
+        <transition id="calculate_base_repayment">
+            <name>
+                <text>Calculate base repayment</text>
+            </name>
+        </transition>
+        <transition id="keep_base_repayment">
+            <name>
+                <text>Keep base repayment</text>
+            </name>
+        </transition>
+        <transition id="select_fixed_rate_offer">
+            <name>
+                <text>Select fixed-rate offer</text>
+            </name>
+        </transition>
+        <transition id="select_variable_rate_offer">
+            <name>
+                <text>Select variable-rate offer</text>
+            </name>
+        </transition>
+        <transition id="add_offset_account_fee">
+            <name>
+                <text>Add offset account fee</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

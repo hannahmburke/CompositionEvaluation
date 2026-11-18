@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="start" target="reduce_loan_amount" id="start-reduce_loan_amount"/>
+        <arc source="reduce_loan_amount" target="reduced" id="reduce_loan_amount-reduced"/>
+        <arc source="reduced" target="clear_quotes" id="reduced-clear_quotes"/>
+        <arc source="clear_quotes" target="end" id="clear_quotes-end"/>
+        <place id="start">
+            <name>
+                <text>initial</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="reduced">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="end">
+            <name>
+                <text>sink</text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="reduce_loan_amount">
+            <name>
+                <text>Reduce loan amount</text>
+            </name>
+        </transition>
+        <transition id="clear_quotes">
+            <name>
+                <text>Clear quotes</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

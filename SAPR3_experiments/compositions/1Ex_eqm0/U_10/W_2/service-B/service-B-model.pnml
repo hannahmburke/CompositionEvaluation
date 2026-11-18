@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="0" target="1p" id="0-1p"/>
+        <arc source="5" target="1p" id="5-1p"/>
+        <arc source="start" target="0" id="start-0"/>
+        <arc source="start" target="5" id="start-5"/>
+        <place id="start">
+            <name>
+                <text>start</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="1p">
+            <name>
+                <text>1p</text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="5">
+            <name>
+                <text>5</text>
+            </name>
+        </transition>
+        <transition id="0">
+            <name>
+                <text>0</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

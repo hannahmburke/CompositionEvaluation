@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="s2" target="s2out" id="s2-s2out"/>
+        <arc source="start" target="s2" id="start-s2"/>
+        <arc source="s3" target="s0p" id="s3-s0p"/>
+        <arc source="s2out" target="s3" id="s2out-s3"/>
+        <place id="s0p">
+            <name>
+                <text>s0p</text>
+            </name>
+        </place>
+        <place id="s2out">
+            <name>
+                <text>s2out</text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>start</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="s2">
+            <name>
+                <text>s2</text>
+            </name>
+        </transition>
+        <transition id="s3">
+            <name>
+                <text>s3</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

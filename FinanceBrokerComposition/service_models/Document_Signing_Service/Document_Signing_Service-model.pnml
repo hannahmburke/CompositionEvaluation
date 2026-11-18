@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="borrower_branch" target="verify_borrower_identity" id="borrower_branch-verify_borrower_identity"/>
+        <arc source="bank_signed" target="parallel_join" id="bank_signed-parallel_join"/>
+        <arc source="archived" target="loan_complete" id="archived-loan_complete"/>
+        <arc source="hash_source_and_create_envelope" target="envelope_created" id="hash_source_and_create_envelope-envelope_created"/>
+        <arc source="parallel_split" target="bank_branch" id="parallel_split-bank_branch"/>
+        <arc source="verify_borrower_identity" target="borrower_verified" id="verify_borrower_identity-borrower_verified"/>
+        <arc source="verify_and_archive" target="archived" id="verify_and_archive-archived"/>
+        <arc source="bank_branch" target="verify_bank_representative_identity" id="bank_branch-verify_bank_representative_identity"/>
+        <arc source="both_signed" target="verify_and_archive" id="both_signed-verify_and_archive"/>
+        <arc source="loan_complete" target="end" id="loan_complete-end"/>
+        <arc source="prepare_document" target="document_prepared" id="prepare_document-document_prepared"/>
+        <arc source="borrower_signed" target="parallel_join" id="borrower_signed-parallel_join"/>
+        <arc source="selected_bank_representative_signs" target="bank_signed" id="selected_bank_representative_signs-bank_signed"/>
+        <arc source="verify_bank_representative_identity" target="bank_verified" id="verify_bank_representative_identity-bank_verified"/>
+        <arc source="document_prepared" target="hash_source_and_create_envelope" id="document_prepared-hash_source_and_create_envelope"/>
+        <arc source="parallel_join" target="both_signed" id="parallel_join-both_signed"/>
+        <arc source="borrower_verified" target="borrower_signs_agreement" id="borrower_verified-borrower_signs_agreement"/>
+        <arc source="start" target="prepare_document" id="start-prepare_document"/>
+        <arc source="envelope_created" target="parallel_split" id="envelope_created-parallel_split"/>
+        <arc source="bank_verified" target="selected_bank_representative_signs" id="bank_verified-selected_bank_representative_signs"/>
+        <arc source="parallel_split" target="borrower_branch" id="parallel_split-borrower_branch"/>
+        <arc source="borrower_signs_agreement" target="borrower_signed" id="borrower_signs_agreement-borrower_signed"/>
+        <place id="bank_branch">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="envelope_created">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="bank_signed">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="both_signed">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>initial</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="end">
+            <name>
+                <text>sink</text>
+            </name>
+        </place>
+        <place id="archived">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="document_prepared">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="borrower_branch">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="borrower_signed">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="borrower_verified">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="bank_verified">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="verify_and_archive">
+            <name>
+                <text>Verify and securely archive completed envelope</text>
+            </name>
+        </transition>
+        <transition id="borrower_signs_agreement">
+            <name>
+                <text>Borrower signs agreement</text>
+            </name>
+        </transition>
+        <transition id="parallel_split">
+            <name>
+                <text>Parallel split</text>
+            </name>
+        </transition>
+        <transition id="prepare_document">
+            <name>
+                <text>Prepare document</text>
+            </name>
+        </transition>
+        <transition id="hash_source_and_create_envelope">
+            <name>
+                <text>Hash source and create envelope</text>
+            </name>
+        </transition>
+        <transition id="loan_complete">
+            <name>
+                <text>Loan complete</text>
+            </name>
+        </transition>
+        <transition id="verify_bank_representative_identity">
+            <name>
+                <text>Verify bank representative identity</text>
+            </name>
+        </transition>
+        <transition id="parallel_join">
+            <name>
+                <text>Parallel join</text>
+            </name>
+        </transition>
+        <transition id="selected_bank_representative_signs">
+            <name>
+                <text>Selected bank representative signs</text>
+            </name>
+        </transition>
+        <transition id="verify_borrower_identity">
+            <name>
+                <text>Verify borrower identity</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

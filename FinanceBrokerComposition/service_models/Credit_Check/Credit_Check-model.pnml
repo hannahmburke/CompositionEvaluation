@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="collect_credit_factors" target="factors_collected" id="collect_credit_factors-factors_collected"/>
+        <arc source="factors_collected" target="calculate_credit_score" id="factors_collected-calculate_credit_score"/>
+        <arc source="score_calculated" target="clear_factor_data" id="score_calculated-clear_factor_data"/>
+        <arc source="clear_factor_data" target="end" id="clear_factor_data-end"/>
+        <arc source="start" target="collect_credit_factors" id="start-collect_credit_factors"/>
+        <arc source="calculate_credit_score" target="score_calculated" id="calculate_credit_score-score_calculated"/>
+        <place id="score_calculated">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="end">
+            <name>
+                <text>sink</text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>initial</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="factors_collected">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="collect_credit_factors">
+            <name>
+                <text>Collect credit factors</text>
+            </name>
+        </transition>
+        <transition id="clear_factor_data">
+            <name>
+                <text>Clear factor data</text>
+            </name>
+        </transition>
+        <transition id="calculate_credit_score">
+            <name>
+                <text>Calculate credit score</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

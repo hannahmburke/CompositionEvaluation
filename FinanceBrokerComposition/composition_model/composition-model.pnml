@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="nab_branch" target="NAB_QUOTE" id="nab_branch-NAB_QUOTE"/>
+        <arc source="p1" target="CREDIT_CHECK" id="p1-CREDIT_CHECK"/>
+        <arc source="anz_branch" target="ANZ_QUOTE" id="anz_branch-ANZ_QUOTE"/>
+        <arc source="MAKE_RECOMMENDATION" target="recommendation_made" id="MAKE_RECOMMENDATION-recommendation_made"/>
+        <arc source="recommendation_made" target="DOCUMENT_SIGNING" id="recommendation_made-DOCUMENT_SIGNING"/>
+        <arc source="nab_done" target="PARALLEL_JOIN" id="nab_done-PARALLEL_JOIN"/>
+        <arc source="ANZ_QUOTE" target="anz_done" id="ANZ_QUOTE-anz_done"/>
+        <arc source="p1" target="UNDERAGE_EXIT" id="p1-UNDERAGE_EXIT"/>
+        <arc source="PARALLEL_SPLIT" target="nab_branch" id="PARALLEL_SPLIT-nab_branch"/>
+        <arc source="PARALLEL_SPLIT" target="anz_branch" id="PARALLEL_SPLIT-anz_branch"/>
+        <arc source="p4" target="MAKE_RECOMMENDATION" id="p4-MAKE_RECOMMENDATION"/>
+        <arc source="recommendation_made" target="REDUCE_LOAN_AMOUNT" id="recommendation_made-REDUCE_LOAN_AMOUNT"/>
+        <arc source="CREDIT_CHECK" target="p2" id="CREDIT_CHECK-p2"/>
+        <arc source="ID_VERIFICATION" target="p1" id="ID_VERIFICATION-p1"/>
+        <arc source="REJECT" target="end" id="REJECT-end"/>
+        <arc source="p3" target="PARALLEL_SPLIT" id="p3-PARALLEL_SPLIT"/>
+        <arc source="REDUCE_LOAN_AMOUNT" target="p3" id="REDUCE_LOAN_AMOUNT-p3"/>
+        <arc source="MAKE_LOAN_REQUEST" target="p3" id="MAKE_LOAN_REQUEST-p3"/>
+        <arc source="CBA_QUOTE" target="cba_done" id="CBA_QUOTE-cba_done"/>
+        <arc source="PARALLEL_SPLIT" target="cba_branch" id="PARALLEL_SPLIT-cba_branch"/>
+        <arc source="PARALLEL_JOIN" target="p4" id="PARALLEL_JOIN-p4"/>
+        <arc source="DOCUMENT_SIGNING" target="end" id="DOCUMENT_SIGNING-end"/>
+        <arc source="p0" target="ID_VERIFICATION" id="p0-ID_VERIFICATION"/>
+        <arc source="UNDERAGE_EXIT" target="end" id="UNDERAGE_EXIT-end"/>
+        <arc source="anz_done" target="PARALLEL_JOIN" id="anz_done-PARALLEL_JOIN"/>
+        <arc source="cba_branch" target="CBA_QUOTE" id="cba_branch-CBA_QUOTE"/>
+        <arc source="NAB_QUOTE" target="nab_done" id="NAB_QUOTE-nab_done"/>
+        <arc source="p2" target="MAKE_LOAN_REQUEST" id="p2-MAKE_LOAN_REQUEST"/>
+        <arc source="cba_done" target="PARALLEL_JOIN" id="cba_done-PARALLEL_JOIN"/>
+        <arc source="recommendation_made" target="REJECT" id="recommendation_made-REJECT"/>
+        <place id="p4"/>
+        <place id="end"/>
+        <place id="nab_done"/>
+        <place id="p0">
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="nab_branch"/>
+        <place id="anz_branch"/>
+        <place id="anz_done"/>
+        <place id="p2"/>
+        <place id="cba_done"/>
+        <place id="p3"/>
+        <place id="cba_branch"/>
+        <place id="p1"/>
+        <place id="recommendation_made"/>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="NAB_QUOTE">
+            <name>
+                <text>NAB Quote</text>
+            </name>
+        </transition>
+        <transition id="PARALLEL_JOIN">
+            <name>
+                <text></text>
+            </name>
+        </transition>
+        <transition id="UNDERAGE_EXIT">
+            <name>
+                <text>Underage Exit</text>
+            </name>
+        </transition>
+        <transition id="DOCUMENT_SIGNING">
+            <name>
+                <text>Document Signing</text>
+            </name>
+        </transition>
+        <transition id="MAKE_RECOMMENDATION">
+            <name>
+                <text>Make Recommendation</text>
+            </name>
+        </transition>
+        <transition id="PARALLEL_SPLIT">
+            <name>
+                <text></text>
+            </name>
+        </transition>
+        <transition id="ANZ_QUOTE">
+            <name>
+                <text>ANZ Quote</text>
+            </name>
+        </transition>
+        <transition id="ID_VERIFICATION">
+            <name>
+                <text>ID Verification</text>
+            </name>
+        </transition>
+        <transition id="CREDIT_CHECK">
+            <name>
+                <text>Credit Check</text>
+            </name>
+        </transition>
+        <transition id="REJECT">
+            <name>
+                <text>REJECT</text>
+            </name>
+        </transition>
+        <transition id="REDUCE_LOAN_AMOUNT">
+            <name>
+                <text>Reduce Loan Amount</text>
+            </name>
+        </transition>
+        <transition id="MAKE_LOAN_REQUEST">
+            <name>
+                <text>Make Loan Request</text>
+            </name>
+        </transition>
+        <transition id="CBA_QUOTE">
+            <name>
+                <text>CBA Quote</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

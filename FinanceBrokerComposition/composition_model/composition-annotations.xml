@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+
+<Annotations>
+	<Transitions>
+		<Transition ID="start">
+			<Outcome
+				variable = "paymentTerm"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "NABinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "loanAmount"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "CBAmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "CBAinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "NABmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "selectedBank"
+				identifier = "null"
+				operation =  ":="
+				value = "'undefined_string'"/>
+			<Outcome
+				variable = "accepted"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "age"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "ANZmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "quit"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "ANZinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "interestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "loanComplete"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "creditScore"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "signed"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+		</Transition>
+		<Transition ID="REJECT">
+			<Guard Condition="((~(accepted))&amp;(loanAmount&lt;=10000))"/>
+		</Transition>
+		<Transition ID="REDUCE_LOAN_AMOUNT">
+			<Guard Condition="((~(accepted))&amp;(loanAmount>10000))"/>
+		</Transition>
+		<Transition ID="CREDIT_CHECK">
+			<Guard Condition="((age>=18)&amp;(~(quit)))"/>
+		</Transition>
+		<Transition ID="DOCUMENT_SIGNING">
+			<Guard Condition="accepted"/>
+		</Transition>
+		<Transition ID="UNDERAGE_EXIT">
+			<Guard Condition="((~(age>=18))||(~(quit)))"/>
+		</Transition>
+	</Transitions>
+</Annotations>

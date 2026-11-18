@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="start" target="ht8" id="start-ht8"/>
+        <arc source="ht8" target="5p" id="ht8-5p"/>
+        <place id="5p">
+            <name>
+                <text>5p</text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>start</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="ht8">
+            <name>
+                <text>ht8</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

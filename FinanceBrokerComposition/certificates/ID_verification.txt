@@ -1,0 +1,166 @@
+Service: ID_VERIFICATION
+
+=================================================
+Obligation: {ID: O1, identifier: [], type: ACHIEVEMENT, trig: loanComplete, req: age>=18, dead: true}
+-------------------------------------------------
+
+Input requirements: [
+Constraints: {}
+obligationState: [INACTIVE], 
+Constraints: {age.0>=18}
+obligationState: [TRIGGERED]]
+Output updates: {
+Constraints: {}
+obligationState: ALL=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.13, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_age.13 = [0,125]}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.11, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.11 = {true}}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.7, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.7 = {true}}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.17, loanComplete=loanComplete.0}
+Internal constraints: {(((idPoints.0+idPoints.3)+idPoints.7)+idPoints.11)<100}
+Internal interpretations: {annotation_age.17 = [0,125]}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.15, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal constraints: {(((idPoints.0+idPoints.3)+idPoints.7)+idPoints.11)<100}
+Internal interpretations: {annotation_quit.15 = {true}}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.9, loanComplete=loanComplete.0}
+Internal constraints: {((idPoints.0+idPoints.3)+idPoints.7)>=100}
+Internal interpretations: {annotation_age.9 = [0,125]}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.3, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.3 = {true}}
+O Status: INACTIVE]}
+
+=================================================
+Obligation: {ID: O2, identifier: [], type: ACHIEVEMENT, trig: loanComplete, req: ((notNull(interestRate))&&accepted)&&signed, dead: true}
+-------------------------------------------------
+
+Input requirements: [
+Constraints: {((notNull(interestRate.0))&&accepted.0)&&signed.0}
+obligationState: [TRIGGERED], 
+Constraints: {}
+obligationState: [INACTIVE]]
+Output updates: {
+Constraints: {}
+obligationState: ALL=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.13, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_age.13 = [0,125]}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.11, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.11 = {true}}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.7, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.7 = {true}}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.17, loanComplete=loanComplete.0}
+Internal constraints: {(((idPoints.0+idPoints.3)+idPoints.7)+idPoints.11)<100}
+Internal interpretations: {annotation_age.17 = [0,125]}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.15, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal constraints: {(((idPoints.0+idPoints.3)+idPoints.7)+idPoints.11)<100}
+Internal interpretations: {annotation_quit.15 = {true}}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.9, loanComplete=loanComplete.0}
+Internal constraints: {((idPoints.0+idPoints.3)+idPoints.7)>=100}
+Internal interpretations: {annotation_age.9 = [0,125]}
+O Status: INACTIVE, Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.3, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.3 = {true}}
+O Status: INACTIVE]}
+
+=================================================
+Obligation: {ID: O3, identifier: [], type: MAINTENANCE, trig: notNull(interestRate), req: (creditScore>=0.50)||(interestRate>4.80), dead: false}
+-------------------------------------------------
+
+Input requirements: [
+Constraints: {((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: ALL, 
+Constraints: {~(notNull(interestRate.0))}
+obligationState: [INACTIVE]]
+Output updates: {
+Constraints: {((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [TRIGGERED]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.13, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_age.13 = [0,125]}
+O Status: TRIGGERED], 
+Constraints: {((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [TRIGGERED]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.3, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.3 = {true}}
+O Status: TRIGGERED], 
+Constraints: {notNull(interestRate.0) && ((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.3, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.3 = {true}}
+O Status: TRIGGERED], 
+Constraints: {((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [TRIGGERED]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.9, loanComplete=loanComplete.0}
+Internal constraints: {((idPoints.0+idPoints.3)+idPoints.7)>=100}
+Internal interpretations: {annotation_age.9 = [0,125]}
+O Status: TRIGGERED], 
+Constraints: {~(notNull(interestRate.0))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.17, loanComplete=loanComplete.0}
+Internal constraints: {(((idPoints.0+idPoints.3)+idPoints.7)+idPoints.11)<100}
+Internal interpretations: {annotation_age.17 = [0,125]}
+O Status: INACTIVE], 
+Constraints: {notNull(interestRate.0) && ((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.15, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal constraints: {(((idPoints.0+idPoints.3)+idPoints.7)+idPoints.11)<100}
+Internal interpretations: {annotation_quit.15 = {true}}
+O Status: TRIGGERED], 
+Constraints: {notNull(interestRate.0) && ((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.13, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_age.13 = [0,125]}
+O Status: TRIGGERED], 
+Constraints: {notNull(interestRate.0) && ((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.11, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.11 = {true}}
+O Status: TRIGGERED], 
+Constraints: {notNull(interestRate.0) && ((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.9, loanComplete=loanComplete.0}
+Internal constraints: {((idPoints.0+idPoints.3)+idPoints.7)>=100}
+Internal interpretations: {annotation_age.9 = [0,125]}
+O Status: TRIGGERED], 
+Constraints: {((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [TRIGGERED]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.17, loanComplete=loanComplete.0}
+Internal constraints: {(((idPoints.0+idPoints.3)+idPoints.7)+idPoints.11)<100}
+Internal interpretations: {annotation_age.17 = [0,125]}
+O Status: TRIGGERED], 
+Constraints: {((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [TRIGGERED]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.11, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.11 = {true}}
+O Status: TRIGGERED], 
+Constraints: {((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [TRIGGERED]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.7, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.7 = {true}}
+O Status: TRIGGERED], 
+Constraints: {notNull(interestRate.0) && ((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.7, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.7 = {true}}
+O Status: TRIGGERED], 
+Constraints: {~(notNull(interestRate.0))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.11, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.11 = {true}}
+O Status: INACTIVE], 
+Constraints: {((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [TRIGGERED]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.15, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal constraints: {(((idPoints.0+idPoints.3)+idPoints.7)+idPoints.11)<100}
+Internal interpretations: {annotation_quit.15 = {true}}
+O Status: TRIGGERED], 
+Constraints: {~(notNull(interestRate.0))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.9, loanComplete=loanComplete.0}
+Internal constraints: {((idPoints.0+idPoints.3)+idPoints.7)>=100}
+Internal interpretations: {annotation_age.9 = [0,125]}
+O Status: INACTIVE], 
+Constraints: {~(notNull(interestRate.0))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.13, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_age.13 = [0,125]}
+O Status: INACTIVE], 
+Constraints: {~(notNull(interestRate.0))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.15, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal constraints: {(((idPoints.0+idPoints.3)+idPoints.7)+idPoints.11)<100}
+Internal interpretations: {annotation_quit.15 = {true}}
+O Status: INACTIVE], 
+Constraints: {notNull(interestRate.0) && ((creditScore.0>=0.50)||(interestRate.0>4.80))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.0, paymentTerm=paymentTerm.0, age=age.17, loanComplete=loanComplete.0}
+Internal constraints: {(((idPoints.0+idPoints.3)+idPoints.7)+idPoints.11)<100}
+Internal interpretations: {annotation_age.17 = [0,125]}
+O Status: TRIGGERED], 
+Constraints: {~(notNull(interestRate.0))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.3, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.3 = {true}}
+O Status: INACTIVE], 
+Constraints: {~(notNull(interestRate.0))}
+obligationState: [INACTIVE]=[Evolution expressions: {interestRate=interestRate.0, ANZmonthlyRepayment=ANZmonthlyRepayment.0, creditScore=creditScore.0, NABinterestRate=NABinterestRate.0, CBAinterestRate=CBAinterestRate.0, accepted=accepted.0, signed=signed.0, loanAmount=loanAmount.0, NABmonthlyRepayment=NABmonthlyRepayment.0, CBAmonthlyRepayment=CBAmonthlyRepayment.0, selectedBank=selectedBank.0, ANZinterestRate=ANZinterestRate.0, quit=quit.7, paymentTerm=paymentTerm.0, age=age.0, loanComplete=loanComplete.0}
+Internal interpretations: {annotation_quit.7 = {true}}
+O Status: INACTIVE]}
+

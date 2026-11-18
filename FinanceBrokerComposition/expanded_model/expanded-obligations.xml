@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<Obligations>	<Achievement
+		id = "O1"
+		identifier = "[]"
+		retriggerable = "true"
+		scope = "all"
+		superiors = "[]">
+		<Requirement Condition = "age>=18"/>
+		<Trigger Condition = "loanComplete"/>
+		<Deadline Condition = "true"/>
+	</Achievement>
+	<Achievement
+		id = "O2"
+		identifier = "[]"
+		retriggerable = "true"
+		scope = "all"
+		superiors = "[]">
+		<Requirement Condition = "((notNull(interestRate))&amp;accepted)&amp;signed"/>
+		<Trigger Condition = "loanComplete"/>
+		<Deadline Condition = "true"/>
+	</Achievement>
+	<Maintenance
+		id = "O3"
+		identifier = "[]"
+		retriggerable = "true"
+		scope = "all"
+		superiors = "[]">
+		<Requirement Condition = "(creditScore>=0.50)||(interestRate>4.80)"/>
+		<Trigger Condition = "notNull(interestRate)"/>
+		<Deadline Condition = "false"/>
+	</Maintenance>
+</Obligations>

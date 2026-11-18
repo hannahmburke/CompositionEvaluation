@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="ht1" target="9in" id="ht1-9in"/>
+        <arc source="9in" target="9" id="9in-9"/>
+        <arc source="ht0" target="s4p" id="ht0-s4p"/>
+        <arc source="7in" target="7" id="7in-7"/>
+        <arc source="start" target="ht6" id="start-ht6"/>
+        <arc source="10in" target="10" id="10in-10"/>
+        <arc source="ht9" target="s4p" id="ht9-s4p"/>
+        <arc source="ht11" target="s4p" id="ht11-s4p"/>
+        <arc source="ht2" target="10in" id="ht2-10in"/>
+        <arc source="9" target="9out" id="9-9out"/>
+        <arc source="7" target="7out" id="7-7out"/>
+        <arc source="ht6" target="7in" id="ht6-7in"/>
+        <arc source="start" target="ht1" id="start-ht1"/>
+        <arc source="9out" target="ht0" id="9out-ht0"/>
+        <arc source="10" target="10out" id="10-10out"/>
+        <arc source="10out" target="ht9" id="10out-ht9"/>
+        <arc source="start" target="ht2" id="start-ht2"/>
+        <arc source="7out" target="ht11" id="7out-ht11"/>
+        <place id="9in">
+            <name>
+                <text>9in</text>
+            </name>
+        </place>
+        <place id="9out">
+            <name>
+                <text>9out</text>
+            </name>
+        </place>
+        <place id="7in">
+            <name>
+                <text>7in</text>
+            </name>
+        </place>
+        <place id="7out">
+            <name>
+                <text>7out</text>
+            </name>
+        </place>
+        <place id="10in">
+            <name>
+                <text>10in</text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>start</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="10out">
+            <name>
+                <text>10out</text>
+            </name>
+        </place>
+        <place id="s4p">
+            <name>
+                <text>s4p</text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="9">
+            <name>
+                <text>9</text>
+            </name>
+        </transition>
+        <transition id="ht9">
+            <name>
+                <text>ht9</text>
+            </name>
+        </transition>
+        <transition id="ht0">
+            <name>
+                <text>ht0</text>
+            </name>
+        </transition>
+        <transition id="ht2">
+            <name>
+                <text>ht2</text>
+            </name>
+        </transition>
+        <transition id="ht1">
+            <name>
+                <text>ht1</text>
+            </name>
+        </transition>
+        <transition id="ht11">
+            <name>
+                <text>ht11</text>
+            </name>
+        </transition>
+        <transition id="7">
+            <name>
+                <text>7</text>
+            </name>
+        </transition>
+        <transition id="10">
+            <name>
+                <text>10</text>
+            </name>
+        </transition>
+        <transition id="ht6">
+            <name>
+                <text>ht6</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

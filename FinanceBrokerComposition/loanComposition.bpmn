@@ -1,0 +1,2543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://www.omg.org/spec/BPMN/20100524/DC" xmlns:ns1="http://camunda.org/schema/modeler/1.0" id="Definitions_0igevuk" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.51.1" ns1:executionPlatform="Camunda Cloud" ns1:executionPlatformVersion="8.9.0">
+  <bpmn:process id="Process_1ltqz0x" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Global variables">
+      <bpmn:outgoing>Flow_0fiutql</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_12bgsxn" name="ID verification">
+      <bpmn:incoming>Flow_0fiutql</bpmn:incoming>
+      <bpmn:outgoing>Flow_16trntf</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0fiutql" sourceRef="StartEvent_1" targetRef="Activity_12bgsxn" />
+    <bpmn:task id="Activity_1dun37x" name="credit check">
+      <bpmn:incoming>Flow_1vfa7v7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jtj2mw</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_16trntf" sourceRef="Activity_12bgsxn" targetRef="Gateway_1utg8xo" />
+    <bpmn:task id="Activity_1yyljwj" name="CBA quote">
+      <bpmn:incoming>Flow_1dely8h</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lhxfgl</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_06sx7tp" name="NAB quote">
+      <bpmn:incoming>Flow_1e778g4</bpmn:incoming>
+      <bpmn:outgoing>Flow_16jpto1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:parallelGateway id="Gateway_10vhwxh">
+      <bpmn:incoming>Flow_14pau6q</bpmn:incoming>
+      <bpmn:outgoing>Flow_1dely8h</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1e778g4</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1sxfa35</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="Flow_1dely8h" sourceRef="Gateway_10vhwxh" targetRef="Activity_1yyljwj" />
+    <bpmn:sequenceFlow id="Flow_1e778g4" sourceRef="Gateway_10vhwxh" targetRef="Activity_06sx7tp" />
+    <bpmn:task id="Activity_13j0g32" name="ANZ quote">
+      <bpmn:incoming>Flow_1sxfa35</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fz3n48</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1sxfa35" sourceRef="Gateway_10vhwxh" targetRef="Activity_13j0g32" />
+    <bpmn:exclusiveGateway id="Gateway_1f7bg5q">
+      <bpmn:incoming>Flow_054qgn8</bpmn:incoming>
+      <bpmn:incoming>Flow_05n3rq5</bpmn:incoming>
+      <bpmn:outgoing>Flow_14pau6q</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_14pau6q" sourceRef="Gateway_1f7bg5q" targetRef="Gateway_10vhwxh" />
+    <bpmn:parallelGateway id="Gateway_1yog8j0">
+      <bpmn:incoming>Flow_0lhxfgl</bpmn:incoming>
+      <bpmn:incoming>Flow_16jpto1</bpmn:incoming>
+      <bpmn:incoming>Flow_1fz3n48</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n1qb45</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="Flow_0lhxfgl" sourceRef="Activity_1yyljwj" targetRef="Gateway_1yog8j0" />
+    <bpmn:sequenceFlow id="Flow_16jpto1" sourceRef="Activity_06sx7tp" targetRef="Gateway_1yog8j0" />
+    <bpmn:sequenceFlow id="Flow_1fz3n48" sourceRef="Activity_13j0g32" targetRef="Gateway_1yog8j0" />
+    <bpmn:task id="Activity_1evyxpz" name="Make reccomendation">
+      <bpmn:incoming>Flow_0n1qb45</bpmn:incoming>
+      <bpmn:outgoing>Flow_13sgqzf</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0n1qb45" sourceRef="Gateway_1yog8j0" targetRef="Activity_1evyxpz" />
+    <bpmn:exclusiveGateway id="Gateway_0wf6xwc">
+      <bpmn:incoming>Flow_13sgqzf</bpmn:incoming>
+      <bpmn:outgoing>Flow_1a4iwe1</bpmn:outgoing>
+      <bpmn:outgoing>Flow_19h6v8j</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1ek3ohm</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_13sgqzf" sourceRef="Activity_1evyxpz" targetRef="Gateway_0wf6xwc" />
+    <bpmn:sequenceFlow id="Flow_1a4iwe1" name="!accepted &#38; loanAmount&#62;10000" sourceRef="Gateway_0wf6xwc" targetRef="Activity_14103sg" />
+    <bpmn:task id="Activity_1kvmsuu" name="make loan request">
+      <bpmn:incoming>Flow_0jtj2mw</bpmn:incoming>
+      <bpmn:outgoing>Flow_054qgn8</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0jtj2mw" sourceRef="Activity_1dun37x" targetRef="Activity_1kvmsuu" />
+    <bpmn:sequenceFlow id="Flow_054qgn8" sourceRef="Activity_1kvmsuu" targetRef="Gateway_1f7bg5q" />
+    <bpmn:task id="Activity_0cn16c5" name="Document signing service">
+      <bpmn:incoming>Flow_19h6v8j</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hkqewi</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_19h6v8j" name="accepted" sourceRef="Gateway_0wf6xwc" targetRef="Activity_0cn16c5" />
+    <bpmn:endEvent id="Event_1s6rjc2">
+      <bpmn:incoming>Flow_0hkqewi</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0hkqewi" sourceRef="Activity_0cn16c5" targetRef="Event_1s6rjc2" />
+    <bpmn:endEvent id="Event_1cu3igp">
+      <bpmn:incoming>Flow_1ek3ohm</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1ek3ohm" name="!accepted &#38; loanAmount&#60;=10000" sourceRef="Gateway_0wf6xwc" targetRef="Event_1cu3igp" />
+    <bpmn:endEvent id="Event_0r3peci">
+      <bpmn:incoming>Flow_1ddaaw3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_1utg8xo">
+      <bpmn:incoming>Flow_16trntf</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vfa7v7</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1ddaaw3</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1vfa7v7" name="age&#62;=18" sourceRef="Gateway_1utg8xo" targetRef="Activity_1dun37x" />
+    <bpmn:sequenceFlow id="Flow_1ddaaw3" name="age&#60;18 | quit" sourceRef="Gateway_1utg8xo" targetRef="Event_0r3peci">
+      <bpmn:extensionElements />
+    </bpmn:sequenceFlow>
+    <bpmn:task id="Activity_14103sg" name="Reduce loan amount">
+      <bpmn:incoming>Flow_1a4iwe1</bpmn:incoming>
+      <bpmn:outgoing>Flow_05n3rq5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_05n3rq5" sourceRef="Activity_14103sg" targetRef="Gateway_1f7bg5q" />
+    <bpmn:endEvent id="End">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:incoming>f_clear_end</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="f_clear_end" sourceRef="ClearData" targetRef="End">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="OutcomeJoin">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:incoming>f_reject_outcome</bpmn:incoming>
+      <bpmn:incoming>Flow_11opfvo</bpmn:incoming>
+      <bpmn:outgoing>f_outcome_clear</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="f_outcome_clear" sourceRef="OutcomeJoin" targetRef="ClearData">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f_reject_outcome" sourceRef="Reject" targetRef="OutcomeJoin">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_11opfvo" sourceRef="CalculateAge" targetRef="OutcomeJoin">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="CheckPoints" name="idPoints ≥ 100?">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:incoming>f_merge_check</bpmn:incoming>
+      <bpmn:outgoing>f_check_age</bpmn:outgoing>
+      <bpmn:outgoing>f_check_loop</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="f_check_age" name="idPoints &#62;= 100" sourceRef="CheckPoints" targetRef="CalculateAge">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${idPoints &gt;= 100}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="MergeDocuments">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:incoming>f_secondary_merge</bpmn:incoming>
+      <bpmn:incoming>f_primary_merge</bpmn:incoming>
+      <bpmn:outgoing>f_merge_check</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="f_merge_check" sourceRef="MergeDocuments" targetRef="CheckPoints">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f_secondary_merge" sourceRef="Secondary" targetRef="MergeDocuments">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f_primary_merge" sourceRef="Primary" targetRef="MergeDocuments">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="SelectDocuments">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:incoming>f_start_init</bpmn:incoming>
+      <bpmn:incoming>f_check_loop</bpmn:incoming>
+      <bpmn:outgoing>f_select_reject</bpmn:outgoing>
+      <bpmn:outgoing>f_select_primary</bpmn:outgoing>
+      <bpmn:outgoing>f_select_secondary</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="f_select_reject" sourceRef="SelectDocuments" targetRef="Reject">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f_select_primary" name="pDoc = 0" sourceRef="SelectDocuments" targetRef="Primary">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${pDoc = 0}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f_check_loop" name="idPoints &#60; 100" sourceRef="CheckPoints" targetRef="SelectDocuments">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${idPoints &lt; 100}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:startEvent id="Start" name="Local variables">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:outgoing>f_start_init</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="f_start_init" sourceRef="Start" targetRef="SelectDocuments">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f_select_secondary" sourceRef="SelectDocuments" targetRef="Secondary">
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${pDoc &gt; 0}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:startEvent id="Event_01ywdyk" name="Local variables">
+      <bpmn:categoryValueRef>CategoryValue_052zufi</bpmn:categoryValueRef>
+      <bpmn:outgoing>Flow_0ibu91j</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0hku0io">
+      <bpmn:categoryValueRef>CategoryValue_052zufi</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1isbv7o</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0ibu91j" sourceRef="Event_01ywdyk" targetRef="Activity_0bzrxy8">
+      <bpmn:categoryValueRef>CategoryValue_052zufi</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_13hoywn" sourceRef="Activity_0bzrxy8" targetRef="Activity_081sius">
+      <bpmn:categoryValueRef>CategoryValue_052zufi</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1mnryuc" sourceRef="Activity_081sius" targetRef="Activity_1kpgf64">
+      <bpmn:categoryValueRef>CategoryValue_052zufi</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1isbv7o" sourceRef="Activity_1kpgf64" targetRef="Event_0hku0io">
+      <bpmn:categoryValueRef>CategoryValue_052zufi</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:startEvent id="Event_16mslzm">
+      <bpmn:categoryValueRef>CategoryValue_1pb8qm4</bpmn:categoryValueRef>
+      <bpmn:outgoing>Flow_1alg7tt</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1alg7tt" sourceRef="Event_16mslzm" targetRef="Activity_023bszx">
+      <bpmn:categoryValueRef>CategoryValue_1pb8qm4</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1gpphse" sourceRef="Activity_023bszx" targetRef="Activity_0j20jim">
+      <bpmn:categoryValueRef>CategoryValue_1pb8qm4</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_1gbzzfw">
+      <bpmn:categoryValueRef>CategoryValue_1pb8qm4</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1lhonuv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1lhonuv" sourceRef="Activity_0j20jim" targetRef="Event_1gbzzfw">
+      <bpmn:categoryValueRef>CategoryValue_1pb8qm4</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:startEvent id="Event_0tv7ioq" name="Local variables">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+      <bpmn:outgoing>CBA_Flow_Start</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1eikk42">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+      <bpmn:incoming>CBA_ToQuote</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="CBA_ProductChoice" gatewayDirection="Diverging">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+      <bpmn:incoming>CBA_Flow_Pricing</bpmn:incoming>
+      <bpmn:outgoing>CBA_Product_1</bpmn:outgoing>
+      <bpmn:outgoing>CBA_Product_2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="CBA_ProductMerge" gatewayDirection="Converging">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+      <bpmn:incoming>CBA_Merge_1</bpmn:incoming>
+      <bpmn:incoming>CBA_Merge_2</bpmn:incoming>
+      <bpmn:outgoing>CBA_ToPayment</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="CBA_Flow_Start" sourceRef="Event_0tv7ioq" targetRef="Activity_0s32r0l">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="CBA_Flow_Pricing" sourceRef="Activity_0s32r0l" targetRef="CBA_ProductChoice">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="CBA_Product_1" sourceRef="CBA_ProductChoice" targetRef="CBA_StandardVariable">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="CBA_Product_2" sourceRef="CBA_ProductChoice" targetRef="CBA_FixedRate">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="CBA_Merge_1" sourceRef="CBA_StandardVariable" targetRef="CBA_ProductMerge">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="CBA_Merge_2" sourceRef="CBA_FixedRate" targetRef="CBA_ProductMerge">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="CBA_ToPayment" sourceRef="CBA_ProductMerge" targetRef="CBA_CalculatePayment">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="CBA_ToQuote" sourceRef="CBA_CalculatePayment" targetRef="Event_1eikk42">
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:startEvent id="NAB_Start" name="Local Variables">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:outgoing>NAB_f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="NAB_CreditGate">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:incoming>NAB_f1</bpmn:incoming>
+      <bpmn:outgoing>NAB_reject</bpmn:outgoing>
+      <bpmn:outgoing>NAB_accept</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="NAB_Rejected" name="Declined">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:incoming>NAB_reject</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="NAB_ProductChoice">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:incoming>NAB_f3</bpmn:incoming>
+      <bpmn:outgoing>NAB_var</bpmn:outgoing>
+      <bpmn:outgoing>NAB_fixed</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="NAB_ProductMerge">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:incoming>NAB_var_merge</bpmn:incoming>
+      <bpmn:incoming>NAB_fixed_merge</bpmn:incoming>
+      <bpmn:outgoing>NAB_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="NAB_Approved">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:incoming>NAB_f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NAB_reject" name="creditScore&#10; &#60; 50" sourceRef="NAB_CreditGate" targetRef="NAB_Rejected">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${creditScore &lt; 550}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NAB_accept" name="creditScore&#10; &#62;= 50" sourceRef="NAB_CreditGate" targetRef="NAB_RetrieveProducts">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${creditScore &gt;= 550}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NAB_f3" sourceRef="NAB_RetrieveProducts" targetRef="NAB_ProductChoice">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NAB_var" sourceRef="NAB_ProductChoice" targetRef="NAB_Variable">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${nabProductType == 'VARIABLE'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NAB_fixed" sourceRef="NAB_ProductChoice" targetRef="NAB_Fixed">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${nabProductType == 'FIXED_RATE'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NAB_var_merge" sourceRef="NAB_Variable" targetRef="NAB_ProductMerge">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NAB_fixed_merge" sourceRef="NAB_Fixed" targetRef="NAB_ProductMerge">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NAB_f4" sourceRef="NAB_ProductMerge" targetRef="NAB_CalculatePayment">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NAB_f5" sourceRef="NAB_CalculatePayment" targetRef="NAB_Approved">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NAB_f1" sourceRef="NAB_Start" targetRef="NAB_CreditGate">
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="ANZ_ProductChoice" gatewayDirection="Diverging">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1t77rd6</bpmn:incoming>
+      <bpmn:outgoing>ANZ_FixedPath</bpmn:outgoing>
+      <bpmn:outgoing>ANZ_VariablePath</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="ANZ_ProductMerge" gatewayDirection="Converging">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>ANZ_FixedMerge</bpmn:incoming>
+      <bpmn:incoming>ANZ_VariableMerge</bpmn:incoming>
+      <bpmn:outgoing>ANZ_ProductMergeToPayment</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="ANZ_OffsetGate">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>ANZ_f4</bpmn:incoming>
+      <bpmn:outgoing>ANZ_Yes</bpmn:outgoing>
+      <bpmn:outgoing>ANZ_No</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="ANZ_OffsetMerge">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>ANZ_YesMerge</bpmn:incoming>
+      <bpmn:incoming>ANZ_NoMerge</bpmn:incoming>
+      <bpmn:outgoing>ANZ_f5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="ANZ_End">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>ANZ_f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:startEvent id="Event_08k2d42" name="Local variables">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:outgoing>Flow_1kibgz5</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1t77rd6" sourceRef="Activity_116v1md" targetRef="ANZ_ProductChoice">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_FixedPath" sourceRef="ANZ_ProductChoice" targetRef="ANZ_FixedRate">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${anzProductType == 'FIXED'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_VariablePath" sourceRef="ANZ_ProductChoice" targetRef="ANZ_VariableRate">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${anzProductType == 'VARIABLE'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_FixedMerge" sourceRef="ANZ_FixedRate" targetRef="ANZ_ProductMerge">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_VariableMerge" sourceRef="ANZ_VariableRate" targetRef="ANZ_ProductMerge">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_ProductMergeToPayment" sourceRef="ANZ_ProductMerge" targetRef="ANZ_BasePayment">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_f4" sourceRef="ANZ_BasePayment" targetRef="ANZ_OffsetGate">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_Yes" sourceRef="ANZ_OffsetGate" targetRef="ANZ_AddFee">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${offsetSelected == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_No" sourceRef="ANZ_OffsetGate" targetRef="ANZ_NoFee">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${offsetSelected == false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_YesMerge" sourceRef="ANZ_AddFee" targetRef="ANZ_OffsetMerge">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_NoMerge" sourceRef="ANZ_NoFee" targetRef="ANZ_OffsetMerge">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="ANZ_f5" sourceRef="ANZ_OffsetMerge" targetRef="ANZ_End">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1kibgz5" sourceRef="Event_08k2d42" targetRef="Activity_116v1md">
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:startEvent id="Event_0vzbie2">
+      <bpmn:categoryValueRef>CategoryValue_15tbae6</bpmn:categoryValueRef>
+      <bpmn:outgoing>Flow_0fx17l2</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0gytfbp">
+      <bpmn:categoryValueRef>CategoryValue_15tbae6</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_18mea6u</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0fx17l2" sourceRef="Event_0vzbie2" targetRef="Activity_14qnlvp">
+      <bpmn:categoryValueRef>CategoryValue_15tbae6</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0fzmyxl" sourceRef="Activity_14qnlvp" targetRef="Activity_1r8n1fx">
+      <bpmn:categoryValueRef>CategoryValue_15tbae6</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_18mea6u" sourceRef="Activity_1r8n1fx" targetRef="Event_0gytfbp">
+      <bpmn:categoryValueRef>CategoryValue_15tbae6</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:task id="NAB_CalculatePayment" name="Calculate monthly repayment">
+      <bpmn:documentation>Use global loanAmount and paymentTerm and the selected product interestRate. Set local monthlyRate = interestRate / 12 and n = paymentTerm. If monthlyRate &gt; 0, monthlyPayment = loanAmount × monthlyRate × (1+monthlyRate)^n / ((1+monthlyRate)^n − 1); otherwise monthlyPayment = loanAmount / n.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:incoming>NAB_f4</bpmn:incoming>
+      <bpmn:outgoing>NAB_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="NAB_Fixed" name="NAB fixed-rate product">
+      <bpmn:documentation>For the selected fixed-rate product, use its NAB fixedBaseRate as local interestRate. No score-based risk margin is applied.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:incoming>NAB_fixed</bpmn:incoming>
+      <bpmn:outgoing>NAB_fixed_merge</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="NAB_Variable" name="NAB variable product">
+      <bpmn:documentation>For the selected variable product, use its NAB variableBaseRate as local interestRate. No score-based risk margin is applied.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:incoming>NAB_var</bpmn:incoming>
+      <bpmn:outgoing>NAB_var_merge</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="NAB_RetrieveProducts" name="Retrieve eligible NAB products">
+      <bpmn:documentation>Use global creditScore to determine eligibility. Below 550 the process declines. Otherwise retrieve eligible NAB products and their product-specific base rates. Set local nabProductType to the selected offer type.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_05azlas</bpmn:categoryValueRef>
+      <bpmn:incoming>NAB_accept</bpmn:incoming>
+      <bpmn:outgoing>NAB_f3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="ANZ_AddFee" name="Add offset account fee">
+      <bpmn:documentation>Retrieve local offsetMonthlyFee from ANZ product pricing. Set local monthlyRepayment = basePayment + offsetMonthlyFee.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>ANZ_Yes</bpmn:incoming>
+      <bpmn:outgoing>ANZ_YesMerge</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="ANZ_NoFee" name="Keep base repayment">
+      <bpmn:documentation>Set local monthlyRepayment = basePayment.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>ANZ_No</bpmn:incoming>
+      <bpmn:outgoing>ANZ_NoMerge</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="ANZ_BasePayment" name="Calculate base repayment">
+      <bpmn:documentation>Use global loanAmount and paymentTerm with local annualRate. Set local monthlyRate = annualRate / 12 and n = paymentTerm (months). If monthlyRate &gt; 0, basePayment = loanAmount × monthlyRate × (1+monthlyRate)^n / ((1+monthlyRate)^n − 1); otherwise basePayment = loanAmount / n.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>ANZ_ProductMergeToPayment</bpmn:incoming>
+      <bpmn:outgoing>ANZ_f4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="ANZ_FixedRate" name="Select fixed-rate offer">
+      <bpmn:documentation>Set local annualRate to the selected ANZ fixed product rate.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>ANZ_FixedPath</bpmn:incoming>
+      <bpmn:outgoing>ANZ_FixedMerge</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="ANZ_VariableRate" name="Select variable-rate offer">
+      <bpmn:documentation>Set local annualRate to the selected ANZ variable product rate.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>ANZ_VariablePath</bpmn:incoming>
+      <bpmn:outgoing>ANZ_VariableMerge</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_116v1md" name="Calculate risk margin">
+      <bpmn:documentation>Use global creditScore. If creditScore &lt; 550, route for manual review; otherwise calculate local riskMargin = max(0, 750 − creditScore) × 0.005 percentage points.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0xynu46</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1kibgz5</bpmn:incoming>
+      <bpmn:outgoing>Flow_1t77rd6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="CBA_StandardVariable" name="Standard variable product">
+      <bpmn:documentation>Get local variableBaseRate from the selected eligible CBA offer. Set local baseRate = variableBaseRate, then local interestRate = baseRate + riskMargin.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+      <bpmn:incoming>CBA_Product_1</bpmn:incoming>
+      <bpmn:outgoing>CBA_Merge_1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="CBA_FixedRate" name="Fixed-rate product">
+      <bpmn:documentation>Get local fixedBaseRate from the selected eligible CBA offer. Set local baseRate = fixedBaseRate, then local interestRate = baseRate + riskMargin.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+      <bpmn:incoming>CBA_Product_2</bpmn:incoming>
+      <bpmn:outgoing>CBA_Merge_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="CBA_CalculatePayment" name="Calculate monthly repayment">
+      <bpmn:documentation>Use global loanAmount and paymentTerm with the selected product interestRate. Set local monthlyRate = interestRate / 12 and n = paymentTerm (months). If monthlyRate &gt; 0, monthlyPayment = loanAmount × monthlyRate × (1+monthlyRate)^n / ((1+monthlyRate)^n − 1); otherwise monthlyPayment = loanAmount / n.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+      <bpmn:incoming>CBA_ToPayment</bpmn:incoming>
+      <bpmn:outgoing>CBA_ToQuote</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0s32r0l" name="Calculate risk margin">
+      <bpmn:documentation>Use global creditScore. If creditScore &lt; 550, route for manual review; otherwise calculate local riskMargin = max(0, 750 − creditScore) × 0.005 percentage points.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0ws4nt1</bpmn:categoryValueRef>
+      <bpmn:incoming>CBA_Flow_Start</bpmn:incoming>
+      <bpmn:outgoing>CBA_Flow_Pricing</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Reject" name="Quit">
+      <bpmn:documentation>accActive := false</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:incoming>f_select_reject</bpmn:incoming>
+      <bpmn:outgoing>f_reject_outcome</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="ClearData" name="Clear data">
+      <bpmn:documentation>idPoints := 0; pDoc := 0; sDoc := 0</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:incoming>f_outcome_clear</bpmn:incoming>
+      <bpmn:outgoing>f_clear_end</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="CalculateAge" name="Calculate age">
+      <bpmn:documentation>age := [0, 125]</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:incoming>f_check_age</bpmn:incoming>
+      <bpmn:outgoing>Flow_11opfvo</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Primary" name="Primary document">
+      <bpmn:documentation>idPoints += 70; pDoc += 1</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:incoming>f_select_primary</bpmn:incoming>
+      <bpmn:outgoing>f_primary_merge</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Secondary" name="Secondary document">
+      <bpmn:documentation>idPoints += {25, 35, 40}; sDoc += 1</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_199nbp3</bpmn:categoryValueRef>
+      <bpmn:incoming>f_select_secondary</bpmn:incoming>
+      <bpmn:outgoing>f_secondary_merge</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0bzrxy8" name="Collect credit factors">
+      <bpmn:documentation>Collect three normalized local factor scores.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_052zufi</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_0ibu91j</bpmn:incoming>
+      <bpmn:outgoing>Flow_13hoywn</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_081sius" name="Calculate credit score">
+      <bpmn:documentation>Calculate and store the single output value creditScore.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_052zufi</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_13hoywn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1mnryuc</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_1kpgf64" name="Clear factor data">
+      <bpmn:documentation>Set paymentHistoryScore, utilizationScore, and creditAgeScore to null. Preserve creditScore.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_052zufi</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1mnryuc</bpmn:incoming>
+      <bpmn:outgoing>Flow_1isbv7o</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0j20jim" name="Payment term">
+      <bpmn:documentation>Calculate and store the single output value creditScore.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_1pb8qm4</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1gpphse</bpmn:incoming>
+      <bpmn:outgoing>Flow_1lhonuv</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_023bszx" name="Loan amount">
+      <bpmn:documentation>Calculate and store the single output value creditScore.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_1pb8qm4</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1alg7tt</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gpphse</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_1r8n1fx" name="Clear quotes">
+      <bpmn:documentation>Calculate and store the single output value creditScore.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_15tbae6</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_0fzmyxl</bpmn:incoming>
+      <bpmn:outgoing>Flow_18mea6u</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_14qnlvp" name="Reduce loan amount">
+      <bpmn:documentation>Calculate and store the single output value creditScore.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_15tbae6</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_0fx17l2</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fzmyxl</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:startEvent id="DS_Start" name="Local variables">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:outgoing>DS_f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:parallelGateway id="DS_Split" gatewayDirection="Diverging">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>DS_f3</bpmn:incoming>
+      <bpmn:outgoing>DS_borrower</bpmn:outgoing>
+      <bpmn:outgoing>DS_bank</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="DS_Join" gatewayDirection="Converging">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>DS_borrower_join</bpmn:incoming>
+      <bpmn:incoming>DS_bank_join</bpmn:incoming>
+      <bpmn:outgoing>DS_f4</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:endEvent id="DS_End">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_09ca2e2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="DS_BorrowerID" name="Verify borrower identity">
+      <bpmn:documentation>After the borrower identity challenge succeeds, record envelopeId.borrower.identity := VERIFIED. Enable the signature step only on success.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>DS_borrower</bpmn:incoming>
+      <bpmn:outgoing>DS_borrower_sign</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="DS_BankID" name="Verify bank representative identity">
+      <bpmn:documentation>Resolve an authorized representative for selectedBank. After identity and authority checks succeed, record envelopeId.bankSigner.identity := VERIFIED.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>DS_bank</bpmn:incoming>
+      <bpmn:outgoing>DS_bank_sign</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="DS_Protect" name="Hash source and create envelope">
+      <bpmn:documentation>Compute sourceHash := SHA-256(signingDocument bytes). Create and send the envelope with signingDocument; set envelopeId to the returned envelope. The source hash is for the unsigned document and is not expected to match the signed PDF.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>DS_f2</bpmn:incoming>
+      <bpmn:outgoing>DS_f3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="DS_Prepare" name="Prepare document">
+      <bpmn:documentation>Read global selectedBank, approvedOffer, and borrowerDetails. Set local signingDocument := approvedOffer.document. Resolve the bank representative from selectedBank for the envelope recipients.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>DS_f1</bpmn:incoming>
+      <bpmn:outgoing>DS_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="DS_BorrowerSign" name="Borrower signs agreement">
+      <bpmn:documentation>Capture the borrower signature in the envelope: envelopeId.borrower.signature := SIGNED; envelopeId.borrower.signedAt := envelope timestamp.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>DS_borrower_sign</bpmn:incoming>
+      <bpmn:outgoing>DS_borrower_join</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="DS_BankSign" name="Selected bank representative signs">
+      <bpmn:documentation>Capture the bank signature in the envelope: envelopeId.bankSigner.signature := SIGNED; envelopeId.bankSigner.signedAt := envelope timestamp.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>DS_bank_sign</bpmn:incoming>
+      <bpmn:outgoing>DS_bank_join</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="DS_Verify" name="Verify and securely archive completed envelope">
+      <bpmn:documentation>Confirm the envelope is complete and both signer records are verified and signed. Retrieve signedDocument; compute signedHash := SHA-256(signedDocument bytes). If archiving encrypted, set archiveCiphertext := encrypt(signedDocument, archive key). On later retrieval, decrypt with the authorized key and verify SHA-256(decrypted PDF) = signedHash.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>DS_f4</bpmn:incoming>
+      <bpmn:outgoing>DS_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0u3fui9" name="Loan complete">
+      <bpmn:documentation>Confirm the envelope is complete and both signer records are verified and signed. Retrieve signedDocument; compute signedHash := SHA-256(signedDocument bytes). If archiving encrypted, set archiveCiphertext := encrypt(signedDocument, archive key). On later retrieval, decrypt with the authorized key and verify SHA-256(decrypted PDF) = signedHash.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+      <bpmn:incoming>DS_f5</bpmn:incoming>
+      <bpmn:outgoing>Flow_09ca2e2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="DS_f1" sourceRef="DS_Start" targetRef="DS_Prepare">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="DS_f3" sourceRef="DS_Protect" targetRef="DS_Split">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="DS_borrower" sourceRef="DS_Split" targetRef="DS_BorrowerID">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="DS_bank" sourceRef="DS_Split" targetRef="DS_BankID">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="DS_borrower_join" sourceRef="DS_BorrowerSign" targetRef="DS_Join">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="DS_bank_join" sourceRef="DS_BankSign" targetRef="DS_Join">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="DS_f4" sourceRef="DS_Join" targetRef="DS_Verify">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_09ca2e2" sourceRef="Activity_0u3fui9" targetRef="DS_End">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="DS_borrower_sign" sourceRef="DS_BorrowerID" targetRef="DS_BorrowerSign">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="DS_bank_sign" sourceRef="DS_BankID" targetRef="DS_BankSign">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="DS_f2" sourceRef="DS_Prepare" targetRef="DS_Protect">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="DS_f5" sourceRef="DS_Verify" targetRef="Activity_0u3fui9">
+      <bpmn:categoryValueRef>CategoryValue_1v6aogg</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:startEvent id="Event_0x753ja" name="Local variables">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+      <bpmn:outgoing>Flow_1l09i5h</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1cto741">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1en6ne9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Activity_0lngrfn" name="Consolidate options">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1l09i5h</bpmn:incoming>
+      <bpmn:outgoing>Flow_05m31uq</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_1wwhspd">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_05m31uq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1m8l2gf</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1ibbl19</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Activity_193j79f" name="Ineligible">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1ibbl19</bpmn:incoming>
+      <bpmn:outgoing>Flow_1tuja5w</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Event_0y24pfe">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1tuja5w</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Activity_0lqimd6" name="Reccomend best quote">
+      <bpmn:documentation>Set selectedBank to CBA, NAB, or ANZ for the highest-ranked eligible offer.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_1m8l2gf</bpmn:incoming>
+      <bpmn:outgoing>Flow_071p2jt</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_11vf0vv" name="Borrower accepts/rejects reccomendation">
+      <bpmn:documentation>Show the selected bank, its monthly repayment, and interest rate. Capture the user decision in local userApproved.</bpmn:documentation>
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+      <bpmn:incoming>Flow_071p2jt</bpmn:incoming>
+      <bpmn:outgoing>Flow_1en6ne9</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1l09i5h" sourceRef="Event_0x753ja" targetRef="Activity_0lngrfn">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1en6ne9" sourceRef="Activity_11vf0vv" targetRef="Event_1cto741">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_071p2jt" sourceRef="Activity_0lqimd6" targetRef="Activity_11vf0vv">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_05m31uq" sourceRef="Activity_0lngrfn" targetRef="Gateway_1wwhspd">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1m8l2gf" name="|eligibleBanks| &#62; 0" sourceRef="Gateway_1wwhspd" targetRef="Activity_0lqimd6">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1ibbl19" name="|eligibleBanks| = 0" sourceRef="Gateway_1wwhspd" targetRef="Activity_193j79f">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1tuja5w" sourceRef="Activity_193j79f" targetRef="Event_0y24pfe">
+      <bpmn:categoryValueRef>CategoryValue_0c89ugv</bpmn:categoryValueRef>
+    </bpmn:sequenceFlow>
+    <bpmn:textAnnotation id="PrimaryVars">
+      <bpmn:text>idPoints += 70
+pDoc += 1</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="SecondaryVars">
+      <bpmn:text>idPoints += {25, 35, 40}
+sDoc += 1</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="AgeVars">
+      <bpmn:text>age := [0, 125]</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_0am34jo">
+      <bpmn:text>quit = true</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="ClearVars">
+      <bpmn:text>idPoints := 0
+pDoc := 0
+sDoc := 0</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="InitVars">
+      <bpmn:text>idPoints := 0
+pDoc := 0
+sDoc := 0</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_0pbo9r5">
+      <bpmn:text>age = null
+quit = false
+creditScore = null
+loanAmount = null
+paymentTerm = null
+CBAinterestRate = null
+CBAmonthlyRepayment = null
+NABinterestRate = null
+NABmonthlyRepayment = null
+ANZinterestRate = null
+ANZmonthlyRepayment = null
+selectedBank = null
+interestRate = null
+accepted = false
+signed = false
+loanComplete = false</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:group id="Group_0g9lxtg" categoryValueRef="CategoryValue_199nbp3" />
+    <bpmn:textAnnotation id="TextAnnotation_12uleg6">
+      <bpmn:text>paymentHistoryScore: [0,10]
+utilizationScore: [0,10]
+creditAgeScore: [0,10]</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_0txr84p">
+      <bpmn:text>creditScore = round(10 × (0.40 × paymentHistoryScore + 0.35 × utilizationScore + 0.25 × creditAgeScore))</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_11rn3pr">
+      <bpmn:text>paymentHistoryScore := null
+utilizationScore := null
+creditAgeScore := null</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_0091cg2">
+      <bpmn:text>paymentHistoryScore := null
+utilizationScore := null
+creditAgeScore := null</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_FactorRanges" associationDirection="None" sourceRef="Activity_0bzrxy8" targetRef="TextAnnotation_12uleg6" />
+    <bpmn:association id="Association_ScoreCalculationNotes" associationDirection="None" sourceRef="Activity_081sius" targetRef="TextAnnotation_0txr84p" />
+    <bpmn:group id="Group_17juhau" categoryValueRef="CategoryValue_052zufi" />
+    <bpmn:group id="Group_12n1vqm" categoryValueRef="CategoryValue_1pb8qm4" />
+    <bpmn:textAnnotation id="TextAnnotation_13rb5f1">
+      <bpmn:text>loanAmount =
+{10000, 20000, 30000}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1odzmmb" associationDirection="None" sourceRef="Activity_023bszx" targetRef="TextAnnotation_13rb5f1" />
+    <bpmn:textAnnotation id="TextAnnotation_0g3fit7">
+      <bpmn:text>paymentTerm = [1,5]</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_18obeqo" associationDirection="None" sourceRef="Activity_0j20jim" targetRef="TextAnnotation_0g3fit7" />
+    <bpmn:group id="Group_0f5kzaz" categoryValueRef="CategoryValue_0ws4nt1" />
+    <bpmn:textAnnotation id="CBA_Repayment">
+      <bpmn:text>monthlyRate = CBAInterestRate / 12
+n = paymentTerm
+CBAmonthlyPayment = loanAmount × monthlyRate × (1+monthlyRate)^n / ((1+monthlyRate)^n − 1)
+If monthlyRate = 0: loanAmount / n</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Rate_StandardVariable">
+      <bpmn:text>CBAinterestRate = 4.5 + riskMargin.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_0wi5sk3">
+      <bpmn:text>riskMargin = null
+monthlyRate = null
+n = null</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_11v81zx">
+      <bpmn:text>riskMargin = max(0, 100 − creditScore) × 0.006</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_1ah437i">
+      <bpmn:text>CBAinterestRate = 5.0 + riskMargin</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1i6v2if" associationDirection="None" sourceRef="Activity_0s32r0l" targetRef="TextAnnotation_11v81zx" />
+    <bpmn:association id="Assoc_Rate_StandardVariable" associationDirection="None" sourceRef="CBA_StandardVariable" targetRef="Rate_StandardVariable" />
+    <bpmn:association id="Assoc_CBA_Repayment" associationDirection="None" sourceRef="CBA_CalculatePayment" targetRef="CBA_Repayment" />
+    <bpmn:textAnnotation id="NAB_RateNote">
+      <bpmn:text>VariableRate = 4.8%
+FixedRate = 5.2%</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="NAB_RepaymentNote">
+      <bpmn:text>monthlyRate = NABinterestRate / 12
+n = paymentTerm
+NABmonthlyPayment = loanAmount × monthlyRate × (1+monthlyRate)^n / ((1+monthlyRate)^n − 1)</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_10m0hyn">
+      <bpmn:text>variableBaseRate = null
+fixedBaseRate = null
+monthlyRate = null
+n = null</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_06xzuzy">
+      <bpmn:text>NABinterestRate = fixedBaseRate</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Assoc_NAB_RateNote" associationDirection="None" sourceRef="NAB_RetrieveProducts" targetRef="NAB_RateNote" />
+    <bpmn:association id="Assoc_NAB_RepaymentNote" associationDirection="None" sourceRef="NAB_CalculatePayment" targetRef="NAB_RepaymentNote" />
+    <bpmn:group id="Group_1cgrqaq" categoryValueRef="CategoryValue_05azlas" />
+    <bpmn:textAnnotation id="TextAnnotation_05dossp">
+      <bpmn:text>NABinterestRate = variableBaseRate</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="ANZ_RepaymentFormula">
+      <bpmn:text>monthlyRate = ANZinterestRate / 12
+n = paymentTerm
+basePayment = loanAmount × monthlyRate × (1+monthlyRate)^n / ((1+monthlyRate)^n − 1)</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="ANZ_OffsetFee">
+      <bpmn:text>ANZmonthlyRepayment = basePayment + $20</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_1e30iml">
+      <bpmn:text>riskMargin = null
+monthlyRate = null
+basePayment = null
+n = null</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_1d8eem0">
+      <bpmn:text>riskMargin = max(0, 100 − creditScore) × 0.008</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_00x0vc6">
+      <bpmn:text>ANZinterestRate = 4.4 + riskMargin.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_0q1ggxd">
+      <bpmn:text>ANZinterestRate = 4.9 + riskMargin</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_024xcvm">
+      <bpmn:text>ANZmonthlyRepayment = basePayment</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:group id="Group_17vzk76" categoryValueRef="CategoryValue_0xynu46" />
+    <bpmn:group id="Group_031o8s0" categoryValueRef="CategoryValue_0c89ugv" />
+    <bpmn:group id="Group_1euglr4" categoryValueRef="CategoryValue_15tbae6" />
+    <bpmn:textAnnotation id="TextAnnotation_0a7ekvu">
+      <bpmn:text>loanAmount = loanAmount - 10000</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1v1ncju" associationDirection="None" sourceRef="Activity_14qnlvp" targetRef="TextAnnotation_0a7ekvu" />
+    <bpmn:textAnnotation id="TextAnnotation_16u0gt7">
+      <bpmn:text>CBAinterestRate = null
+CBAmonthlyRepayment = null
+NABinterestRate = null
+NABmonthlyRepayment = null
+ANZinterestRate = null
+ANZmonthlyRepayment = null
+selectedBank = null</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="DS_LocalVariables">
+      <bpmn:text>documentID = null
+sourceHash = null
+envelopeID = null
+borrowerVerified = false
+bankSignerVerified = false
+borrowerSigned = false
+bankSigned = false
+signedHash = null</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="DS_Update_Prepare">
+      <bpmn:text>documentID = [0, 10000000]</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="DS_Update_Protect">
+      <bpmn:text>sourceHash = [0, 10000]
+envelopeID = [0, 10000]</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="DS_Update_BorrowerID">
+      <bpmn:text>borrowerVerified = true</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="DS_Update_BorrowerSign">
+      <bpmn:text>borrowerSigned = true</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="DS_Update_BankSign">
+      <bpmn:text>bankSigned = true</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="DS_Update_Verify">
+      <bpmn:text>signedHash = [0, 10000]
+signed = true</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="DS_Update_BankID">
+      <bpmn:text>bankSignerVerified = true</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_0ws8q6i">
+      <bpmn:text>loanComplete = true
+interestRate = selectedBank= CBA? CBAInterestRate : (selectedBank=NAB? NABinterestRate : ANZinterestRate)</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:group id="Group_1xmrenw" categoryValueRef="CategoryValue_1v6aogg" />
+    <bpmn:textAnnotation id="TextAnnotation_0av96bi">
+      <bpmn:text>selectedBank = eligibleBanks.choose()</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_14jkgqk">
+      <bpmn:text>accepted = {true, false}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_0xae6yq">
+      <bpmn:text>eligibleBanks = {}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_1h8rqjl">
+      <bpmn:text>eligibleBanks=eligibleBanks.
+appendIf(CBA, notNull( CBAinterestRate))
+.appendIf(NAB, notNull( NABinterestRate))
+.appendIf(ANZ, notNull( ANZinterestRate)</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_1r87x8r">
+      <bpmn:text>accepted = false</bpmn:text>
+    </bpmn:textAnnotation>
+  </bpmn:process>
+  <bpmn:category id="Category_1aaducw">
+    <bpmn:categoryValue id="CategoryValue_199nbp3" value="ID Verification (using Australia&#39;s 100 ID points system)" />
+  </bpmn:category>
+  <bpmn:category id="Category_0whdlul">
+    <bpmn:categoryValue id="CategoryValue_052zufi" value="Credit check" />
+  </bpmn:category>
+  <bpmn:process id="Process_Detail_1" name="ID verification" isExecutable="false">
+    <bpmn:startEvent id="Detail_1_Start">
+      <bpmn:outgoing>Detail_1_Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Detail_1_Task_1" name="Capture identity details">
+      <bpmn:incoming>Detail_1_Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Detail_1_Flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_1_Task_2" name="Validate identity document">
+      <bpmn:incoming>Detail_1_Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Detail_1_Flow_3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_1_Task_3" name="Confirm applicant identity">
+      <bpmn:incoming>Detail_1_Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Detail_1_Flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Detail_1_End">
+      <bpmn:incoming>Detail_1_Flow_4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Detail_1_Flow_1" sourceRef="Detail_1_Start" targetRef="Detail_1_Task_1" />
+    <bpmn:sequenceFlow id="Detail_1_Flow_2" sourceRef="Detail_1_Task_1" targetRef="Detail_1_Task_2" />
+    <bpmn:sequenceFlow id="Detail_1_Flow_3" sourceRef="Detail_1_Task_2" targetRef="Detail_1_Task_3" />
+    <bpmn:sequenceFlow id="Detail_1_Flow_4" sourceRef="Detail_1_Task_3" targetRef="Detail_1_End" />
+  </bpmn:process>
+  <bpmn:process id="Process_Detail_2" name="credit check" isExecutable="false">
+    <bpmn:startEvent id="Detail_2_Start">
+      <bpmn:outgoing>Detail_2_Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Detail_2_Task_1" name="Retrieve credit history">
+      <bpmn:incoming>Detail_2_Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Detail_2_Flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_2_Task_2" name="Assess repayment history">
+      <bpmn:incoming>Detail_2_Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Detail_2_Flow_3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_2_Task_3" name="Store credit check result">
+      <bpmn:incoming>Detail_2_Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Detail_2_Flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Detail_2_End">
+      <bpmn:incoming>Detail_2_Flow_4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Detail_2_Flow_1" sourceRef="Detail_2_Start" targetRef="Detail_2_Task_1" />
+    <bpmn:sequenceFlow id="Detail_2_Flow_2" sourceRef="Detail_2_Task_1" targetRef="Detail_2_Task_2" />
+    <bpmn:sequenceFlow id="Detail_2_Flow_3" sourceRef="Detail_2_Task_2" targetRef="Detail_2_Task_3" />
+    <bpmn:sequenceFlow id="Detail_2_Flow_4" sourceRef="Detail_2_Task_3" targetRef="Detail_2_End" />
+  </bpmn:process>
+  <bpmn:process id="Process_Detail_3" name="make loan request" isExecutable="false">
+    <bpmn:startEvent id="Detail_3_Start">
+      <bpmn:outgoing>Detail_3_Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Detail_3_Task_1" name="Assemble loan application">
+      <bpmn:incoming>Detail_3_Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Detail_3_Flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_3_Task_2" name="Submit enquiry request">
+      <bpmn:incoming>Detail_3_Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Detail_3_Flow_3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_3_Task_3" name="Record request reference">
+      <bpmn:incoming>Detail_3_Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Detail_3_Flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Detail_3_End">
+      <bpmn:incoming>Detail_3_Flow_4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Detail_3_Flow_1" sourceRef="Detail_3_Start" targetRef="Detail_3_Task_1" />
+    <bpmn:sequenceFlow id="Detail_3_Flow_2" sourceRef="Detail_3_Task_1" targetRef="Detail_3_Task_2" />
+    <bpmn:sequenceFlow id="Detail_3_Flow_3" sourceRef="Detail_3_Task_2" targetRef="Detail_3_Task_3" />
+    <bpmn:sequenceFlow id="Detail_3_Flow_4" sourceRef="Detail_3_Task_3" targetRef="Detail_3_End" />
+  </bpmn:process>
+  <bpmn:process id="Process_Detail_4" name="CBA enquiry" isExecutable="false">
+    <bpmn:startEvent id="Detail_4_Start">
+      <bpmn:outgoing>Detail_4_Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Detail_4_Task_1" name="Validate quote inputs">
+      <bpmn:documentation>Check loanAmount &gt; 0, paymentTerm &gt; 0, and creditScore is present.</bpmn:documentation>
+      <bpmn:incoming>Detail_4_Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Detail_4_Flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_4_Task_2" name="Retrieve CBA product pricing">
+      <bpmn:documentation>Select the CBA product and obtain its current base annual rate and eligibility rules.</bpmn:documentation>
+      <bpmn:incoming>Detail_4_Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Detail_4_Flow_3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_4_Task_3" name="Apply CBA risk pricing">
+      <bpmn:documentation>Illustrative rule: creditScore ≥ 750 adds 0.00%; 650–749 adds 0.50%; 550–649 adds 1.25%. Below 550, route for manual review. annualRate = CBA base rate + risk margin.</bpmn:documentation>
+      <bpmn:incoming>Detail_4_Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Detail_4_Flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_4_Task_4" name="Calculate monthly repayment">
+      <bpmn:documentation>Let r = annualRate / 12 and n = paymentTerm in months. If r &gt; 0, monthlyPayment = loanAmount × r × (1+r)^n / ((1+r)^n − 1); if r = 0, monthlyPayment = loanAmount / n.</bpmn:documentation>
+      <bpmn:incoming>Detail_4_Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Detail_4_Flow_5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_4_Task_5" name="Return CBA quote">
+      <bpmn:documentation>Return annualRate, monthlyPayment, selected CBA product, and pricing assumptions.</bpmn:documentation>
+      <bpmn:incoming>Detail_4_Flow_5</bpmn:incoming>
+      <bpmn:outgoing>Detail_4_Flow_6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Detail_4_End">
+      <bpmn:incoming>Detail_4_Flow_6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Detail_4_Flow_1" sourceRef="Detail_4_Start" targetRef="Detail_4_Task_1" />
+    <bpmn:sequenceFlow id="Detail_4_Flow_2" sourceRef="Detail_4_Task_1" targetRef="Detail_4_Task_2" />
+    <bpmn:sequenceFlow id="Detail_4_Flow_3" sourceRef="Detail_4_Task_2" targetRef="Detail_4_Task_3" />
+    <bpmn:sequenceFlow id="Detail_4_Flow_4" sourceRef="Detail_4_Task_3" targetRef="Detail_4_Task_4" />
+    <bpmn:sequenceFlow id="Detail_4_Flow_5" sourceRef="Detail_4_Task_4" targetRef="Detail_4_Task_5" />
+    <bpmn:sequenceFlow id="Detail_4_Flow_6" sourceRef="Detail_4_Task_5" targetRef="Detail_4_End" />
+  </bpmn:process>
+  <bpmn:process id="Process_Detail_5" name="NAB enquiry" isExecutable="false">
+    <bpmn:startEvent id="Detail_5_Start">
+      <bpmn:outgoing>Detail_5_Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Detail_5_Task_1" name="Validate NAB application fields">
+      <bpmn:incoming>Detail_5_Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Detail_5_Flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_5_Task_2" name="Request NAB serviceability assessment">
+      <bpmn:incoming>Detail_5_Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Detail_5_Flow_3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_5_Task_3" name="Capture NAB decision and conditions">
+      <bpmn:incoming>Detail_5_Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Detail_5_Flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Detail_5_End">
+      <bpmn:incoming>Detail_5_Flow_4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Detail_5_Flow_1" sourceRef="Detail_5_Start" targetRef="Detail_5_Task_1" />
+    <bpmn:sequenceFlow id="Detail_5_Flow_2" sourceRef="Detail_5_Task_1" targetRef="Detail_5_Task_2" />
+    <bpmn:sequenceFlow id="Detail_5_Flow_3" sourceRef="Detail_5_Task_2" targetRef="Detail_5_Task_3" />
+    <bpmn:sequenceFlow id="Detail_5_Flow_4" sourceRef="Detail_5_Task_3" targetRef="Detail_5_End" />
+  </bpmn:process>
+  <bpmn:process id="Process_Detail_6" name="ANZ enquiry" isExecutable="false">
+    <bpmn:startEvent id="Detail_6_Start">
+      <bpmn:outgoing>Detail_6_Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Detail_6_Task_1" name="Select ANZ product criteria">
+      <bpmn:incoming>Detail_6_Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Detail_6_Flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_6_Task_2" name="Send ANZ borrowing enquiry">
+      <bpmn:incoming>Detail_6_Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Detail_6_Flow_3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_6_Task_3" name="Receive ANZ indicative offer">
+      <bpmn:incoming>Detail_6_Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Detail_6_Flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Detail_6_End">
+      <bpmn:incoming>Detail_6_Flow_4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Detail_6_Flow_1" sourceRef="Detail_6_Start" targetRef="Detail_6_Task_1" />
+    <bpmn:sequenceFlow id="Detail_6_Flow_2" sourceRef="Detail_6_Task_1" targetRef="Detail_6_Task_2" />
+    <bpmn:sequenceFlow id="Detail_6_Flow_3" sourceRef="Detail_6_Task_2" targetRef="Detail_6_Task_3" />
+    <bpmn:sequenceFlow id="Detail_6_Flow_4" sourceRef="Detail_6_Task_3" targetRef="Detail_6_End" />
+  </bpmn:process>
+  <bpmn:process id="Process_Detail_7" name="make reccomendation" isExecutable="false">
+    <bpmn:startEvent id="Detail_7_Start">
+      <bpmn:outgoing>Detail_7_Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Detail_7_Task_1" name="Compare bank responses">
+      <bpmn:incoming>Detail_7_Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Detail_7_Flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_7_Task_2" name="Rank eligible loan options">
+      <bpmn:incoming>Detail_7_Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Detail_7_Flow_3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_7_Task_3" name="Prepare recommendation">
+      <bpmn:incoming>Detail_7_Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Detail_7_Flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Detail_7_End">
+      <bpmn:incoming>Detail_7_Flow_4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Detail_7_Flow_1" sourceRef="Detail_7_Start" targetRef="Detail_7_Task_1" />
+    <bpmn:sequenceFlow id="Detail_7_Flow_2" sourceRef="Detail_7_Task_1" targetRef="Detail_7_Task_2" />
+    <bpmn:sequenceFlow id="Detail_7_Flow_3" sourceRef="Detail_7_Task_2" targetRef="Detail_7_Task_3" />
+    <bpmn:sequenceFlow id="Detail_7_Flow_4" sourceRef="Detail_7_Task_3" targetRef="Detail_7_End" />
+  </bpmn:process>
+  <bpmn:process id="Process_Detail_8" name="reduce loan amount" isExecutable="false">
+    <bpmn:startEvent id="Detail_8_Start">
+      <bpmn:outgoing>Detail_8_Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Detail_8_Task_1" name="Calculate revised amount">
+      <bpmn:incoming>Detail_8_Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Detail_8_Flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_8_Task_2" name="Confirm applicant acceptance">
+      <bpmn:incoming>Detail_8_Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Detail_8_Flow_3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_8_Task_3" name="Update requested loan amount">
+      <bpmn:incoming>Detail_8_Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Detail_8_Flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Detail_8_End">
+      <bpmn:incoming>Detail_8_Flow_4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Detail_8_Flow_1" sourceRef="Detail_8_Start" targetRef="Detail_8_Task_1" />
+    <bpmn:sequenceFlow id="Detail_8_Flow_2" sourceRef="Detail_8_Task_1" targetRef="Detail_8_Task_2" />
+    <bpmn:sequenceFlow id="Detail_8_Flow_3" sourceRef="Detail_8_Task_2" targetRef="Detail_8_Task_3" />
+    <bpmn:sequenceFlow id="Detail_8_Flow_4" sourceRef="Detail_8_Task_3" targetRef="Detail_8_End" />
+  </bpmn:process>
+  <bpmn:process id="Process_Detail_9" name="signing service" isExecutable="false">
+    <bpmn:startEvent id="Detail_9_Start">
+      <bpmn:outgoing>Detail_9_Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Detail_9_Task_1" name="Prepare agreement">
+      <bpmn:incoming>Detail_9_Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Detail_9_Flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_9_Task_2" name="Collect applicant signatures">
+      <bpmn:incoming>Detail_9_Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Detail_9_Flow_3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Detail_9_Task_3" name="Confirm completed signing">
+      <bpmn:incoming>Detail_9_Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Detail_9_Flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Detail_9_End">
+      <bpmn:incoming>Detail_9_Flow_4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Detail_9_Flow_1" sourceRef="Detail_9_Start" targetRef="Detail_9_Task_1" />
+    <bpmn:sequenceFlow id="Detail_9_Flow_2" sourceRef="Detail_9_Task_1" targetRef="Detail_9_Task_2" />
+    <bpmn:sequenceFlow id="Detail_9_Flow_3" sourceRef="Detail_9_Task_2" targetRef="Detail_9_Task_3" />
+    <bpmn:sequenceFlow id="Detail_9_Flow_4" sourceRef="Detail_9_Task_3" targetRef="Detail_9_End" />
+  </bpmn:process>
+  <bpmn:category id="Category_0svlqj5">
+    <bpmn:categoryValue id="CategoryValue_1pb8qm4" value="Make loan request" />
+  </bpmn:category>
+  <bpmn:category id="Category_1xiis18">
+    <bpmn:categoryValue id="CategoryValue_0ws4nt1" value="CBA quote" />
+  </bpmn:category>
+  <bpmn:category id="Category_0p5wudq">
+    <bpmn:categoryValue id="CategoryValue_05azlas" value="NAB quote" />
+  </bpmn:category>
+  <bpmn:category id="Category_0fnv3cp">
+    <bpmn:categoryValue id="CategoryValue_0xynu46" value="ANZ quote" />
+  </bpmn:category>
+  <bpmn:category id="Category_1fuo751">
+    <bpmn:categoryValue id="CategoryValue_0c89ugv" value="Make loan reccomendation" />
+  </bpmn:category>
+  <bpmn:category id="Category_1nfhfnc">
+    <bpmn:categoryValue id="CategoryValue_15tbae6" value="Reduce loan amount" />
+  </bpmn:category>
+  <bpmn:category id="Category_0nf73y8">
+    <bpmn:categoryValue id="CategoryValue_1v6aogg" value="Document Signing service" />
+  </bpmn:category>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1ltqz0x">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <ns4:Bounds x="325" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="163" y="153" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12bgsxn_di" bpmnElement="Activity_12bgsxn" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="423" y="240" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dun37x_di" bpmnElement="Activity_1dun37x" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="663" y="240" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yyljwj_di" bpmnElement="Activity_1yyljwj">
+        <ns4:Bounds x="1103" y="100" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06sx7tp_di" bpmnElement="Activity_06sx7tp" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1103" y="240" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_10vhwxh_di" bpmnElement="Gateway_10vhwxh">
+        <ns4:Bounds x="1028" y="255" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_13j0g32_di" bpmnElement="Activity_13j0g32" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="1103" y="390" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1f7bg5q_di" bpmnElement="Gateway_1f7bg5q" isMarkerVisible="true">
+        <ns4:Bounds x="928" y="255" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0tqfm82" bpmnElement="Gateway_1yog8j0">
+        <ns4:Bounds x="1238" y="255" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_19nakvo" bpmnElement="Activity_1evyxpz" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1313" y="240" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1oh6hqo" bpmnElement="Gateway_0wf6xwc" isMarkerVisible="true">
+        <ns4:Bounds x="1438" y="255" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0f6f3ob" bpmnElement="Activity_1kvmsuu" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="803" y="240" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0cn16c5_di" bpmnElement="Activity_0cn16c5" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1513" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1s6rjc2_di" bpmnElement="Event_1s6rjc2">
+        <ns4:Bounds x="1675" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1cu3igp_di" bpmnElement="Event_1cu3igp">
+        <ns4:Bounds x="1675" y="262" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0r3peci_di" bpmnElement="Event_0r3peci">
+        <ns4:Bounds x="625" y="442" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1sfuy92" bpmnElement="Gateway_1utg8xo" isMarkerVisible="true">
+        <ns4:Bounds x="558" y="255" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14103sg_di" bpmnElement="Activity_14103sg" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1483" y="390" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End" bpmnElement="End" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="982" y="842" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1388" y="498" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_OutcomeJoin" bpmnElement="OutcomeJoin" isMarkerVisible="true" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="755" y="835" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1068.5" y="473" width="45" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_CheckPoints" bpmnElement="CheckPoints" isMarkerVisible="true" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="515" y="773" width="50" height="50" />
+        <bpmndi:BPMNLabel color:color="#0d4372">
+          <ns4:Bounds x="502" y="823" width="76" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_MergeDocuments" bpmnElement="MergeDocuments" isMarkerVisible="true" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="430" y="773" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="715" y="413" width="51" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_SelectDocuments" bpmnElement="SelectDocuments" isMarkerVisible="true" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="220" y="773" width="50" height="50" />
+        <bpmndi:BPMNLabel color:color="#0d4372">
+          <ns4:Bounds x="327" y="871" width="82" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Start" bpmnElement="Start" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="147" y="780" width="36" height="36" />
+        <bpmndi:BPMNLabel color:color="#0d4372">
+          <ns4:Bounds x="138" y="703" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1il5qn1" bpmnElement="Event_01ywdyk" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="1092" y="684" width="32" height="32" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1083" y="595" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_08vy5np" bpmnElement="Event_0hku0io" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="1712" y="684" width="32" height="32" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="990" y="136" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0j66zmj" bpmnElement="Event_16mslzm" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1154" y="914" width="32" height="32" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1103" y="915" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_10ht2ex" bpmnElement="Event_1gbzzfw" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1624" y="914" width="32" height="32" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="990" y="136" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1u9ope2" bpmnElement="Event_0tv7ioq">
+        <ns4:Bounds x="187" y="1246" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="163" y="1139" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_02zsm1k" bpmnElement="Event_1eikk42">
+        <ns4:Bounds x="857" y="1246" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_CBA_ProductChoice" bpmnElement="CBA_ProductChoice" isMarkerVisible="true">
+        <ns4:Bounds x="407" y="1248" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="485.4" y="204" width="68" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_CBA_ProductMerge" bpmnElement="CBA_ProductMerge" isMarkerVisible="true">
+        <ns4:Bounds x="612" y="1239" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="775.7" y="179" width="82" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_NAB_Start" bpmnElement="NAB_Start" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1026" y="1228" width="36" height="36" />
+        <bpmndi:BPMNLabel color:color="#6b3c00">
+          <ns4:Bounds x="1006" y="1123" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_NAB_CreditGate" bpmnElement="NAB_CreditGate" isMarkerVisible="true" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1085" y="1223" width="45" height="45" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_NAB_Rejected" bpmnElement="NAB_Rejected" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1090" y="1319" width="36" height="36" />
+        <bpmndi:BPMNLabel color:color="#6b3c00">
+          <ns4:Bounds x="1086" y="1365" width="43" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_NAB_ProductChoice" bpmnElement="NAB_ProductChoice" isMarkerVisible="true" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1298" y="1223" width="45" height="45" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="722.8" y="189.1" width="57" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_NAB_ProductMerge" bpmnElement="NAB_ProductMerge" isMarkerVisible="true" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1498" y="1216" width="45" height="45" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="929" y="237" width="82" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_NAB_Approved" bpmnElement="NAB_Approved" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1702" y="1228" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1273" y="233" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_ANZ_ProductChoice" bpmnElement="ANZ_ProductChoice" isMarkerVisible="true" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="348" y="1604" width="42" height="42" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_ANZ_ProductMerge" bpmnElement="ANZ_ProductMerge" isMarkerVisible="true" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="562" y="1581" width="42" height="42" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_ANZ_OffsetGate" bpmnElement="ANZ_OffsetGate" isMarkerVisible="true" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="796" y="1581" width="42" height="42" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_ANZ_OffsetMerge" bpmnElement="ANZ_OffsetMerge" isMarkerVisible="true" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="1019" y="1593" width="42" height="42" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_ANZ_End" bpmnElement="ANZ_End" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="1090" y="1596" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0cecr2d" bpmnElement="Event_08k2d42" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="147" y="1596" width="36" height="36" />
+        <bpmndi:BPMNLabel color:color="#205022">
+          <ns4:Bounds x="146" y="1476" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0quhcgv" bpmnElement="Event_0vzbie2" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="146" y="1884" width="32" height="32" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1103" y="915" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1byw8cr" bpmnElement="Event_0gytfbp" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="553" y="1894" width="32" height="32" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="990" y="136" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01lum0k_di" bpmnElement="NAB_CalculatePayment" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1577" y="1206" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0v2ftx2_di" bpmnElement="NAB_Fixed" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1365" y="1271" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04ebzlc_di" bpmnElement="NAB_Variable" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1365" y="1115" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_121omyy_di" bpmnElement="NAB_RetrieveProducts" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1165" y="1210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dpl3td_di" bpmnElement="ANZ_AddFee" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="860" y="1492" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1pvacah_di" bpmnElement="ANZ_NoFee" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="860" y="1632" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kn2tg2_di" bpmnElement="ANZ_BasePayment" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="649" y="1562" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1rrq98v_di" bpmnElement="ANZ_FixedRate" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="405" y="1476" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1522wsw_di" bpmnElement="ANZ_VariableRate" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="405" y="1632" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xtgfaa_di" bpmnElement="Activity_116v1md" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="215" y="1585" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0u6ivt4_di" bpmnElement="CBA_StandardVariable">
+        <ns4:Bounds x="475" y="1124" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0i2ek33_di" bpmnElement="CBA_FixedRate">
+        <ns4:Bounds x="470" y="1297" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gyui6k_di" bpmnElement="CBA_CalculatePayment">
+        <ns4:Bounds x="707" y="1224" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kfjtgw_di" bpmnElement="Activity_0s32r0l">
+        <ns4:Bounds x="267" y="1233" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_11d1aez_di" bpmnElement="Reject" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="650" y="900" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vp471d_di" bpmnElement="ClearData" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="840" y="820" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02lgl0x_di" bpmnElement="CalculateAge" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="650" y="700" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1kmub05_di" bpmnElement="Primary" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="327" y="650" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gnzi91_di" bpmnElement="Secondary" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="319" y="800" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yquab0_di" bpmnElement="Activity_0bzrxy8" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="1220" y="670" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05ncpon_di" bpmnElement="Activity_081sius" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="1390" y="670" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1g4qlqb_di" bpmnElement="Activity_1kpgf64" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="1553" y="670" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lv2s0s_di" bpmnElement="Activity_0j20jim" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1425" y="900" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1lbb6rs_di" bpmnElement="Activity_023bszx" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1245" y="900" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00u4keg_di" bpmnElement="Activity_1r8n1fx" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="382" y="1870" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_095d1bs_di" bpmnElement="Activity_14qnlvp" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="207" y="1870" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_Start" bpmnElement="DS_Start" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="681" y="1945" width="36" height="36" />
+        <bpmndi:BPMNLabel color:color="#0d4372">
+          <ns4:Bounds x="662" y="1806" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_Split" bpmnElement="DS_Split" isMarkerVisible="true" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1022" y="1938" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="770" y="215" width="84" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_Join" bpmnElement="DS_Join" isMarkerVisible="true" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1370" y="1915" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1307" y="260" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_End" bpmnElement="DS_End" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1710" y="1922" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1691" y="253" width="54" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0pxiujl_di" bpmnElement="DS_BorrowerID" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1099" y="1810" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0yg41e4_di" bpmnElement="DS_BankID" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1099" y="1975" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ffriw9_di" bpmnElement="DS_Protect" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="899" y="1928" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_187dtg9_di" bpmnElement="DS_Prepare" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="767" y="1923" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zbxu42_di" bpmnElement="DS_BorrowerSign" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1267" y="1810" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0sad4rf_di" bpmnElement="DS_BankSign" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1267" y="1980" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01i60zs_di" bpmnElement="DS_Verify" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1448" y="1900" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_06y2b3i" bpmnElement="Activity_0u3fui9" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1577" y="1900" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0d821qd" bpmnElement="Event_0x753ja" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1174" y="1531" width="36" height="36" />
+        <bpmndi:BPMNLabel color:color="#5b176d">
+          <ns4:Bounds x="1178" y="1483" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1vcb1gm" bpmnElement="Event_1cto741" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1709" y="1503" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="747" y="136" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_03j9i9o" bpmnElement="Activity_0lngrfn" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1248" y="1519" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0i7cjgy" bpmnElement="Gateway_1wwhspd" isMarkerVisible="true" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1386" y="1534" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1r1ub8i" bpmnElement="Activity_193j79f" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1460" y="1643" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1cmmq4z" bpmnElement="Event_0y24pfe" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1599" y="1665" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="747" y="136" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_04ft8kg" bpmnElement="Activity_0lqimd6" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1460" y="1481" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1t2jurr" bpmnElement="Activity_11vf0vv" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1587" y="1481" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_PrimaryVars" bpmnElement="PrimaryVars" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="325" y="727" width="100" height="43" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_SecondaryVars" bpmnElement="SecondaryVars" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="307" y="890" width="140" height="43" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_AgeVars" bpmnElement="AgeVars" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="663" y="788" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_16x169h" bpmnElement="TextAnnotation_0am34jo" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="620" y="982" width="104" height="40" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_ClearVars" bpmnElement="ClearVars" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="850" y="917" width="180" height="65" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1ld5m8d" bpmnElement="InitVars" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="135" y="720" width="247" height="57" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_06h2712" bpmnElement="TextAnnotation_0pbo9r5">
+        <ns4:Bounds x="153" y="180" width="282.28323211875846" height="244" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Group_0g9lxtg_di" bpmnElement="Group_0g9lxtg" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="125" y="593" width="910" height="444" />
+        <bpmndi:BPMNLabel color:color="#0d4372">
+          <ns4:Bounds x="149" y="563" width="264" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0schgkg" bpmnElement="TextAnnotation_12uleg6" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="1190" y="762" width="195.39684547908234" height="57" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0332j6x" bpmnElement="TextAnnotation_0txr84p" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="1375" y="762" width="202.6927294197031" height="72" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1bjct7e" bpmnElement="TextAnnotation_11rn3pr" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="1570" y="765" width="195" height="65" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1h6hcv4" bpmnElement="TextAnnotation_0091cg2" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="1090" y="614" width="195" height="65" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Group_17juhau_di" bpmnElement="Group_17juhau" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="1062" y="581" width="689" height="258" />
+        <bpmndi:BPMNLabel color:color="#831311">
+          <ns4:Bounds x="1075" y="551" width="62" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Group_12n1vqm_di" bpmnElement="Group_12n1vqm" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1078" y="882" width="673" height="155" />
+        <bpmndi:BPMNLabel color:color="#5b176d">
+          <ns4:Bounds x="1088" y="863" width="91" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_13rb5f1_di" bpmnElement="TextAnnotation_13rb5f1" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1228" y="973" width="137" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0g3fit7_di" bpmnElement="TextAnnotation_0g3fit7" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1433" y="980" width="105" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Group_0f5kzaz_di" bpmnElement="Group_0f5kzaz">
+        <ns4:Bounds x="130" y="1094" width="795" height="330" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="128" y="1067" width="54" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_CBA_Repayment" bpmnElement="CBA_Repayment">
+        <ns4:Bounds x="695" y="1314" width="280.0902496626181" height="100" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Rate_StandardVariable" bpmnElement="Rate_StandardVariable">
+        <ns4:Bounds x="478" y="1204" width="159.68707827260457" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0hdyhe2" bpmnElement="TextAnnotation_0wi5sk3">
+        <ns4:Bounds x="143" y="1179" width="305.6891025641026" height="57" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_11v81zx_di" bpmnElement="TextAnnotation_11v81zx">
+        <ns4:Bounds x="269" y="1315" width="188.6808367071525" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0sznqjz" bpmnElement="TextAnnotation_1ah437i">
+        <ns4:Bounds x="462" y="1374" width="172.69736842105263" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_NAB_RateNote" bpmnElement="NAB_RateNote" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1171" y="1287" width="272" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_NAB_RepaymentNote" bpmnElement="NAB_RepaymentNote" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1526" y="1294" width="227" height="86" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_06cfrg3" bpmnElement="TextAnnotation_10m0hyn" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1003" y="1152" width="306" height="72" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0xfep63" bpmnElement="TextAnnotation_06xzuzy" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1357" y="1354" width="136.68184885290148" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Group_1cgrqaq_di" bpmnElement="Group_1cgrqaq" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="986" y="1094" width="765" height="320" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="996" y="1064" width="54" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0fnkns8" bpmnElement="TextAnnotation_05dossp" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <ns4:Bounds x="1349" y="1194" width="150" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_ANZ_RepaymentFormula" bpmnElement="ANZ_RepaymentFormula" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="606" y="1640" width="215.69247638326587" height="86" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_ANZ_OffsetFee" bpmnElement="ANZ_OffsetFee" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="840" y="1580" width="185" height="43" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1v5npsu" bpmnElement="TextAnnotation_1e30iml" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="140" y="1496" width="209.68286099865048" height="72" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0qfc46o" bpmnElement="TextAnnotation_1d8eem0" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="210" y="1676" width="162.681342780027" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_01se2fx" bpmnElement="TextAnnotation_00x0vc6" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="372" y="1708" width="203.69433198380568" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1ltlsmi" bpmnElement="TextAnnotation_0q1ggxd" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="390" y="1566" width="165.69669365721998" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_00lb6q0" bpmnElement="TextAnnotation_024xcvm" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="850" y="1711" width="264" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Group_17vzk76_di" bpmnElement="Group_17vzk76">
+        <ns4:Bounds x="135" y="1464" width="995" height="293" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="149" y="1447" width="53" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1jtyyib" bpmnElement="Group_031o8s0" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1154" y="1466" width="597" height="291" />
+        <bpmndi:BPMNLabel color:color="#5b176d">
+          <ns4:Bounds x="1098" y="1447" width="263" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1hliku3" bpmnElement="Group_1euglr4" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="135" y="1800" width="465" height="320" />
+        <bpmndi:BPMNLabel color:color="#5b176d">
+          <ns4:Bounds x="124" y="1771" width="136" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1afeosz" bpmnElement="TextAnnotation_0a7ekvu" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="194" y="1950" width="139.69719973009447" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1mqdki0" bpmnElement="TextAnnotation_16u0gt7" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="362" y="1950" width="264" height="115" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_LocalVariables" bpmnElement="DS_LocalVariables" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="650" y="1818" width="290" height="129" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_Update_Prepare" bpmnElement="DS_Update_Prepare" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="767" y="2008" width="100" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_Update_Protect" bpmnElement="DS_Update_Protect" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="889" y="2013" width="103.68168016194332" height="72" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_Update_BorrowerID" bpmnElement="DS_Update_BorrowerID" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1080" y="1890" width="188" height="40" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_Update_BorrowerSign" bpmnElement="DS_Update_BorrowerSign" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1240" y="1890" width="192" height="40" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_Update_BankSign" bpmnElement="DS_Update_BankSign" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1259" y="2070" width="192" height="40" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_Update_Verify" bpmnElement="DS_Update_Verify" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1452" y="1985" width="103.68168016194332" height="57" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DS_Update_BankID" bpmnElement="DS_Update_BankID" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1072" y="2070" width="192" height="40" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0ws8q6i_di" bpmnElement="TextAnnotation_0ws8q6i" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="1589" y="1986" width="155" height="115" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Group_1xmrenw_di" bpmnElement="Group_1xmrenw" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="637" y="1800" width="1114" height="320" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="636" y="1783" width="182" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_10yr05k" bpmnElement="TextAnnotation_0av96bi" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1439" y="1555" width="163" height="43" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1f9h8nu" bpmnElement="TextAnnotation_14jkgqk" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1574" y="1555" width="196.4023315047022" height="40" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1uwt9gn" bpmnElement="TextAnnotation_0xae6yq" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1160" y="1496" width="140" height="40" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_07x34tk" bpmnElement="TextAnnotation_1h8rqjl" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1208" y="1599" width="172.67094435736678" height="115" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_19z8l3l" bpmnElement="TextAnnotation_1r87x8r" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="1468" y="1719" width="105.38967611336031" height="40" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0fiutql_di" bpmnElement="Flow_0fiutql">
+        <di:waypoint x="361" y="280" />
+        <di:waypoint x="423" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16trntf_di" bpmnElement="Flow_16trntf">
+        <di:waypoint x="523" y="280" />
+        <di:waypoint x="558" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dely8h_di" bpmnElement="Flow_1dely8h">
+        <di:waypoint x="1053" y="255" />
+        <di:waypoint x="1053" y="140" />
+        <di:waypoint x="1103" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e778g4_di" bpmnElement="Flow_1e778g4">
+        <di:waypoint x="1078" y="280" />
+        <di:waypoint x="1103" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1sxfa35_di" bpmnElement="Flow_1sxfa35">
+        <di:waypoint x="1053" y="305" />
+        <di:waypoint x="1053" y="430" />
+        <di:waypoint x="1103" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14pau6q_di" bpmnElement="Flow_14pau6q">
+        <di:waypoint x="978" y="280" />
+        <di:waypoint x="1028" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lhxfgl_di" bpmnElement="Flow_0lhxfgl">
+        <di:waypoint x="1203" y="140" />
+        <di:waypoint x="1263" y="140" />
+        <di:waypoint x="1263" y="255" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16jpto1_di" bpmnElement="Flow_16jpto1">
+        <di:waypoint x="1203" y="280" />
+        <di:waypoint x="1238" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fz3n48_di" bpmnElement="Flow_1fz3n48">
+        <di:waypoint x="1203" y="430" />
+        <di:waypoint x="1263" y="430" />
+        <di:waypoint x="1263" y="305" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n1qb45_di" bpmnElement="Flow_0n1qb45">
+        <di:waypoint x="1288" y="280" />
+        <di:waypoint x="1313" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13sgqzf_di" bpmnElement="Flow_13sgqzf">
+        <di:waypoint x="1413" y="280" />
+        <di:waypoint x="1438" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1a4iwe1_di" bpmnElement="Flow_1a4iwe1">
+        <di:waypoint x="1463" y="305" />
+        <di:waypoint x="1463" y="400" />
+        <di:waypoint x="1483" y="400" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1491" y="356" width="108" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jtj2mw_di" bpmnElement="Flow_0jtj2mw">
+        <di:waypoint x="763" y="280" />
+        <di:waypoint x="803" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_054qgn8_di" bpmnElement="Flow_054qgn8">
+        <di:waypoint x="903" y="280" />
+        <di:waypoint x="928" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19h6v8j_di" bpmnElement="Flow_19h6v8j">
+        <di:waypoint x="1463" y="255" />
+        <di:waypoint x="1463" y="170" />
+        <di:waypoint x="1513" y="170" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1442" y="153" width="45" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hkqewi_di" bpmnElement="Flow_0hkqewi">
+        <di:waypoint x="1613" y="170" />
+        <di:waypoint x="1675" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ek3ohm_di" bpmnElement="Flow_1ek3ohm">
+        <di:waypoint x="1488" y="280" />
+        <di:waypoint x="1675" y="280" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1518" y="246" width="106" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vfa7v7_di" bpmnElement="Flow_1vfa7v7">
+        <di:waypoint x="608" y="280" />
+        <di:waypoint x="663" y="280" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="614" y="262" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ddaaw3_di" bpmnElement="Flow_1ddaaw3">
+        <di:waypoint x="583" y="305" />
+        <di:waypoint x="583" y="460" />
+        <di:waypoint x="625" y="460" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="591" y="393" width="64" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05n3rq5_di" bpmnElement="Flow_05n3rq5">
+        <di:waypoint x="1533" y="470" />
+        <di:waypoint x="1533" y="510" />
+        <di:waypoint x="953" y="510" />
+        <di:waypoint x="953" y="305" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_clear_end" bpmnElement="f_clear_end" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="940" y="860" />
+        <di:waypoint x="982" y="860" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_outcome_clear" bpmnElement="f_outcome_clear" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="805" y="860" />
+        <di:waypoint x="840" y="860" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_reject_outcome" bpmnElement="f_reject_outcome" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="750" y="940" />
+        <di:waypoint x="780" y="940" />
+        <di:waypoint x="780" y="885" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11opfvo_di" bpmnElement="Flow_11opfvo" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="750" y="740" />
+        <di:waypoint x="780" y="740" />
+        <di:waypoint x="780" y="835" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_check_age" bpmnElement="f_check_age" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="551" y="784" />
+        <di:waypoint x="580" y="750" />
+        <di:waypoint x="650" y="744" />
+        <bpmndi:BPMNLabel color:color="#0d4372">
+          <ns4:Bounds x="564" y="723" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_merge_check" bpmnElement="f_merge_check" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="480" y="798" />
+        <di:waypoint x="515" y="798" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_secondary_merge" bpmnElement="f_secondary_merge" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="419" y="840" />
+        <di:waypoint x="425" y="840" />
+        <di:waypoint x="425" y="798" />
+        <di:waypoint x="430" y="798" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_primary_merge" bpmnElement="f_primary_merge" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="427" y="690" />
+        <di:waypoint x="455" y="690" />
+        <di:waypoint x="455" y="773" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_select_reject" bpmnElement="f_select_reject" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="245" y="823" />
+        <di:waypoint x="245" y="960" />
+        <di:waypoint x="650" y="960" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_select_primary" bpmnElement="f_select_primary" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="265" y="793" />
+        <di:waypoint x="265" y="690" />
+        <di:waypoint x="327" y="690" />
+        <bpmndi:BPMNLabel color:color="#0d4372">
+          <ns4:Bounds x="265" y="673" width="45" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_check_loop" bpmnElement="f_check_loop" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="540" y="773" />
+        <di:waypoint x="540" y="610" />
+        <di:waypoint x="245" y="610" />
+        <di:waypoint x="245" y="773" />
+        <bpmndi:BPMNLabel color:color="#0d4372">
+          <ns4:Bounds x="459" y="623" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_start_init" bpmnElement="f_start_init" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="183" y="798" />
+        <di:waypoint x="220" y="798" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_f_select_secondary" bpmnElement="f_select_secondary" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="265" y="803" />
+        <di:waypoint x="265" y="840" />
+        <di:waypoint x="319" y="840" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="503" y="460" width="45" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0rq24ua" bpmnElement="Flow_0ibu91j" bioc:stroke="#831311" color:border-color="#831311">
+        <di:waypoint x="1124" y="700" />
+        <di:waypoint x="1220" y="700" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1i74gvg" bpmnElement="Flow_13hoywn" bioc:stroke="#831311" color:border-color="#831311">
+        <di:waypoint x="1320" y="700" />
+        <di:waypoint x="1390" y="700" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1d4oca3" bpmnElement="Flow_1mnryuc" bioc:stroke="#831311" color:border-color="#831311">
+        <di:waypoint x="1490" y="700" />
+        <di:waypoint x="1553" y="700" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_17eqyqg" bpmnElement="Flow_1isbv7o" bioc:stroke="#831311" color:border-color="#831311">
+        <di:waypoint x="1653" y="700" />
+        <di:waypoint x="1712" y="700" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1alg7tt_di" bpmnElement="Flow_1alg7tt" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1186" y="930" />
+        <di:waypoint x="1245" y="930" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gpphse_di" bpmnElement="Flow_1gpphse" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1345" y="930" />
+        <di:waypoint x="1425" y="930" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lhonuv_di" bpmnElement="Flow_1lhonuv" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1525" y="930" />
+        <di:waypoint x="1624" y="930" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_CBA_Flow_Start" bpmnElement="CBA_Flow_Start">
+        <di:waypoint x="223" y="1264" />
+        <di:waypoint x="267" y="1264" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_CBA_Flow_Pricing" bpmnElement="CBA_Flow_Pricing">
+        <di:waypoint x="367" y="1273" />
+        <di:waypoint x="407" y="1273" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_CBA_Product_1" bpmnElement="CBA_Product_1">
+        <di:waypoint x="434" y="1250" />
+        <di:waypoint x="434" y="1155" />
+        <di:waypoint x="475" y="1155" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="453.4" y="146" width="39" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_CBA_Product_2" bpmnElement="CBA_Product_2">
+        <di:waypoint x="434" y="1296" />
+        <di:waypoint x="434" y="1328" />
+        <di:waypoint x="470" y="1328" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="463.3" y="358" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_CBA_Merge_1" bpmnElement="CBA_Merge_1">
+        <di:waypoint x="575" y="1163" />
+        <di:waypoint x="637" y="1163" />
+        <di:waypoint x="637" y="1239" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_CBA_Merge_2" bpmnElement="CBA_Merge_2">
+        <di:waypoint x="573" y="1337" />
+        <di:waypoint x="638" y="1337" />
+        <di:waypoint x="638" y="1288" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_CBA_ToPayment" bpmnElement="CBA_ToPayment">
+        <di:waypoint x="662" y="1264" />
+        <di:waypoint x="707" y="1264" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_CBA_ToQuote" bpmnElement="CBA_ToQuote">
+        <di:waypoint x="807" y="1264" />
+        <di:waypoint x="857" y="1264" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_NAB_reject" bpmnElement="NAB_reject" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1108" y="1268" />
+        <di:waypoint x="1108" y="1294" />
+        <di:waypoint x="1107" y="1294" />
+        <di:waypoint x="1107" y="1319" />
+        <bpmndi:BPMNLabel color:color="#6b3c00">
+          <ns4:Bounds x="1045" y="1268" width="56" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_NAB_accept" bpmnElement="NAB_accept" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1130" y="1245" />
+        <di:waypoint x="1165" y="1245" />
+        <bpmndi:BPMNLabel color:color="#6b3c00">
+          <ns4:Bounds x="1114" y="1204" width="56" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_NAB_f3" bpmnElement="NAB_f3" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1265" y="1250" />
+        <di:waypoint x="1301" y="1248" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_NAB_var" bpmnElement="NAB_var" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1322" y="1225" />
+        <di:waypoint x="1322" y="1153" />
+        <di:waypoint x="1365" y="1153" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="685.5" y="142.5" width="53" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_NAB_fixed" bpmnElement="NAB_fixed" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1322" y="1267" />
+        <di:waypoint x="1322" y="1315" />
+        <di:waypoint x="1365" y="1315" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="678.9" y="239.3" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_NAB_var_merge" bpmnElement="NAB_var_merge" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1465" y="1156" />
+        <di:waypoint x="1498" y="1156" />
+        <di:waypoint x="1498" y="1239" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_NAB_fixed_merge" bpmnElement="NAB_fixed_merge" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1465" y="1312" />
+        <di:waypoint x="1498" y="1312" />
+        <di:waypoint x="1498" y="1239" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_NAB_f4" bpmnElement="NAB_f4" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1543" y="1239" />
+        <di:waypoint x="1577" y="1239" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_NAB_f5" bpmnElement="NAB_f5" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1677" y="1246" />
+        <di:waypoint x="1702" y="1246" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_NAB_f1" bpmnElement="NAB_f1" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1062" y="1246" />
+        <di:waypoint x="1074" y="1246" />
+        <di:waypoint x="1074" y="1245" />
+        <di:waypoint x="1086" y="1245" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1t77rd6_di" bpmnElement="Flow_1t77rd6" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="315" y="1625" />
+        <di:waypoint x="348" y="1625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_FixedPath" bpmnElement="ANZ_FixedPath" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="369" y="1604" />
+        <di:waypoint x="369" y="1508" />
+        <di:waypoint x="405" y="1508" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_VariablePath" bpmnElement="ANZ_VariablePath" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="369" y="1646" />
+        <di:waypoint x="369" y="1664" />
+        <di:waypoint x="405" y="1664" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_FixedMerge" bpmnElement="ANZ_FixedMerge" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="505" y="1516" />
+        <di:waypoint x="562" y="1516" />
+        <di:waypoint x="562" y="1602" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_VariableMerge" bpmnElement="ANZ_VariableMerge" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="505" y="1672" />
+        <di:waypoint x="562" y="1672" />
+        <di:waypoint x="562" y="1602" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_ProductMergeToPayment" bpmnElement="ANZ_ProductMergeToPayment" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="604" y="1602" />
+        <di:waypoint x="649" y="1602" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_f4" bpmnElement="ANZ_f4" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="749" y="1602" />
+        <di:waypoint x="796" y="1602" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_Yes" bpmnElement="ANZ_Yes" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="817" y="1581" />
+        <di:waypoint x="817" y="1524" />
+        <di:waypoint x="860" y="1524" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_No" bpmnElement="ANZ_No" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="817" y="1623" />
+        <di:waypoint x="817" y="1664" />
+        <di:waypoint x="860" y="1664" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_YesMerge" bpmnElement="ANZ_YesMerge" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="960" y="1532" />
+        <di:waypoint x="1019" y="1532" />
+        <di:waypoint x="1019" y="1614" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_NoMerge" bpmnElement="ANZ_NoMerge" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="960" y="1672" />
+        <di:waypoint x="1019" y="1672" />
+        <di:waypoint x="1019" y="1614" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_ANZ_f5" bpmnElement="ANZ_f5" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="1061" y="1614" />
+        <di:waypoint x="1090" y="1614" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_141lyyv" bpmnElement="Flow_1kibgz5" bioc:stroke="#205022" color:border-color="#205022">
+        <di:waypoint x="183" y="1614" />
+        <di:waypoint x="215" y="1614" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0zg686b" bpmnElement="Flow_0fx17l2" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="178" y="1900" />
+        <di:waypoint x="207" y="1900" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_01qgkvo" bpmnElement="Flow_0fzmyxl" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="307" y="1910" />
+        <di:waypoint x="382" y="1910" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1d8v0gw" bpmnElement="Flow_18mea6u" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="482" y="1910" />
+        <di:waypoint x="553" y="1910" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_f1" bpmnElement="DS_f1" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="717" y="1965" />
+        <di:waypoint x="742" y="1965" />
+        <di:waypoint x="742" y="1963" />
+        <di:waypoint x="767" y="1963" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_f3" bpmnElement="DS_f3" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="999" y="1963" />
+        <di:waypoint x="1022" y="1963" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_borrower" bpmnElement="DS_borrower" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="1047" y="1938" />
+        <di:waypoint x="1047" y="1845" />
+        <di:waypoint x="1099" y="1845" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_bank" bpmnElement="DS_bank" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="1047" y="1988" />
+        <di:waypoint x="1047" y="2010" />
+        <di:waypoint x="1099" y="2010" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_borrower_join" bpmnElement="DS_borrower_join" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="1367" y="1845" />
+        <di:waypoint x="1395" y="1845" />
+        <di:waypoint x="1395" y="1915" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_bank_join" bpmnElement="DS_bank_join" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="1367" y="2015" />
+        <di:waypoint x="1395" y="2015" />
+        <di:waypoint x="1395" y="1965" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_f4" bpmnElement="DS_f4" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="1419" y="1939" />
+        <di:waypoint x="1434" y="1939" />
+        <di:waypoint x="1434" y="1944" />
+        <di:waypoint x="1448" y="1944" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09ca2e2_di" bpmnElement="Flow_09ca2e2" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="1677" y="1940" />
+        <di:waypoint x="1710" y="1940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_borrower_sign" bpmnElement="DS_borrower_sign" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="1199" y="1845" />
+        <di:waypoint x="1267" y="1845" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_bank_sign" bpmnElement="DS_bank_sign" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="1199" y="2010" />
+        <di:waypoint x="1233" y="2010" />
+        <di:waypoint x="1233" y="2015" />
+        <di:waypoint x="1267" y="2015" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_f2" bpmnElement="DS_f2" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="867" y="1963" />
+        <di:waypoint x="899" y="1963" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DS_f5" bpmnElement="DS_f5" bioc:stroke="#0d4372" color:border-color="#0d4372">
+        <di:waypoint x="1548" y="1945" />
+        <di:waypoint x="1577" y="1945" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1s43fc0" bpmnElement="Flow_1l09i5h" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1210" y="1549" />
+        <di:waypoint x="1248" y="1549" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0cb024e" bpmnElement="Flow_1en6ne9" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1687" y="1521" />
+        <di:waypoint x="1709" y="1521" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0p9tatv" bpmnElement="Flow_071p2jt" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1560" y="1521" />
+        <di:waypoint x="1574" y="1521" />
+        <di:waypoint x="1574" y="1519" />
+        <di:waypoint x="1587" y="1519" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0dhk1we" bpmnElement="Flow_05m31uq" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1348" y="1559" />
+        <di:waypoint x="1386" y="1559" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1ikxyhl" bpmnElement="Flow_1m8l2gf" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1411" y="1534" />
+        <di:waypoint x="1411" y="1519" />
+        <di:waypoint x="1460" y="1519" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1362" y="1497.5" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1d542kv" bpmnElement="Flow_1ibbl19" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1411" y="1584" />
+        <di:waypoint x="1411" y="1683" />
+        <di:waypoint x="1460" y="1683" />
+        <bpmndi:BPMNLabel>
+          <ns4:Bounds x="1366" y="1691" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0tv2s2p" bpmnElement="Flow_1tuja5w" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1560" y="1683" />
+        <di:waypoint x="1599" y="1683" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Association_FactorRanges" bpmnElement="Association_FactorRanges" bioc:stroke="#831311" color:border-color="#831311">
+        <di:waypoint x="1281" y="750" />
+        <di:waypoint x="1279" y="762" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Association_ScoreCalculationNotes" bpmnElement="Association_ScoreCalculationNotes" bioc:stroke="#831311" color:border-color="#831311">
+        <di:waypoint x="1440" y="734" />
+        <di:waypoint x="1476" y="727" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1odzmmb_di" bpmnElement="Association_1odzmmb" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1301" y="980" />
+        <di:waypoint x="1302" y="973" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_18obeqo_di" bpmnElement="Association_18obeqo" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="1485" y="980" />
+        <di:waypoint x="1485" y="980" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1i6v2if_di" bpmnElement="Association_1i6v2if">
+        <di:waypoint x="356" y="1313" />
+        <di:waypoint x="356" y="1315" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Assoc_Rate_StandardVariable" bpmnElement="Assoc_Rate_StandardVariable">
+        <di:waypoint x="525" y="1153" />
+        <di:waypoint x="558" y="1190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Assoc_CBA_Repayment" bpmnElement="Assoc_CBA_Repayment">
+        <di:waypoint x="800" y="1303" />
+        <di:waypoint x="806" y="1314" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Assoc_NAB_RateNote" bpmnElement="Assoc_NAB_RateNote" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1261" y="1287" />
+        <di:waypoint x="1265" y="1287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Assoc_NAB_RepaymentNote" bpmnElement="Assoc_NAB_RepaymentNote" bioc:stroke="#6b3c00" color:border-color="#6b3c00">
+        <di:waypoint x="1590" y="1290" />
+        <di:waypoint x="1556" y="1294" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0loj7tl" bpmnElement="Association_1v1ncju" bioc:stroke="#5b176d" color:border-color="#5b176d">
+        <di:waypoint x="271" y="1950" />
+        <di:waypoint x="271" y="1950" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Detail_1">
+    <bpmndi:BPMNPlane id="Plane_Detail_1" bpmnElement="Process_Detail_1">
+      <bpmndi:BPMNShape id="Shape_Detail_1_Start" bpmnElement="Detail_1_Start">
+        <ns4:Bounds x="120" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_1_Task_1" bpmnElement="Detail_1_Task_1" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="220" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_1_Task_2" bpmnElement="Detail_1_Task_2" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="430" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_1_Task_3" bpmnElement="Detail_1_Task_3">
+        <ns4:Bounds x="650" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Detail_1_Flow_1" bpmnElement="Detail_1_Flow_1" />
+      <bpmndi:BPMNEdge id="Edge_Detail_1_Flow_2" bpmnElement="Detail_1_Flow_2" />
+      <bpmndi:BPMNEdge id="Edge_Detail_1_Flow_3" bpmnElement="Detail_1_Flow_3" />
+      <bpmndi:BPMNEdge id="Edge_Detail_1_Flow_4" bpmnElement="Detail_1_Flow_4" />
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Detail_2">
+    <bpmndi:BPMNPlane id="Plane_Detail_2" bpmnElement="Process_Detail_2">
+      <bpmndi:BPMNShape id="Shape_Detail_2_Start" bpmnElement="Detail_2_Start">
+        <ns4:Bounds x="120" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_2_Task_1" bpmnElement="Detail_2_Task_1" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="220" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_2_Task_2" bpmnElement="Detail_2_Task_2" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <ns4:Bounds x="430" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_2_Task_3" bpmnElement="Detail_2_Task_3">
+        <ns4:Bounds x="650" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Detail_2_Flow_1" bpmnElement="Detail_2_Flow_1" />
+      <bpmndi:BPMNEdge id="Edge_Detail_2_Flow_2" bpmnElement="Detail_2_Flow_2" />
+      <bpmndi:BPMNEdge id="Edge_Detail_2_Flow_3" bpmnElement="Detail_2_Flow_3" />
+      <bpmndi:BPMNEdge id="Edge_Detail_2_Flow_4" bpmnElement="Detail_2_Flow_4" />
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Detail_3">
+    <bpmndi:BPMNPlane id="Plane_Detail_3" bpmnElement="Process_Detail_3">
+      <bpmndi:BPMNShape id="Shape_Detail_3_Start" bpmnElement="Detail_3_Start">
+        <ns4:Bounds x="120" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_3_Task_1" bpmnElement="Detail_3_Task_1" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="220" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_3_Task_2" bpmnElement="Detail_3_Task_2" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="430" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_3_Task_3" bpmnElement="Detail_3_Task_3">
+        <ns4:Bounds x="650" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Detail_3_Flow_1" bpmnElement="Detail_3_Flow_1" />
+      <bpmndi:BPMNEdge id="Edge_Detail_3_Flow_2" bpmnElement="Detail_3_Flow_2" />
+      <bpmndi:BPMNEdge id="Edge_Detail_3_Flow_3" bpmnElement="Detail_3_Flow_3" />
+      <bpmndi:BPMNEdge id="Edge_Detail_3_Flow_4" bpmnElement="Detail_3_Flow_4" />
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Detail_4">
+    <bpmndi:BPMNPlane id="Plane_Detail_4" bpmnElement="Process_Detail_4">
+      <bpmndi:BPMNShape id="Shape_Detail_4_Start" bpmnElement="Detail_4_Start">
+        <ns4:Bounds x="120" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_4_Task_1" bpmnElement="Detail_4_Task_1" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00" />
+      <bpmndi:BPMNShape id="Shape_Detail_4_Task_2" bpmnElement="Detail_4_Task_2" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00" />
+      <bpmndi:BPMNShape id="Shape_Detail_4_Task_3" bpmnElement="Detail_4_Task_3" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00" />
+      <bpmndi:BPMNShape id="Shape_Detail_4_Task_4" bpmnElement="Detail_4_Task_4" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00" />
+      <bpmndi:BPMNShape id="Shape_Detail_4_Task_5" bpmnElement="Detail_4_Task_5" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00" />
+      <bpmndi:BPMNShape id="Shape_Detail_4_End" bpmnElement="Detail_4_End" />
+      <bpmndi:BPMNEdge id="Edge_Detail_4_Flow_1" bpmnElement="Detail_4_Flow_1">
+        <di:waypoint x="186" y="128" />
+        <di:waypoint x="220" y="128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Detail_4_Flow_2" bpmnElement="Detail_4_Flow_2">
+        <di:waypoint x="370" y="128" />
+        <di:waypoint x="420" y="128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Detail_4_Flow_3" bpmnElement="Detail_4_Flow_3">
+        <di:waypoint x="585" y="128" />
+        <di:waypoint x="640" y="128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Detail_4_Flow_4" bpmnElement="Detail_4_Flow_4">
+        <di:waypoint x="830" y="128" />
+        <di:waypoint x="890" y="128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Detail_4_Flow_5" bpmnElement="Detail_4_Flow_5">
+        <di:waypoint x="1085" y="128" />
+        <di:waypoint x="1140" y="128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Detail_4_Flow_6" bpmnElement="Detail_4_Flow_6">
+        <di:waypoint x="1310" y="128" />
+        <di:waypoint x="1380" y="128" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Detail_5">
+    <bpmndi:BPMNPlane id="Plane_Detail_5" bpmnElement="Process_Detail_5">
+      <bpmndi:BPMNShape id="Shape_Detail_5_Start" bpmnElement="Detail_5_Start">
+        <ns4:Bounds x="120" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_5_Task_1" bpmnElement="Detail_5_Task_1" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="220" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_5_Task_2" bpmnElement="Detail_5_Task_2" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <ns4:Bounds x="430" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_5_Task_3" bpmnElement="Detail_5_Task_3">
+        <ns4:Bounds x="650" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Detail_5_Flow_1" bpmnElement="Detail_5_Flow_1" />
+      <bpmndi:BPMNEdge id="Edge_Detail_5_Flow_2" bpmnElement="Detail_5_Flow_2" />
+      <bpmndi:BPMNEdge id="Edge_Detail_5_Flow_3" bpmnElement="Detail_5_Flow_3" />
+      <bpmndi:BPMNEdge id="Edge_Detail_5_Flow_4" bpmnElement="Detail_5_Flow_4" />
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Detail_6">
+    <bpmndi:BPMNPlane id="Plane_Detail_6" bpmnElement="Process_Detail_6">
+      <bpmndi:BPMNShape id="Shape_Detail_6_Start" bpmnElement="Detail_6_Start">
+        <ns4:Bounds x="120" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_6_Task_1" bpmnElement="Detail_6_Task_1" bioc:stroke="#006064" bioc:fill="#b2ebf2" color:background-color="#b2ebf2" color:border-color="#006064">
+        <ns4:Bounds x="220" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_6_Task_2" bpmnElement="Detail_6_Task_2" bioc:stroke="#006064" bioc:fill="#b2ebf2" color:background-color="#b2ebf2" color:border-color="#006064">
+        <ns4:Bounds x="430" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_6_Task_3" bpmnElement="Detail_6_Task_3">
+        <ns4:Bounds x="650" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Detail_6_Flow_1" bpmnElement="Detail_6_Flow_1" />
+      <bpmndi:BPMNEdge id="Edge_Detail_6_Flow_2" bpmnElement="Detail_6_Flow_2" />
+      <bpmndi:BPMNEdge id="Edge_Detail_6_Flow_3" bpmnElement="Detail_6_Flow_3" />
+      <bpmndi:BPMNEdge id="Edge_Detail_6_Flow_4" bpmnElement="Detail_6_Flow_4" />
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Detail_7">
+    <bpmndi:BPMNPlane id="Plane_Detail_7" bpmnElement="Process_Detail_7">
+      <bpmndi:BPMNShape id="Shape_Detail_7_Start" bpmnElement="Detail_7_Start">
+        <ns4:Bounds x="120" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_7_Task_1" bpmnElement="Detail_7_Task_1" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="220" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_7_Task_2" bpmnElement="Detail_7_Task_2" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="430" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_7_Task_3" bpmnElement="Detail_7_Task_3">
+        <ns4:Bounds x="650" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Detail_7_Flow_1" bpmnElement="Detail_7_Flow_1" />
+      <bpmndi:BPMNEdge id="Edge_Detail_7_Flow_2" bpmnElement="Detail_7_Flow_2" />
+      <bpmndi:BPMNEdge id="Edge_Detail_7_Flow_3" bpmnElement="Detail_7_Flow_3" />
+      <bpmndi:BPMNEdge id="Edge_Detail_7_Flow_4" bpmnElement="Detail_7_Flow_4" />
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Detail_8">
+    <bpmndi:BPMNPlane id="Plane_Detail_8" bpmnElement="Process_Detail_8">
+      <bpmndi:BPMNShape id="Shape_Detail_8_Start" bpmnElement="Detail_8_Start">
+        <ns4:Bounds x="120" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_8_Task_1" bpmnElement="Detail_8_Task_1" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="220" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_8_Task_2" bpmnElement="Detail_8_Task_2" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <ns4:Bounds x="430" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_8_Task_3" bpmnElement="Detail_8_Task_3">
+        <ns4:Bounds x="650" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Detail_8_Flow_1" bpmnElement="Detail_8_Flow_1" />
+      <bpmndi:BPMNEdge id="Edge_Detail_8_Flow_2" bpmnElement="Detail_8_Flow_2" />
+      <bpmndi:BPMNEdge id="Edge_Detail_8_Flow_3" bpmnElement="Detail_8_Flow_3" />
+      <bpmndi:BPMNEdge id="Edge_Detail_8_Flow_4" bpmnElement="Detail_8_Flow_4" />
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Detail_9">
+    <bpmndi:BPMNPlane id="Plane_Detail_9" bpmnElement="Process_Detail_9">
+      <bpmndi:BPMNShape id="Shape_Detail_9_Start" bpmnElement="Detail_9_Start">
+        <ns4:Bounds x="120" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_9_Task_1" bpmnElement="Detail_9_Task_1" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="220" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_9_Task_2" bpmnElement="Detail_9_Task_2" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <ns4:Bounds x="430" y="90" width="130" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Detail_9_Task_3" bpmnElement="Detail_9_Task_3">
+        <ns4:Bounds x="650" y="110" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Detail_9_Flow_1" bpmnElement="Detail_9_Flow_1" />
+      <bpmndi:BPMNEdge id="Edge_Detail_9_Flow_2" bpmnElement="Detail_9_Flow_2" />
+      <bpmndi:BPMNEdge id="Edge_Detail_9_Flow_3" bpmnElement="Detail_9_Flow_3" />
+      <bpmndi:BPMNEdge id="Edge_Detail_9_Flow_4" bpmnElement="Detail_9_Flow_4" />
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

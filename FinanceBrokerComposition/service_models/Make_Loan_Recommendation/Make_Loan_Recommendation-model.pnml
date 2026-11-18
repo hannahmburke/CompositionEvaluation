@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="ineligible" target="ineligible_end" id="ineligible-ineligible_end"/>
+        <arc source="merge_ineligible_end" target="end" id="merge_ineligible_end-end"/>
+        <arc source="recommend_best_quote" target="recommendation_made" id="recommend_best_quote-recommendation_made"/>
+        <arc source="borrower_response" target="eligible_end" id="borrower_response-eligible_end"/>
+        <arc source="consolidate_options" target="options_consolidated" id="consolidate_options-options_consolidated"/>
+        <arc source="recommendation_made" target="borrower_response" id="recommendation_made-borrower_response"/>
+        <arc source="eligible_end" target="merge_eligible_end" id="eligible_end-merge_eligible_end"/>
+        <arc source="options_consolidated" target="ineligible" id="options_consolidated-ineligible"/>
+        <arc source="ineligible_end" target="merge_ineligible_end" id="ineligible_end-merge_ineligible_end"/>
+        <arc source="start" target="consolidate_options" id="start-consolidate_options"/>
+        <arc source="options_consolidated" target="recommend_best_quote" id="options_consolidated-recommend_best_quote"/>
+        <arc source="merge_eligible_end" target="end" id="merge_eligible_end-end"/>
+        <place id="eligible_end">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="ineligible_end">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>initial</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="end">
+            <name>
+                <text>sink</text>
+            </name>
+        </place>
+        <place id="recommendation_made">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="options_consolidated">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="recommend_best_quote">
+            <name>
+                <text>Recommend best quote</text>
+            </name>
+        </transition>
+        <transition id="ineligible">
+            <name>
+                <text>Ineligible</text>
+            </name>
+        </transition>
+        <transition id="consolidate_options">
+            <name>
+                <text>Consolidate options</text>
+            </name>
+        </transition>
+        <transition id="merge_ineligible_end">
+            <name>
+                <text></text>
+            </name>
+        </transition>
+        <transition id="merge_eligible_end">
+            <name>
+                <text></text>
+            </name>
+        </transition>
+        <transition id="borrower_response">
+            <name>
+                <text>Borrower accepts/rejects recommendation</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="start" target="calculate_risk_margin" id="start-calculate_risk_margin"/>
+        <arc source="calculate_risk_margin" target="risk_calculated" id="calculate_risk_margin-risk_calculated"/>
+        <arc source="risk_calculated" target="standard_variable_product" id="risk_calculated-standard_variable_product"/>
+        <arc source="risk_calculated" target="fixed_rate_product" id="risk_calculated-fixed_rate_product"/>
+        <arc source="calculate_monthly_repayment" target="end" id="calculate_monthly_repayment-end"/>
+        <arc source="standard_variable_product" target="product_selected" id="standard_variable_product-product_selected"/>
+        <arc source="fixed_rate_product" target="product_selected" id="fixed_rate_product-product_selected"/>
+        <arc source="product_selected" target="calculate_monthly_repayment" id="product_selected-calculate_monthly_repayment"/>
+        <place id="product_selected">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="risk_calculated">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="end">
+            <name>
+                <text>sink</text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>initial</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="standard_variable_product">
+            <name>
+                <text>Standard variable product</text>
+            </name>
+        </transition>
+        <transition id="calculate_risk_margin">
+            <name>
+                <text>Calculate risk margin</text>
+            </name>
+        </transition>
+        <transition id="fixed_rate_product">
+            <name>
+                <text>Fixed-rate product</text>
+            </name>
+        </transition>
+        <transition id="calculate_monthly_repayment">
+            <name>
+                <text>Calculate monthly repayment</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

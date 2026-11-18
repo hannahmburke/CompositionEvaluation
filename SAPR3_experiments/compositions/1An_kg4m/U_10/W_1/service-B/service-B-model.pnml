@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="s1p" target="ht12" id="s1p-ht12"/>
+        <arc source="11in" target="11" id="11in-11"/>
+        <arc source="ht12" target="11in" id="ht12-11in"/>
+        <arc source="12" target="12out" id="12-12out"/>
+        <arc source="ht3" target="1in" id="ht3-1in"/>
+        <arc source="ht4" target="8p" id="ht4-8p"/>
+        <arc source="ht10" target="3in" id="ht10-3in"/>
+        <arc source="start" target="ht10" id="start-ht10"/>
+        <arc source="s1p" target="ht5" id="s1p-ht5"/>
+        <arc source="3in" target="3" id="3in-3"/>
+        <arc source="ht13" target="s1p" id="ht13-s1p"/>
+        <arc source="11" target="11out" id="11-11out"/>
+        <arc source="2" target="6p" id="2-6p"/>
+        <arc source="3out" target="4" id="3out-4"/>
+        <arc source="3" target="3out" id="3-3out"/>
+        <arc source="1" target="1out" id="1-1out"/>
+        <arc source="start" target="ht13" id="start-ht13"/>
+        <arc source="12out" target="ht7" id="12out-ht7"/>
+        <arc source="1out" target="2" id="1out-2"/>
+        <arc source="0" target="6p" id="0-6p"/>
+        <arc source="ht7" target="8p" id="ht7-8p"/>
+        <arc source="1in" target="1" id="1in-1"/>
+        <arc source="8p" target="0" id="8p-0"/>
+        <arc source="4" target="6p" id="4-6p"/>
+        <arc source="ht5" target="12in" id="ht5-12in"/>
+        <arc source="12in" target="12" id="12in-12"/>
+        <arc source="11out" target="ht4" id="11out-ht4"/>
+        <arc source="start" target="ht3" id="start-ht3"/>
+        <place id="11out">
+            <name>
+                <text>11out</text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>start</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="3out">
+            <name>
+                <text>3out</text>
+            </name>
+        </place>
+        <place id="1in">
+            <name>
+                <text>1in</text>
+            </name>
+        </place>
+        <place id="12in">
+            <name>
+                <text>12in</text>
+            </name>
+        </place>
+        <place id="8p">
+            <name>
+                <text>8p</text>
+            </name>
+        </place>
+        <place id="1out">
+            <name>
+                <text>1out</text>
+            </name>
+        </place>
+        <place id="11in">
+            <name>
+                <text>11in</text>
+            </name>
+        </place>
+        <place id="6p">
+            <name>
+                <text>6p</text>
+            </name>
+        </place>
+        <place id="3in">
+            <name>
+                <text>3in</text>
+            </name>
+        </place>
+        <place id="s1p">
+            <name>
+                <text>s1p</text>
+            </name>
+        </place>
+        <place id="12out">
+            <name>
+                <text>12out</text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="4">
+            <name>
+                <text>4</text>
+            </name>
+        </transition>
+        <transition id="3">
+            <name>
+                <text>3</text>
+            </name>
+        </transition>
+        <transition id="11">
+            <name>
+                <text>11</text>
+            </name>
+        </transition>
+        <transition id="ht5">
+            <name>
+                <text>ht5</text>
+            </name>
+        </transition>
+        <transition id="0">
+            <name>
+                <text>0</text>
+            </name>
+        </transition>
+        <transition id="ht12">
+            <name>
+                <text>ht12</text>
+            </name>
+        </transition>
+        <transition id="12">
+            <name>
+                <text>12</text>
+            </name>
+        </transition>
+        <transition id="ht13">
+            <name>
+                <text>ht13</text>
+            </name>
+        </transition>
+        <transition id="2">
+            <name>
+                <text>2</text>
+            </name>
+        </transition>
+        <transition id="ht4">
+            <name>
+                <text>ht4</text>
+            </name>
+        </transition>
+        <transition id="1">
+            <name>
+                <text>1</text>
+            </name>
+        </transition>
+        <transition id="ht7">
+            <name>
+                <text>ht7</text>
+            </name>
+        </transition>
+        <transition id="ht10">
+            <name>
+                <text>ht10</text>
+            </name>
+        </transition>
+        <transition id="ht3">
+            <name>
+                <text>ht3</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

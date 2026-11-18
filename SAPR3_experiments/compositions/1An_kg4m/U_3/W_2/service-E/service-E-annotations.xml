@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<Annotations>
+	<Transitions>
+		<Transition ID="start">
+			<Outcome
+				variable = "C"
+				identifier = "null"
+				operation =  ":="
+				value = "[-9,0]"/>
+			<Outcome
+				variable = "D"
+				identifier = "null"
+				operation =  ":="
+				value = "[-3,3]"/>
+			<Outcome
+				variable = "Y"
+				identifier = "null"
+				operation =  ":="
+				value = "[-3,3]"/>
+			<Outcome
+				variable = "P"
+				identifier = "null"
+				operation =  ":="
+				value = "[-3,3]"/>
+			<Outcome
+				variable = "E"
+				identifier = "null"
+				operation =  ":="
+				value = "[0,9]"/>
+			<Outcome
+				variable = "Z"
+				identifier = "null"
+				operation =  ":="
+				value = "[0,9]"/>
+			<Outcome
+				variable = "Q"
+				identifier = "null"
+				operation =  ":="
+				value = "[-9,0]"/>
+			<Outcome
+				variable = "A"
+				identifier = "null"
+				operation =  ":="
+				value = "[-3,3]"/>
+			<Outcome
+				variable = "F"
+				identifier = "null"
+				operation =  ":="
+				value = "[-3,3]"/>
+			<Outcome
+				variable = "B"
+				identifier = "null"
+				operation =  ":="
+				value = "[-3,3]"/>
+			<Outcome
+				variable = "X"
+				identifier = "null"
+				operation =  ":="
+				value = "[-3,3]"/>
+			<Outcome
+				variable = "R"
+				identifier = "null"
+				operation =  ":="
+				value = "[-3,3]"/>
+		</Transition>
+		<Transition ID="s5">
+			<Outcome
+				variable = "B"
+				identifier = "null"
+				operation =  "+"
+				value = "100"/>
+		</Transition>
+		<Transition ID="s6">
+			<Outcome
+				variable = "C"
+				identifier = "null"
+				operation =  ":="
+				value = "Z+1"/>
+		</Transition>
+	</Transitions>
+</Annotations>

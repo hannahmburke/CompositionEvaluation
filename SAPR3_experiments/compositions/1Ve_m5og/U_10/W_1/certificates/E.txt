@@ -1,0 +1,42 @@
+Service: E
+
+=================================================
+Obligation: {ID: 0, identifier: [], type: ACHIEVEMENT, trig: A>X, req: (B-A)>Y, dead: C>Z}
+-------------------------------------------------
+
+Input requirements: [
+Constraints: {}
+obligationState: ALL]
+Output updates: {
+Constraints: {}
+obligationState: ALL=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start, B=B.1start+B.s1, R=R.1start, C=Z.1start+1, D=D.1start, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_B.s1 = {100}}
+O Status: INACTIVE]}
+
+=================================================
+Obligation: {ID: 1, identifier: [], type: MAINTENANCE, trig: D>P, req: E>Q, dead: (F-D)>R}
+-------------------------------------------------
+
+Input requirements: [
+Constraints: {(E.1start>Q.1start)}
+obligationState: ALL, 
+Constraints: {~(D.1start>P.1start)}
+obligationState: [INACTIVE]]
+Output updates: {
+Constraints: {~((F.1start-D.1start)>R.1start) && (E.1start>Q.1start) && D.1start>P.1start}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start, B=B.1start+B.s1, R=R.1start, C=Z.1start+1, D=D.1start, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_B.s1 = {100}}
+O Status: TRIGGERED], 
+Constraints: {~(D.1start>P.1start)}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start, B=B.1start+B.s1, R=R.1start, C=Z.1start+1, D=D.1start, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_B.s1 = {100}}
+O Status: INACTIVE], 
+Constraints: {(E.1start>Q.1start) && (F.1start-D.1start)>R.1start}
+obligationState: ALL=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start, B=B.1start+B.s1, R=R.1start, C=Z.1start+1, D=D.1start, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_B.s1 = {100}}
+O Status: INACTIVE], 
+Constraints: {~((F.1start-D.1start)>R.1start) && (E.1start>Q.1start)}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start, B=B.1start+B.s1, R=R.1start, C=Z.1start+1, D=D.1start, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_B.s1 = {100}}
+O Status: TRIGGERED]}
+

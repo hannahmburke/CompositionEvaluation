@@ -1,0 +1,640 @@
+<?xml version="1.0"?>
+
+<Annotations>
+	<Transitions>
+		<Transition ID="start">
+			<Outcome
+				variable = "paymentTerm"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "documentID"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "CBAmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "CBAinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "eligibleBanks"
+				identifier = "null"
+				operation =  ":="
+				value = "{{}}"/>
+			<Outcome
+				variable = "sourceHash"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "age"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "ANZmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "paymentHistoryScore"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "quit"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "interestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "monthlyRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "loanComplete"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "n"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "envelopeID"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "signed"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "creditAgeScore"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "NABinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "sDoc"
+				identifier = "null"
+				operation =  ":="
+				value = "0"/>
+			<Outcome
+				variable = "variableBaseRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "loanAmount"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "idPoints"
+				identifier = "null"
+				operation =  ":="
+				value = "0"/>
+			<Outcome
+				variable = "offsetSelected"
+				identifier = "null"
+				operation =  ":="
+				value = "{true, false}"/>
+			<Outcome
+				variable = "NABmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "selectedBank"
+				identifier = "null"
+				operation =  ":="
+				value = "'undefined_string'"/>
+			<Outcome
+				variable = "pDoc"
+				identifier = "null"
+				operation =  ":="
+				value = "0"/>
+			<Outcome
+				variable = "riskMargin"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "bankSignerVerified"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "accepted"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "eligibleOptions"
+				identifier = "null"
+				operation =  ":="
+				value = "0"/>
+			<Outcome
+				variable = "signedHash"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "fixedBaseRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "borrowerSigned"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "bankSigned"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "utilizationScore"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "basePayment"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "anzProductType"
+				identifier = "null"
+				operation =  ":="
+				value = "'undefined_string'"/>
+			<Outcome
+				variable = "ANZinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "borrowerVerified"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+			<Outcome
+				variable = "nabProductType"
+				identifier = "null"
+				operation =  ":="
+				value = "'undefined_string'"/>
+			<Outcome
+				variable = "creditScore"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+		</Transition>
+		<Transition ID="NAB_QUOTE_nab_fixed_rate_product">
+			<Guard Condition="(nabProductType=='FIXED_RATE')"/>
+			<Outcome
+				variable = "NABinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "fixedBaseRate"/>
+		</Transition>
+		<Transition ID="NAB_QUOTE_calculate_monthly_repayment">
+			<Outcome
+				variable = "NABmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "((((loanAmount*(NABinterestRate/12))*((1+(NABinterestRate/12))^paymentTerm))/(((1+(NABinterestRate/12))^paymentTerm)-1)).round(1))"/>
+			<Outcome
+				variable = "monthlyRate"
+				identifier = "null"
+				operation =  ":="
+				value = "(NABinterestRate/12)"/>
+			<Outcome
+				variable = "n"
+				identifier = "null"
+				operation =  ":="
+				value = "paymentTerm"/>
+		</Transition>
+		<Transition ID="NAB_QUOTE_nab_variable_product">
+			<Guard Condition="(nabProductType=='VARIABLE')"/>
+			<Outcome
+				variable = "NABinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "variableBaseRate"/>
+		</Transition>
+		<Transition ID="NAB_QUOTE_retrieve_eligible_nab_products">
+			<Guard Condition="(creditScore>=50)"/>
+			<Outcome
+				variable = "nabProductType"
+				identifier = "null"
+				operation =  ":="
+				value = "{'VARIABLE', 'FIXED_RATE'}"/>
+			<Outcome
+				variable = "fixedBaseRate"
+				identifier = "null"
+				operation =  ":="
+				value = "5.20"/>
+			<Outcome
+				variable = "variableBaseRate"
+				identifier = "null"
+				operation =  ":="
+				value = "4.80"/>
+		</Transition>
+		<Transition ID="ID_VERIFICATION_secondary_document">
+			<Outcome
+				variable = "idPoints"
+				identifier = "null"
+				operation =  "+"
+				value = "{25, 35, 40}"/>
+			<Outcome
+				variable = "sDoc"
+				identifier = "null"
+				operation =  "+"
+				value = "1"/>
+		</Transition>
+		<Transition ID="ID_VERIFICATION_clear_data">
+			<Outcome
+				variable = "sDoc"
+				identifier = "null"
+				operation =  ":="
+				value = "0"/>
+			<Outcome
+				variable = "idPoints"
+				identifier = "null"
+				operation =  ":="
+				value = "0"/>
+			<Outcome
+				variable = "pDoc"
+				identifier = "null"
+				operation =  ":="
+				value = "0"/>
+		</Transition>
+		<Transition ID="ID_VERIFICATION_quit">
+			<Outcome
+				variable = "quit"
+				identifier = "null"
+				operation =  ":="
+				value = "true"/>
+		</Transition>
+		<Transition ID="ID_VERIFICATION_calculate_age">
+			<Guard Condition="(idPoints>=100)"/>
+			<Outcome
+				variable = "age"
+				identifier = "null"
+				operation =  ":="
+				value = "[0,125]"/>
+		</Transition>
+		<Transition ID="ID_VERIFICATION_primary_document">
+			<Guard Condition="(pDoc==0)"/>
+			<Outcome
+				variable = "pDoc"
+				identifier = "null"
+				operation =  "+"
+				value = "1"/>
+			<Outcome
+				variable = "idPoints"
+				identifier = "null"
+				operation =  "+"
+				value = "70"/>
+		</Transition>
+		<Transition ID="CREDIT_CHECK_collect_credit_factors">
+			<Guard Condition="((age>=18)&amp;(~(quit)))"/>
+			<Outcome
+				variable = "utilizationScore"
+				identifier = "null"
+				operation =  ":="
+				value = "[0,10]"/>
+			<Outcome
+				variable = "paymentHistoryScore"
+				identifier = "null"
+				operation =  ":="
+				value = "[0,10]"/>
+			<Outcome
+				variable = "creditAgeScore"
+				identifier = "null"
+				operation =  ":="
+				value = "[0,10]"/>
+		</Transition>
+		<Transition ID="CREDIT_CHECK_clear_factor_data">
+			<Outcome
+				variable = "utilizationScore"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "paymentHistoryScore"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "creditAgeScore"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+		</Transition>
+		<Transition ID="CREDIT_CHECK_calculate_credit_score">
+			<Outcome
+				variable = "creditScore"
+				identifier = "null"
+				operation =  ":="
+				value = "((10*(((0.40*paymentHistoryScore)+(0.35*utilizationScore))+(0.25*creditAgeScore))).round(1))"/>
+		</Transition>
+		<Transition ID="REDUCE_LOAN_AMOUNT_reduce_loan_amount">
+			<Guard Condition="((~(accepted))&amp;(loanAmount>10000))"/>
+			<Outcome
+				variable = "loanAmount"
+				identifier = "null"
+				operation =  ":="
+				value = "(loanAmount-10000)"/>
+		</Transition>
+		<Transition ID="REDUCE_LOAN_AMOUNT_clear_quotes">
+			<Outcome
+				variable = "NABinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "ANZmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "CBAmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "CBAinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "NABmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_singleint"/>
+			<Outcome
+				variable = "ANZinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "undefined_double"/>
+			<Outcome
+				variable = "selectedBank"
+				identifier = "null"
+				operation =  ":="
+				value = "'undefined_string'"/>
+		</Transition>
+		<Transition ID="CBA_QUOTE_calculate_risk_margin">
+			<Outcome
+				variable = "riskMargin"
+				identifier = "null"
+				operation =  ":="
+				value = "(((creditScore>100)?0:(100-creditScore))*0.01)"/>
+		</Transition>
+		<Transition ID="CBA_QUOTE_standard_variable_product">
+			<Outcome
+				variable = "CBAinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "((4.50+riskMargin).round(0.25))"/>
+		</Transition>
+		<Transition ID="CBA_QUOTE_fixed_rate_product">
+			<Outcome
+				variable = "CBAinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "((5.00+riskMargin).round(0.25))"/>
+		</Transition>
+		<Transition ID="CBA_QUOTE_calculate_monthly_repayment">
+			<Outcome
+				variable = "CBAmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "((((loanAmount*(CBAinterestRate/12))*((1+(CBAinterestRate/12))^paymentTerm))/(((1+(CBAinterestRate/12))^paymentTerm)-1)).round(1))"/>
+			<Outcome
+				variable = "monthlyRate"
+				identifier = "null"
+				operation =  ":="
+				value = "(CBAinterestRate/12)"/>
+			<Outcome
+				variable = "n"
+				identifier = "null"
+				operation =  ":="
+				value = "paymentTerm"/>
+		</Transition>
+		<Transition ID="ANZ_QUOTE_calculate_risk_margin">
+			<Outcome
+				variable = "riskMargin"
+				identifier = "null"
+				operation =  ":="
+				value = "(((creditScore>100)?0:(100-creditScore))*0.01)"/>
+			<Outcome
+				variable = "anzProductType"
+				identifier = "null"
+				operation =  ":="
+				value = "{'FIXED', 'VARIABLE'}"/>
+		</Transition>
+		<Transition ID="ANZ_QUOTE_calculate_base_repayment">
+			<Outcome
+				variable = "monthlyRate"
+				identifier = "null"
+				operation =  ":="
+				value = "(ANZinterestRate/12)"/>
+			<Outcome
+				variable = "n"
+				identifier = "null"
+				operation =  ":="
+				value = "paymentTerm"/>
+			<Outcome
+				variable = "basePayment"
+				identifier = "null"
+				operation =  ":="
+				value = "((((loanAmount*(ANZinterestRate/12))*((1+(ANZinterestRate/12))^paymentTerm))/(((1+(ANZinterestRate/12))^paymentTerm)-1)).round(1))"/>
+		</Transition>
+		<Transition ID="ANZ_QUOTE_keep_base_repayment">
+			<Guard Condition="(~(offsetSelected))"/>
+			<Outcome
+				variable = "ANZmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "basePayment"/>
+		</Transition>
+		<Transition ID="ANZ_QUOTE_select_fixed_rate_offer">
+			<Guard Condition="(anzProductType=='FIXED')"/>
+			<Outcome
+				variable = "ANZinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "((4.90+riskMargin).round(0.25))"/>
+		</Transition>
+		<Transition ID="ANZ_QUOTE_select_variable_rate_offer">
+			<Guard Condition="(anzProductType=='VARIABLE')"/>
+			<Outcome
+				variable = "ANZinterestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "((4.40+riskMargin).round(0.25))"/>
+		</Transition>
+		<Transition ID="ANZ_QUOTE_add_offset_account_fee">
+			<Guard Condition="offsetSelected"/>
+			<Outcome
+				variable = "ANZmonthlyRepayment"
+				identifier = "null"
+				operation =  ":="
+				value = "(basePayment+20)"/>
+		</Transition>
+		<Transition ID="MAKE_RECOMMENDATION_borrower_response">
+			<Outcome
+				variable = "accepted"
+				identifier = "null"
+				operation =  ":="
+				value = "{true, false}"/>
+		</Transition>
+		<Transition ID="MAKE_RECOMMENDATION_recommend_best_quote">
+			<Guard Condition="(eligibleOptions>0)"/>
+			<Outcome
+				variable = "selectedBank"
+				identifier = "null"
+				operation =  ":="
+				value = "(eligibleBanks.get((c%eligibleOptions))), with c={0, 1, 2}"/>
+		</Transition>
+		<Transition ID="MAKE_RECOMMENDATION_ineligible">
+			<Guard Condition="(~(eligibleOptions>0))"/>
+			<Outcome
+				variable = "accepted"
+				identifier = "null"
+				operation =  ":="
+				value = "false"/>
+		</Transition>
+		<Transition ID="MAKE_RECOMMENDATION_consolidate_options">
+			<Outcome
+				variable = "eligibleBanks"
+				identifier = "null"
+				operation =  ":="
+				value = "(eligibleBanks.appendIf('CBA', (notNull(CBAinterestRate))))"/>
+			<Outcome
+				variable = "eligibleOptions"
+				identifier = "null"
+				operation =  ":="
+				value = "((((notNull(CBAinterestRate))?1:0)+((notNull(NABinterestRate))?1:0))+((notNull(ANZinterestRate))?1:0))"/>
+		</Transition>
+		<Transition ID="DOCUMENT_SIGNING_borrower_signs_agreement">
+			<Outcome
+				variable = "borrowerSigned"
+				identifier = "null"
+				operation =  ":="
+				value = "true"/>
+		</Transition>
+		<Transition ID="DOCUMENT_SIGNING_hash_source_and_create_envelope">
+			<Outcome
+				variable = "sourceHash"
+				identifier = "null"
+				operation =  ":="
+				value = "[0,1000]"/>
+			<Outcome
+				variable = "envelopeID"
+				identifier = "null"
+				operation =  ":="
+				value = "[0,1000]"/>
+		</Transition>
+		<Transition ID="DOCUMENT_SIGNING_selected_bank_representative_signs">
+			<Outcome
+				variable = "bankSigned"
+				identifier = "null"
+				operation =  ":="
+				value = "true"/>
+		</Transition>
+		<Transition ID="DOCUMENT_SIGNING_loan_complete">
+			<Outcome
+				variable = "interestRate"
+				identifier = "null"
+				operation =  ":="
+				value = "((selectedBank=='CBA')?CBAinterestRate:((selectedBank=='NAB')?NABinterestRate:ANZinterestRate))"/>
+			<Outcome
+				variable = "loanComplete"
+				identifier = "null"
+				operation =  ":="
+				value = "true"/>
+		</Transition>
+		<Transition ID="DOCUMENT_SIGNING_verify_borrower_identity">
+			<Outcome
+				variable = "borrowerVerified"
+				identifier = "null"
+				operation =  ":="
+				value = "true"/>
+		</Transition>
+		<Transition ID="DOCUMENT_SIGNING_verify_and_archive">
+			<Outcome
+				variable = "signed"
+				identifier = "null"
+				operation =  ":="
+				value = "true"/>
+			<Outcome
+				variable = "signedHash"
+				identifier = "null"
+				operation =  ":="
+				value = "[0,1000]"/>
+		</Transition>
+		<Transition ID="DOCUMENT_SIGNING_verify_bank_representative_identity">
+			<Outcome
+				variable = "bankSignerVerified"
+				identifier = "null"
+				operation =  ":="
+				value = "true"/>
+		</Transition>
+		<Transition ID="DOCUMENT_SIGNING_prepare_document">
+			<Guard Condition="accepted"/>
+			<Outcome
+				variable = "documentID"
+				identifier = "null"
+				operation =  ":="
+				value = "[0,1000]"/>
+		</Transition>
+		<Transition ID="MAKE_LOAN_REQUEST_payment_term">
+			<Outcome
+				variable = "paymentTerm"
+				identifier = "null"
+				operation =  ":="
+				value = "[1,5]"/>
+		</Transition>
+		<Transition ID="MAKE_LOAN_REQUEST_loan_amount">
+			<Outcome
+				variable = "loanAmount"
+				identifier = "null"
+				operation =  ":="
+				value = "{10000, 20000, 30000}"/>
+		</Transition>
+		<Transition ID="REJECT_silent">
+			<Guard Condition="((~(accepted))&amp;(loanAmount&lt;=10000))"/>
+		</Transition>
+		<Transition ID="UNDERAGE_EXIT_silent">
+			<Guard Condition="((~(age>=18))||(~(quit)))"/>
+		</Transition>
+		<Transition ID="NAB_QUOTE_declined">
+			<Guard Condition="(~(creditScore>=50))"/>
+		</Transition>
+		<Transition ID="ID_VERIFICATION_collect_more_documents">
+			<Guard Condition="(idPoints&lt;100)"/>
+		</Transition>
+	</Transitions>
+</Annotations>

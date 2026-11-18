@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="products_retrieved" target="nab_fixed_rate_product" id="products_retrieved-nab_fixed_rate_product"/>
+        <arc source="calculate_monthly_repayment" target="end" id="calculate_monthly_repayment-end"/>
+        <arc source="declined_end" target="merge_declined_end" id="declined_end-merge_declined_end"/>
+        <arc source="retrieve_eligible_nab_products" target="products_retrieved" id="retrieve_eligible_nab_products-products_retrieved"/>
+        <arc source="nab_fixed_rate_product" target="product_selected" id="nab_fixed_rate_product-product_selected"/>
+        <arc source="merge_declined_end" target="end" id="merge_declined_end-end"/>
+        <arc source="declined" target="declined_end" id="declined-declined_end"/>
+        <arc source="products_retrieved" target="nab_variable_product" id="products_retrieved-nab_variable_product"/>
+        <arc source="nab_variable_product" target="product_selected" id="nab_variable_product-product_selected"/>
+        <arc source="product_selected" target="calculate_monthly_repayment" id="product_selected-calculate_monthly_repayment"/>
+        <arc source="start" target="retrieve_eligible_nab_products" id="start-retrieve_eligible_nab_products"/>
+        <arc source="start" target="declined" id="start-declined"/>
+        <place id="product_selected">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="products_retrieved">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="declined_end">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>initial</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="end">
+            <name>
+                <text>sink</text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="merge_declined_end">
+            <name>
+                <text></text>
+            </name>
+        </transition>
+        <transition id="nab_fixed_rate_product">
+            <name>
+                <text>NAB fixed-rate product</text>
+            </name>
+        </transition>
+        <transition id="calculate_monthly_repayment">
+            <name>
+                <text>Calculate monthly repayment</text>
+            </name>
+        </transition>
+        <transition id="retrieve_eligible_nab_products">
+            <name>
+                <text>Retrieve eligible NAB products</text>
+            </name>
+        </transition>
+        <transition id="nab_variable_product">
+            <name>
+                <text>NAB variable product</text>
+            </name>
+        </transition>
+        <transition id="declined">
+            <name>
+                <text>Declined</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

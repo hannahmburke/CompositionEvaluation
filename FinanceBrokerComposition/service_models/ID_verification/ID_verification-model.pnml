@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="startReal" target="secondary_document" id="startReal-secondary_document"/>
+        <arc source="secondary_document" target="documents_checked" id="secondary_document-documents_checked"/>
+        <arc source="finished" target="clear_data" id="finished-clear_data"/>
+        <arc source="primary_document" target="documents_checked" id="primary_document-documents_checked"/>
+        <arc source="quit" target="finished" id="quit-finished"/>
+        <arc source="calculate_age" target="finished" id="calculate_age-finished"/>
+        <arc source="documents_checked" target="collect_more_documents" id="documents_checked-collect_more_documents"/>
+        <arc source="collect_more_documents" target="startReal" id="collect_more_documents-startReal"/>
+        <arc source="silent" target="startReal" id="silent-startReal"/>
+        <arc source="documents_checked" target="calculate_age" id="documents_checked-calculate_age"/>
+        <arc source="startReal" target="primary_document" id="startReal-primary_document"/>
+        <arc source="clear_data" target="end" id="clear_data-end"/>
+        <arc source="start" target="silent" id="start-silent"/>
+        <arc source="startReal" target="quit" id="startReal-quit"/>
+        <place id="documents_checked">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>start</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="startReal">
+            <name>
+                <text>startReal</text>
+            </name>
+        </place>
+        <place id="finished">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="end">
+            <name>
+                <text>sink</text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="clear_data">
+            <name>
+                <text>Clear data</text>
+            </name>
+        </transition>
+        <transition id="secondary_document">
+            <name>
+                <text>Secondary document</text>
+            </name>
+        </transition>
+        <transition id="silent">
+            <name>
+                <text>silent</text>
+            </name>
+        </transition>
+        <transition id="primary_document">
+            <name>
+                <text>Primary document</text>
+            </name>
+        </transition>
+        <transition id="collect_more_documents">
+            <name>
+                <text>Collect more documents</text>
+            </name>
+        </transition>
+        <transition id="calculate_age">
+            <name>
+                <text>Calculate age</text>
+            </name>
+        </transition>
+        <transition id="quit">
+            <name>
+                <text>Quit</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net type="http://www.pnml.org/version-2009/grammar/petrinet">
+        <arc source="loan_amount" target="amount_chosen" id="loan_amount-amount_chosen"/>
+        <arc source="payment_term" target="end" id="payment_term-end"/>
+        <arc source="start" target="loan_amount" id="start-loan_amount"/>
+        <arc source="amount_chosen" target="payment_term" id="amount_chosen-payment_term"/>
+        <place id="amount_chosen">
+            <name>
+                <text></text>
+            </name>
+        </place>
+        <place id="start">
+            <name>
+                <text>initial</text>
+            </name>
+            <initialMarking>
+                <text>1</text>
+            </initialMarking>
+        </place>
+        <place id="end">
+            <name>
+                <text>sink</text>
+            </name>
+        </place>
+        <toolspecific tool="nl.rug.ds.bpm.ptnet" version="1.0">
+            <process>
+                <groups/>
+                <roles/>
+                <variables/>
+            </process>
+        </toolspecific>
+        <transition id="loan_amount">
+            <name>
+                <text>Loan amount</text>
+            </name>
+        </transition>
+        <transition id="payment_term">
+            <name>
+                <text>Payment term</text>
+            </name>
+        </transition>
+    </net>
+</pnml>

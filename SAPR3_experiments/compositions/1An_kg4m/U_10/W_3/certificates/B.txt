@@ -1,0 +1,190 @@
+Service: B
+
+=================================================
+Obligation: {ID: 0, identifier: [], type: ACHIEVEMENT, trig: A>X, req: (B-A)>Y, dead: C>Z}
+-------------------------------------------------
+
+Input requirements: [
+Constraints: {}
+obligationState: ALL]
+Output updates: {
+Constraints: {~(((B.1start+B.0)-(A.1start+A.0))>Y.1start) && ~((B.1start-A.1start)>Y.1start)}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {A.1start>X.1start && ~((A.1start+A.1)>X.1start) && (B.1start-A.1start)>Y.1start && ~((A.1start+A.1)>(X.1start+X.2))}
+obligationState: ALL=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {(B.1start-(A.1start+A.1))>(Y.1start+Y.1) && A.1start>X.1start && ~((A.1start+A.1)>(X.1start+X.2)) && (B.1start-A.1start)>Y.1start}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {A.1start>X.1start && ~((A.1start+A.0)>X.1start) && (((B.1start+B.12)-A.1start)>Y.1start) && ~((B.1start-A.1start)>Y.1start)}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.0, B=(B.1start+B.12)+B.0, R=R.1start, C=(C.1start+C.12)+C.0, D=D.1start+D.12, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_D.12 = [-4,5], annotation_C.12 = [-10,-1], annotation_B.12 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {A.1start>X.1start && ~(((B.1start+B.0)-(A.1start+A.0))>Y.1start) && (A.1start+A.0)>X.1start}
+obligationState: ALL=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {A.1start>X.1start && ~(((B.1start+B.12)-A.1start)>Y.1start) && (B.1start-A.1start)>Y.1start && (((B.1start+B.12)+B.0)-(A.1start+A.0))>Y.1start}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.0, B=(B.1start+B.12)+B.0, R=R.1start, C=(C.1start+C.12)+C.0, D=D.1start+D.12, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_D.12 = [-4,5], annotation_C.12 = [-10,-1], annotation_B.12 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~(A.1start>X.1start) && (B.1start-A.1start)>Y.1start}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start+Q.3, A=A.1start, B=B.1start, R=R.1start, C=C.1start+C.4, D=D.1start, E=E.1start, F=F.1start+F.3, X=X.1start, Y=(Y.1start+Y.3)+Y.4, Z=Z.1start+Z.4}
+Internal interpretations: {annotation_Q.3 = [-10,-1], annotation_Y.4 = [-4,5], annotation_Y.3 = [-4,5], annotation_Z.4 = [1,10], annotation_C.4 = [-10,-1], annotation_F.3 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {A.1start>X.1start && ~((A.1start+A.0)>X.1start) && (B.1start-A.1start)>Y.1start}
+obligationState: ALL=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {(B.1start-(A.1start+A.1))>(Y.1start+Y.1) && A.1start>X.1start && (A.1start+A.1)>X.1start && (B.1start-A.1start)>Y.1start}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {(A.1start+A.1)>(X.1start+X.2) && A.1start>X.1start && ~((B.1start-(A.1start+A.1))>(Y.1start+Y.1))}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {~((B.1start-(A.1start+A.1))>(Y.1start+Y.1)) && (A.1start+A.1)>X.1start && A.1start>X.1start}
+obligationState: ALL=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {(B.1start-(A.1start+A.1))>(Y.1start+Y.1) && A.1start>X.1start && ~((A.1start+A.1)>X.1start) && (B.1start-A.1start)>Y.1start}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {A.1start>X.1start && ~(((B.1start+B.12)-A.1start)>Y.1start) && (B.1start-A.1start)>Y.1start && ~((((B.1start+B.12)+B.0)-(A.1start+A.0))>Y.1start)}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.0, B=(B.1start+B.12)+B.0, R=R.1start, C=(C.1start+C.12)+C.0, D=D.1start+D.12, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_D.12 = [-4,5], annotation_C.12 = [-10,-1], annotation_B.12 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_A.0 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {~(A.1start>X.1start)}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start+Q.3, A=A.1start, B=B.1start, R=R.1start, C=C.1start+C.4, D=D.1start, E=E.1start, F=F.1start+F.3, X=X.1start, Y=(Y.1start+Y.3)+Y.4, Z=Z.1start+Z.4}
+Internal interpretations: {annotation_Q.3 = [-10,-1], annotation_Y.4 = [-4,5], annotation_Y.3 = [-4,5], annotation_Z.4 = [1,10], annotation_C.4 = [-10,-1], annotation_F.3 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {A.1start>X.1start && ~(((B.1start+B.0)-(A.1start+A.0))>Y.1start) && ~((B.1start-A.1start)>Y.1start)}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {~((B.1start-(A.1start+A.1))>(Y.1start+Y.1)) && ~((B.1start-A.1start)>Y.1start)}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {A.1start>X.1start && ~((B.1start-(A.1start+A.1))>(Y.1start+Y.1)) && ~((B.1start-A.1start)>Y.1start)}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {~((B.1start-A.1start)>Y.1start) && ((B.1start+B.0)-(A.1start+A.0))>Y.1start}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {A.1start>X.1start && ((B.1start+B.0)-(A.1start+A.0))>Y.1start}
+obligationState: ALL=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~(A.1start>X.1start) && (B.1start-A.1start)>(Y.1start+Y.3)}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start+Q.3, A=A.1start, B=B.1start, R=R.1start, C=C.1start+C.4, D=D.1start, E=E.1start, F=F.1start+F.3, X=X.1start, Y=(Y.1start+Y.3)+Y.4, Z=Z.1start+Z.4}
+Internal interpretations: {annotation_Q.3 = [-10,-1], annotation_Y.4 = [-4,5], annotation_Y.3 = [-4,5], annotation_Z.4 = [1,10], annotation_C.4 = [-10,-1], annotation_F.3 = [-4,5]}
+O Status: INACTIVE]}
+
+=================================================
+Obligation: {ID: 1, identifier: [], type: MAINTENANCE, trig: D>P, req: E>Q, dead: (F-D)>R}
+-------------------------------------------------
+
+Input requirements: [
+Constraints: {(E.1start>Q.1start)}
+obligationState: ALL, 
+Constraints: {~(D.1start>P.1start)}
+obligationState: [INACTIVE]]
+Output updates: {
+Constraints: {(E.1start>Q.1start) && D.1start>P.1start && (F.1start-(D.1start+D.12))>R.1start && (D.1start+D.12)>P.1start}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.0, B=(B.1start+B.12)+B.0, R=R.1start, C=(C.1start+C.12)+C.0, D=D.1start+D.12, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_D.12 = [-4,5], annotation_C.12 = [-10,-1], annotation_B.12 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~((F.1start-D.1start)>R.1start) && (E.1start>Q.1start) && ((F.1start+F.1)-(D.1start+D.2))>(R.1start+R.2)}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~((F.1start-D.1start)>R.1start) && ((F.1start+F.1)-D.1start)>R.1start && (E.1start>Q.1start) && ~((D.1start+D.2)>P.1start)}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~((F.1start-D.1start)>R.1start) && (E.1start>Q.1start) && D.1start>P.1start && ~((F.1start-D.1start)>(R.1start+R.11))}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {~((D.1start+D.12)>P.1start) && (E.1start>Q.1start) && (F.1start-D.1start)>R.1start && D.1start>P.1start}
+obligationState: ALL=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.0, B=(B.1start+B.12)+B.0, R=R.1start, C=(C.1start+C.12)+C.0, D=D.1start+D.12, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_D.12 = [-4,5], annotation_C.12 = [-10,-1], annotation_B.12 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~((F.1start-D.1start)>R.1start) && (E.1start>Q.1start) && ~(((F.1start+F.1)-(D.1start+D.2))>(R.1start+R.2)) && ~(((F.1start+F.1)-D.1start)>R.1start)}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {~(D.1start>P.1start)}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start+Q.3, A=A.1start, B=B.1start, R=R.1start, C=C.1start+C.4, D=D.1start, E=E.1start, F=F.1start+F.3, X=X.1start, Y=(Y.1start+Y.3)+Y.4, Z=Z.1start+Z.4}
+Internal interpretations: {annotation_Q.3 = [-10,-1], annotation_Y.4 = [-4,5], annotation_Y.3 = [-4,5], annotation_Z.4 = [1,10], annotation_C.4 = [-10,-1], annotation_F.3 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~((F.1start-D.1start)>R.1start) && (E.1start>Q.1start) && ~((F.1start-(D.1start+D.12))>R.1start) && D.1start>P.1start}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.0, B=(B.1start+B.12)+B.0, R=R.1start, C=(C.1start+C.12)+C.0, D=D.1start+D.12, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_D.12 = [-4,5], annotation_C.12 = [-10,-1], annotation_B.12 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_A.0 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {(E.1start>Q.1start) && (F.1start-D.1start)>R.1start && ~(D.1start>P.1start)}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start+Q.3, A=A.1start, B=B.1start, R=R.1start, C=C.1start+C.4, D=D.1start, E=E.1start, F=F.1start+F.3, X=X.1start, Y=(Y.1start+Y.3)+Y.4, Z=Z.1start+Z.4}
+Internal interpretations: {annotation_Q.3 = [-10,-1], annotation_Y.4 = [-4,5], annotation_Y.3 = [-4,5], annotation_Z.4 = [1,10], annotation_C.4 = [-10,-1], annotation_F.3 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {(F.1start-D.1start)>(R.1start+R.11) && D.1start>(P.1start+P.11) && (E.1start>Q.1start) && D.1start>P.1start}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~(((F.1start+F.3)-D.1start)>R.1start) && (E.1start>Q.1start) && D.1start>P.1start}
+obligationState: ALL=[Evolution expressions: {P=P.1start, Q=Q.1start+Q.3, A=A.1start, B=B.1start, R=R.1start, C=C.1start+C.4, D=D.1start, E=E.1start, F=F.1start+F.3, X=X.1start, Y=(Y.1start+Y.3)+Y.4, Z=Z.1start+Z.4}
+Internal interpretations: {annotation_Q.3 = [-10,-1], annotation_Y.4 = [-4,5], annotation_Y.3 = [-4,5], annotation_Z.4 = [1,10], annotation_C.4 = [-10,-1], annotation_F.3 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {((F.1start+F.1)-D.1start)>R.1start && (E.1start>Q.1start) && ~((D.1start+D.2)>P.1start) && D.1start>P.1start}
+obligationState: ALL=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {(E.1start>Q.1start) && ((F.1start+F.3)-D.1start)>R.1start && (F.1start-D.1start)>R.1start}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start+Q.3, A=A.1start, B=B.1start, R=R.1start, C=C.1start+C.4, D=D.1start, E=E.1start, F=F.1start+F.3, X=X.1start, Y=(Y.1start+Y.3)+Y.4, Z=Z.1start+Z.4}
+Internal interpretations: {annotation_Q.3 = [-10,-1], annotation_Y.4 = [-4,5], annotation_Y.3 = [-4,5], annotation_Z.4 = [1,10], annotation_C.4 = [-10,-1], annotation_F.3 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~((F.1start-D.1start)>R.1start) && (E.1start>Q.1start) && ~((F.1start-(D.1start+D.12))>R.1start)}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.0, B=(B.1start+B.12)+B.0, R=R.1start, C=(C.1start+C.12)+C.0, D=D.1start+D.12, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_D.12 = [-4,5], annotation_C.12 = [-10,-1], annotation_B.12 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_A.0 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {(E.1start>Q.1start) && ((F.1start+F.3)-D.1start)>R.1start && D.1start>P.1start}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start+Q.3, A=A.1start, B=B.1start, R=R.1start, C=C.1start+C.4, D=D.1start, E=E.1start, F=F.1start+F.3, X=X.1start, Y=(Y.1start+Y.3)+Y.4, Z=Z.1start+Z.4}
+Internal interpretations: {annotation_Q.3 = [-10,-1], annotation_Y.4 = [-4,5], annotation_Y.3 = [-4,5], annotation_Z.4 = [1,10], annotation_C.4 = [-10,-1], annotation_F.3 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {(F.1start-D.1start)>(R.1start+R.11) && (E.1start>Q.1start) && (F.1start-D.1start)>R.1start && D.1start>P.1start}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~((F.1start-D.1start)>R.1start) && (E.1start>Q.1start) && ~(((F.1start+F.1)-(D.1start+D.2))>(R.1start+R.2)) && (D.1start+D.2)>P.1start}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.1, B=B.1start, R=R.1start+R.2, C=C.1start, D=D.1start+D.2, E=E.1start, F=F.1start+F.1, X=X.1start+X.2, Y=Y.1start+Y.1, Z=Z.1start}
+Internal interpretations: {annotation_R.2 = [-4,5], annotation_X.2 = [-4,5], annotation_Y.1 = [-4,5], annotation_A.1 = [-4,5], annotation_D.2 = [-4,5], annotation_F.1 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {(E.1start>Q.1start) && (F.1start-D.1start)>R.1start && D.1start>P.1start && (F.1start-(D.1start+D.12))>R.1start}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start, A=A.1start+A.0, B=(B.1start+B.12)+B.0, R=R.1start, C=(C.1start+C.12)+C.0, D=D.1start+D.12, E=E.1start, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_D.12 = [-4,5], annotation_C.12 = [-10,-1], annotation_B.12 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {(E.1start>Q.1start) && (F.1start-D.1start)>R.1start && D.1start>P.1start && ~(D.1start>(P.1start+P.11))}
+obligationState: ALL=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~((F.1start-D.1start)>R.1start) && (E.1start>Q.1start) && ~((F.1start-D.1start)>(R.1start+R.11))}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start+P.11, Q=Q.1start, A=A.1start+A.0, B=B.1start+B.0, R=R.1start+R.11, C=C.1start+C.0, D=D.1start, E=E.1start+E.11, F=F.1start, X=X.1start, Y=Y.1start, Z=Z.1start}
+Internal interpretations: {annotation_E.11 = [1,10], annotation_P.11 = [-4,5], annotation_B.0 = [-4,5], annotation_C.0 = [-10,-1], annotation_R.11 = [-4,5], annotation_A.0 = [-4,5]}
+O Status: TRIGGERED], 
+Constraints: {(E.1start>Q.1start) && ((F.1start+F.3)-D.1start)>R.1start}
+obligationState: [INACTIVE]=[Evolution expressions: {P=P.1start, Q=Q.1start+Q.3, A=A.1start, B=B.1start, R=R.1start, C=C.1start+C.4, D=D.1start, E=E.1start, F=F.1start+F.3, X=X.1start, Y=(Y.1start+Y.3)+Y.4, Z=Z.1start+Z.4}
+Internal interpretations: {annotation_Q.3 = [-10,-1], annotation_Y.4 = [-4,5], annotation_Y.3 = [-4,5], annotation_Z.4 = [1,10], annotation_C.4 = [-10,-1], annotation_F.3 = [-4,5]}
+O Status: INACTIVE], 
+Constraints: {~((F.1start-D.1start)>R.1start) && ~(((F.1start+F.3)-D.1start)>R.1start) && (E.1start>Q.1start)}
+obligationState: [TRIGGERED]=[Evolution expressions: {P=P.1start, Q=Q.1start+Q.3, A=A.1start, B=B.1start, R=R.1start, C=C.1start+C.4, D=D.1start, E=E.1start, F=F.1start+F.3, X=X.1start, Y=(Y.1start+Y.3)+Y.4, Z=Z.1start+Z.4}
+Internal interpretations: {annotation_Q.3 = [-10,-1], annotation_Y.4 = [-4,5], annotation_Y.3 = [-4,5], annotation_Z.4 = [1,10], annotation_C.4 = [-10,-1], annotation_F.3 = [-4,5]}
+O Status: TRIGGERED]}
+
